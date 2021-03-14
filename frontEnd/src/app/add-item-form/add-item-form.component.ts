@@ -1,0 +1,38 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-add-item-form',
+  templateUrl: './add-item-form.component.html',
+  styleUrls: ['./add-item-form.component.scss']
+})
+export class AddItemFormComponent implements OnInit {
+  
+  addItemForm: FormGroup;
+  formSubmitted = false;
+  
+  constructor() { }
+
+  ngOnInit():void{
+    this.addItemForm = new FormGroup ({
+      'url': new FormControl (null, Validators.required),
+      'category': new FormControl (null, Validators.required),
+      'keywords': new FormControl (null),
+      'title': new FormControl (null, Validators.required),
+      'country/creator': new FormControl (null),
+      'year': new FormControl (null),
+      'condition': new FormControl (null),
+      'media': new FormControl (null),
+      'description': new FormControl (null),
+      'references': new FormControl (null)
+    });
+
+  }
+
+  onSubmit(){
+    console.log(this.addItemForm.value);
+    this.addItemForm.reset();
+    this.formSubmitted = true;
+  }
+
+}

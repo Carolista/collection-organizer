@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+          <h1>Add an item to your colletion</h1>
+          <p>Please fill out the form below and click submit button to add an item to your collection.
+              Please note: some feilds are required.
+          </p>
+        <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()"> 
+          <div class="col-6">
+              <div class="col-md">
+                  <label for="url">URL link<br>
+                      <input formControlName="url" type="text" id="url">
+                  </label><br>
+                  <span *ngIf="!addItemForm.get('url').valid && addItemForm.get('url').touched"><nobr>Please enter url</nobr></span>
+                  <label for="category">Category<br>
+                    <!-- <input formControlName="category" id="category"> -->
+                    <select formControlName="category" id="category">
+                        <option value="Art">Art</option>
+                        <option value = "2">two</option>
+                        <option value = "3">three</option>
+                        <option value = "4">four</option>
+                    </select>
+                </label><br>
+                <label for="keywords">Keywords<br>
+                    <input formControlName="keywords" id="keywords" type="text">
+                </label><br>
+                <label for="title">Title<br>
+                    <input formControlName="title" id="title" type="text">
+                </label><br>
+                <label for="country/creator">Country/Creator<br>
+                    <input formControlName="country/creator" id="country/creator" type="text">
+                </label><br>
+                <label for="year">Year<br>
+                    <input formControlName="year" id="year" type="number">
+                </label><br>
+                <label for="condition">Condition<br>
+                    <input formControlName="condition" id="condition" type="text">
+                </label><br>
+                <label for="media">Media<br>
+                    <input formControlName="media" id="media" type="text">
+                </label><br>
+                <label for="description">Description<br>
+                    <input formControlName="description" id="description" type="text">
+                </label><br>
+                <label for="references">References<br>
+                    <input formControlName="references" id="references" type="text">
+                </label><br>
+               </div>
+          </div>
+          <button class="btn btn-secondary" type="submit">Submit</button>
+      </form>
+        <div *ngIf="formSubmitted">
+          This form has been submitted.
+          <div>
+              <button>View my collection</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
