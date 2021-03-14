@@ -10,6 +10,8 @@ export class AddItemFormComponent implements OnInit {
   
   addItemForm: FormGroup;
   formSubmitted = false;
+  browseMainCategories = ['Fine Arts', 'Culture', 'Decorative arts', 'Machines and Transportation',
+    'Fashion and Textiles', 'Natural History'];
   
   constructor() { }
 

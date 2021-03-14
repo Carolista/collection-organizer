@@ -14,20 +14,15 @@
                   <span *ngIf="!addItemForm.get('url').valid && addItemForm.get('url').touched"><nobr>Please enter url</nobr></span>
                   <label for="category">Category<br>
                     <div class="col">
-                        <input type="radio" id="category" name="gender" value="male">
-                            <label for="male">Male</label><br>
-                            <input type="radio" id="female" name="gender" value="female">
-                            <label for="female">Female</label><br>
-                            <input type="radio" id="other" name="gender" value="other">
-                            <label for="other">Other</label>
+                        <div class="radio" *ngFor="let category of browseMainCategories">
+                            <label>
+                              <input
+                                type="radio"
+                                formControlName="category"
+                                [value]="category">{{ category }}
+                            </label>
+                        </div>
                     </div>
-                    <!-- <input formControlName="category" id="category"> -->
-                    <!-- <select formControlName="category" id="category">
-                        <option value="Art">Art</option>
-                        <option value = "2">two</option>
-                        <option value = "3">three</option>
-                        <option value = "4">four</option>
-                    </select> -->
                 </label><br>
                 <label for="keywords">Keywords<br>
                     <input formControlName="keywords" id="keywords" type="text">
@@ -54,7 +49,12 @@
                     <input formControlName="media" id="media" type="text">
                 </label><br>
                 <label for="description">Description<br>
-                    <input formControlName="description" id="description" type="text">
+                    <!-- <input formControlName="description" id="description" type="text"> -->
+                    <textarea formControlName="description" id="description"
+                    rows="6" cols="50"
+                    >
+
+                    </textarea>
                 </label><br>
                 <label for="references">References<br>
                     <input formControlName="references" id="references" type="text">
