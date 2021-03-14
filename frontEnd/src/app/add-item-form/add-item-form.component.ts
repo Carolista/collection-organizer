@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -13,7 +14,7 @@ export class AddItemFormComponent implements OnInit {
   browseMainCategories = ['Fine Arts', 'Culture', 'Decorative arts', 'Machines and Transportation',
     'Fashion and Textiles', 'Natural History'];
   
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit():void{
     this.addItemForm = new FormGroup ({
@@ -31,7 +32,15 @@ export class AddItemFormComponent implements OnInit {
 
   }
 
+
   onSubmit(){
+    // let formData = this.addItemForm.value;
+    // this.http.post('urlLinkGoesHere', formData);
+    //do I need to subscribe here for the post to function
+
+    this.http.post('https://http-practice-c8c72-default-rtdb.firebaseio.com/', 
+              this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
+
     console.log(this.addItemForm.value);
     this.addItemForm.reset();
     this.formSubmitted = true;
