@@ -13,13 +13,21 @@
                   </label><br>
                   <span *ngIf="!addItemForm.get('url').valid && addItemForm.get('url').touched"><nobr>Please enter url</nobr></span>
                   <label for="category">Category<br>
+                    <div class="col">
+                        <input type="radio" id="category" name="gender" value="male">
+                            <label for="male">Male</label><br>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label><br>
+                            <input type="radio" id="other" name="gender" value="other">
+                            <label for="other">Other</label>
+                    </div>
                     <!-- <input formControlName="category" id="category"> -->
-                    <select formControlName="category" id="category">
+                    <!-- <select formControlName="category" id="category">
                         <option value="Art">Art</option>
                         <option value = "2">two</option>
                         <option value = "3">three</option>
                         <option value = "4">four</option>
-                    </select>
+                    </select> -->
                 </label><br>
                 <label for="keywords">Keywords<br>
                     <input formControlName="keywords" id="keywords" type="text">
@@ -30,11 +38,17 @@
                 <label for="country/creator">Country/Creator<br>
                     <input formControlName="country/creator" id="country/creator" type="text">
                 </label><br>
-                <label for="year">Year<br>
+                <label for="year">Year (4 digits only, e.g. 1945)<br>
                     <input formControlName="year" id="year" type="number">
                 </label><br>
                 <label for="condition">Condition<br>
-                    <input formControlName="condition" id="condition" type="text">
+                    <!-- <input formControlName="condition" id="condition" type="text"> -->
+                    <select formControlName="condition" id="condition">
+                        <option value="fair">fair</option>
+                        <option value = "good">good</option>
+                        <option value = "very-good">very good</option>
+                        <option value = "excellent">excellent</option>
+                    </select>
                 </label><br>
                 <label for="media">Media<br>
                     <input formControlName="media" id="media" type="text">
