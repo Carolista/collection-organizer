@@ -38,7 +38,7 @@ export class AddItemFormComponent implements OnInit {
     // this.http.post('urlLinkGoesHere', formData);
     //do I need to subscribe here for the post to function
 
-    this.http.post('https://http-practice-c8c72-default-rtdb.firebaseio.com/', 
+    this.http.post('https://testitemform-default-rtdb.firebaseio.com/', 
               this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
 
     console.log(this.addItemForm.value);
