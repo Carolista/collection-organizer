@@ -10,10 +10,19 @@ export class Item {
     public description: string;
     public references: string;
 
-    constructor(imagePath: string, category: string, keywords: string=null, title: string ){
+    constructor(imagePath: string, category: string, keywords: string, title: string, countryCreator: string, 
+        year: number, condition: string, media: string, description: string, reference: string)
+        
+        {
         this.imagePath = imagePath;
         this.category = category;
         this.keywords = keywords;
         this.title = title;
+        this.countryCreator = countryCreator;
+        this.year = year;
+        this.condition = condition;
+        this.media = media;
+        this.description = description;
+        this.references = reference; 
     }
 }
