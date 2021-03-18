@@ -19,15 +19,15 @@ export class AddItemFormComponent implements OnInit {
   ngOnInit():void{
     this.addItemForm = new FormGroup ({
       'url': new FormControl (null, Validators.required),
-      'category': new FormControl (null, Validators.required),
-      'keywords': new FormControl (null),
+      // 'category': new FormControl (null, Validators.required),
+      // 'keywords': new FormControl (null),
       'title': new FormControl (null, Validators.required),
-      'country/creator': new FormControl (null),
-      'year': new FormControl (null),
-      'condition': new FormControl (null),
-      'media': new FormControl (null),
-      'description': new FormControl (null),
-      'references': new FormControl (null)
+      // 'country/creator': new FormControl (null),
+      // 'year': new FormControl (null),
+      // 'condition': new FormControl (null),
+      // 'media': new FormControl (null),
+      // 'description': new FormControl (null),
+      // 'references': new FormControl (null)
     });
 
   }
