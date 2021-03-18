@@ -1,56 +1,28 @@
 package org.launchcode.backend.models;
 
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Objects;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+
 
 public class Item extends AbstractEntity {
 
-//    @Id
-//    @GeneratedValue
-//    public int id; //changed fields temporarily to public until we resolve what to do between FE/BE
-//
-//    @NotBlank(message="Title is required.")
-//    @Size(min=3, max=100, message="Name must be between 3 and 100 characters.")
-//    public String title;
+    public String imagePath; //will be URL
 
-//    public Item(int id, String title) {
-//        this.id = id;
-//        this.title = title;
-//    }
 
+
+    public Item(String title, String imagePath) {
+        super(title);
+        this.imagePath = imagePath;
+    }
 
     public Item() {}
 
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
+    public String getImagePath() {
+        return imagePath;
+    }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Item item = (Item) o;
-//        return id == item.id &&
-//                Objects.equals(title, item.title);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, title);
-//    }
-
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     //continue working on ItemController to do's - reference Anya's updated form/class
     //research how public vs private fields when hooking FE to BE
