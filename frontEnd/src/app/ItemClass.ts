@@ -1,12 +1,12 @@
 export class Item {
-    public userID: string;
+    public id: string;
     public imagePath: string;
     public title: string;
 
-    constructor( userId: string,imagePath: string, title: string )
+    constructor( id: string,imagePath: string, title: string )
         
         {
-        this.userID = userId;
+        this.id = id;
         this.imagePath = imagePath;
         this.title = title; 
     }
