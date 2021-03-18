@@ -33,7 +33,21 @@ public class Item {
         this.title = title;
     }
 
-//continue working on ItemController - reference Anya's updated form/class
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return id == item.id &&
+                Objects.equals(title, item.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title);
+    }
+
+    //continue working on ItemController - reference Anya's updated form/class
 //research how public vs private fields when hooking FE to BE
 //research URL as fields in java
 
