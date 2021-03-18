@@ -10,9 +10,9 @@ import javax.persistence.*;
 public class Item {
 
 
-    private int id;
+    public int id; //changed fields temporarily to public until we resolve what to do between FE/BE
 
-    private String title;
+    public String title;
 
     public Item(int id, String title) {
         this.id = id;
