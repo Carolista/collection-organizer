@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 public class Item {
 
+
     private int id;
 
         //    public imagePath: string;
@@ -39,6 +40,8 @@ public class Item {
             this.media = media;
             this.description = description;
         }
+
+        public Item() {}
 
         public int getId() {
             return id;
