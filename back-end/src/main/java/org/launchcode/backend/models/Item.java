@@ -1,21 +1,20 @@
 package org.launchcode.backend.models;
 
-import com.sun.istack.NotNull;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
-import java.util.Objects;
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class Item {
-
 
     @Id
     @GeneratedValue
     public int id; //changed fields temporarily to public until we resolve what to do between FE/BE
 
-//    Gradle: jakarta.validation:jakarta.validation-api:2.0.1
+    @NotBlank
+    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
     public String title;
 
     public Item(int id, String title) {
