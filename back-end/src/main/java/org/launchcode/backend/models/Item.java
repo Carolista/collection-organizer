@@ -14,17 +14,27 @@ public class Item {
 
     private String title;
 
+    public Item(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
 
+    public Item() {}
 
+    public int getId() {
+        return id;
+    }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-
-
-// item repository - anna
-// item controller - chandler
-// item class - tara
-// decide what goes into each class, then filter/create AbstractEntity from there --> look in github at Anya's form for reference
-// repl.it - github
+//continue working on ItemController - reference Anya's updated form/class
+//research how public vs private fields when hooking FE to BE
+//research URL as fields in java
 
 }
