@@ -1,17 +1,21 @@
 package org.launchcode.backend.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 import java.util.Objects;
 import javax.persistence.*;
-//import javax.validation.constraints;
 
 public class Item {
 
 
+    @Id
+    @GeneratedValue
     public int id; //changed fields temporarily to public until we resolve what to do between FE/BE
 
+//    Gradle: jakarta.validation:jakarta.validation-api:2.0.1
     public String title;
 
     public Item(int id, String title) {
@@ -47,8 +51,9 @@ public class Item {
         return Objects.hash(id, title);
     }
 
-    //continue working on ItemController - reference Anya's updated form/class
-//research how public vs private fields when hooking FE to BE
-//research URL as fields in java
+
+    //continue working on ItemController to do's - reference Anya's updated form/class
+    //research how public vs private fields when hooking FE to BE
+    //research URL as fields in java
 
 }
