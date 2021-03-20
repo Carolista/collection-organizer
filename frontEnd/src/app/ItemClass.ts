@@ -1,8 +1,8 @@
 export class Item {
-    public id: string;
+    public id: number;
     public title: string;
 
-    constructor( id: string, title: string )
+    constructor( id: number, title: string )
         
         {
         this.id = id;
