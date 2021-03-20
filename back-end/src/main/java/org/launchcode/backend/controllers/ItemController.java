@@ -3,40 +3,52 @@ package org.launchcode.backend.controllers;
 import org.launchcode.backend.models.Item;
 import org.launchcode.backend.models.data.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import java.net.http.HttpHeaders;
+import java.util.Collections;
+import java.util.Map;
 
 
-//Need to come back and find name of form
-@Controller
-@RequestMapping
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/project")
 public class ItemController {
 
     @Autowired
     private ItemRepository itemRepository;
 
-    @GetMapping("")
-    public String displayAddItemForm(){
-        return "STUFFHERE"; //placeholder
+    @PostMapping
+    public ResponseEntity<?> postItem(@RequestBody Item item, @RequestHeader HttpHeaders headers) {
+
+            itemRepository.save(item);
+
+            int id = item.getId();
+            Map<String, String> map = Collections.singletonMap("id", Integer.toString(id));
+            return new ResponseEntity<>(map, HttpStatus.CREATED);
+        }
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    //TODO: processAddItemForm
-//    @PostMapping("add")//routing?
-//    public String processAddItemForm(@ModelAttribute @Valid Item newItem,
-//                                     Errors errors, Model model) {
-//        if(errors.hasErrors()){
-//            return "";
-//        }
-//    }
 
+
+
+
+
+
+
+
+
+
+    //TODO: processAddItemForm
 
     //TODO: displayViewItem
 
     //TODO: deleteItem
 
     //TODO: take a look at FE form creation page to verify keywords needed to properly render view - i.e. "title?"
-}
+
