@@ -19,10 +19,9 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @GetMapping("add")
-    public String displayAddItemForm(Model model){
-        model.addAttribute(new Item());
-        return "items/add";  //where is this form being routed?
+    @GetMapping("")
+    public String displayAddItemForm(){
+        return "STUFFHERE"; //placeholder
     }
 
     //TODO: processAddItemForm
