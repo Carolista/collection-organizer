@@ -16,7 +16,7 @@ import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/project")
+@RequestMapping("/api/item")
 public class ItemController {
 
     @Autowired
@@ -33,12 +33,6 @@ public class ItemController {
         }
 //        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-
-
-
-
-
-
 
 
 
