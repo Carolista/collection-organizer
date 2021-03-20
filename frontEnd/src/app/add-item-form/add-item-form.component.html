@@ -1,17 +1,17 @@
 <div class="container">
     <div class="row">
       <div class="col">
-          <h1>Add an item to your colletion</h1>
+          <h1>Add an item to your collection</h1>
           <p>Please fill out the form below and click submit button to add an item to your collection.
-              Please note: some feilds are required.
+              Please note: some fields are required.
           </p>
         <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()"> 
           <div class="col-6">
               <div class="col-md">
-                  <label for="url">URL link<br>
+                  <!-- <label for="url">URL link<br>
                       <input formControlName="url" type="text" id="url">
                   </label><br>
-                  <span *ngIf="!addItemForm.get('url').valid && addItemForm.get('url').touched"><nobr>Please enter url</nobr></span>
+                  <span *ngIf="!addItemForm.get('url').valid && addItemForm.get('url').touched"><nobr>Please enter url</nobr></span> -->
                   <!-- <label for="category">Category<br>
                     <div class="col">
                         <div class="radio" *ngFor="let category of browseMainCategories">
