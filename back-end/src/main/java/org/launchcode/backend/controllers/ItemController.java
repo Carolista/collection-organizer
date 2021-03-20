@@ -22,6 +22,9 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
+    //Need to look into ResponseEntity
+    //Need to look into HttpStatus
+    //Work on the item.getId()
     @PostMapping
     public ResponseEntity<?> postItem(@RequestBody Item item, @RequestHeader HttpHeaders headers) {
 
