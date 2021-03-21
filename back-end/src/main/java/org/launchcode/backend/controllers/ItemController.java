@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Map;
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/item")
 public class ItemController {
