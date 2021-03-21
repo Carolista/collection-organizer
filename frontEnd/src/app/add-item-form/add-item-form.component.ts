@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Item } from '../ItemClass';
 
 @Component({
   selector: 'app-add-item-form',
@@ -21,7 +22,7 @@ export class AddItemFormComponent implements OnInit {
       //'url': new FormControl (null, Validators.required),
       // 'category': new FormControl (null, Validators.required),
       // 'keywords': new FormControl (null),
-      'title': new FormControl (null, Validators.required),
+      title: new FormControl (null, Validators.required),
       // 'country/creator': new FormControl (null),
       // 'year': new FormControl (null),
       // 'condition': new FormControl (null),
@@ -38,8 +39,31 @@ export class AddItemFormComponent implements OnInit {
     // this.http.post('urlLinkGoesHere', formData);
     //do I need to subscribe here for the post to function
 
-    this.http.post('https://testitemform-default-rtdb.firebaseio.com/', 
-              this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
+    let item = new Item(this.addItemForm.title);
+
+    // this.http.post('http://localhost:8080/api/item', 
+              // this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
+
+              fetch('http://localhost:8080/api/item', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify(item),
+              }).then(function (response) {
+                // get id number from response here { id: idNumber }
+                response.json().then(function (json) {
+          
+                  this.id = Number(json.id);
+          
+                  console.log("json ids", this.id);
+          
+                }.bind(this));
+              }.bind(this)).then(function (data) {
+                console.log('Success:', data);
+              }).catch(function (error) {
+                console.error('Error:', error);
+              });          
 
     console.log(this.addItemForm.value);
     this.addItemForm.reset();

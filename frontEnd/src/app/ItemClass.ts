@@ -2,7 +2,7 @@ export class Item {
     public id: number;
     public title: string;
 
-    constructor( id: number, title: string )
+    constructor(title: string )
         
         {
         this.id = id;
