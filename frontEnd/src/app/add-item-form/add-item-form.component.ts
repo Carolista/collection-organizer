@@ -39,31 +39,31 @@ export class AddItemFormComponent implements OnInit {
     // this.http.post('urlLinkGoesHere', formData);
     //do I need to subscribe here for the post to function
 
-    let item = new Item(this.addItemForm.title);
+    // let item = new Item(this.addItemForm.title);
 
-    // this.http.post('http://localhost:8080/api/item', 
-              // this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
+    this.http.post('http://localhost:8080/api/item', 
+              this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
 
-              fetch('http://localhost:8080/api/item', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
-                },
-                body: JSON.stringify(item),
-              }).then(function (response) {
-                // get id number from response here { id: idNumber }
-                response.json().then(function (json) {
+              // fetch('http://localhost:8080/api/item', {
+              //   method: 'POST',
+              //   headers: {
+              //     'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
+              //   },
+              //   body: JSON.stringify(item),
+              // }).then(function (response) {
+              //   // get id number from response here { id: idNumber }
+              //   response.json().then(function (json) {
           
-                  this.id = Number(json.id);
+              //     this.id = Number(json.id);
           
-                  console.log("json ids", this.id);
+              //     console.log("json ids", this.id);
           
-                }.bind(this));
-              }.bind(this)).then(function (data) {
-                console.log('Success:', data);
-              }).catch(function (error) {
-                console.error('Error:', error);
-              });          
+              //   }.bind(this));
+              // }.bind(this)).then(function (data) {
+              //   console.log('Success:', data);
+              // }).catch(function (error) {
+              //   console.error('Error:', error);
+              // });          
 
     console.log(this.addItemForm.value);
     this.addItemForm.reset();

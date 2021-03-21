@@ -5,7 +5,7 @@ export class Item {
     constructor(title: string )
         
         {
-        this.id = id;
+        // this.id = id;
         this.title = title; 
     }
 }
