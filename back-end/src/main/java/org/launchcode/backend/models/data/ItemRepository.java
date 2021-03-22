@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 
 @Repository
 //@Transactional
-public interface ItemRepository extends CrudRepository <Item, Integer>{
+public interface ItemRepository extends CrudRepository <Item, Long>{
 
 
 }

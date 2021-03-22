@@ -1,6 +1,7 @@
 package org.launchcode.backend.models;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
@@ -11,8 +12,8 @@ import java.util.Objects;
 public abstract class AbstractEntity {
 
     @Id
-    @GeneratedValue
-    public int id; //changed fields temporarily to public until we resolve what to do between FE/BE
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @NotBlank(message="Title is required.")
     @Size(min=3, max=100, message="Name must be between 3 and 100 characters.")
@@ -24,8 +25,12 @@ public abstract class AbstractEntity {
 
     public AbstractEntity() {}
 
-    public int getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
