@@ -17,9 +17,27 @@ public class ItemController {
     @Autowired
     private ItemRepository itemRepository;
 
-    //Need to look into ResponseEntity
-    //Need to look into HttpStatus
-    //Work on the item.getId()
+    @GetMapping
+    public Iterable<Item> list() {
+        return itemRepository.findAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public void create(@RequestBody Item item) {
+        itemRepository.save(item);
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Item> get(@PathVariable("id") long id) {
+        return itemRepository.findById(id);
+    }
+}
+
+
+//Need to look into ResponseEntity
+//Need to look into HttpStatus
+//Work on the item.getId()
 //    @PostMapping
 //    public ResponseEntity<?> postItem(@RequestBody Item item, @RequestHeader HttpHeaders headers) {
 //
@@ -30,28 +48,6 @@ public class ItemController {
 //            return new ResponseEntity<>(map, HttpStatus.CREATED);
 //        }
 //        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-
-    @GetMapping
-    public Iterable<Item> list() {
-        return itemRepository.findAll();
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.OK)
-    public void create(@RequestBody Item item) {
-        itemRepository.save(item);
-
-    }
-
-    @GetMapping("/{id}")
-    public Optional<Item> get(@PathVariable("id") long id) {
-
-        return itemRepository.findById(id);
-    }
-    }
-
-
-
 
 
     //TODO: processAddItemForm
