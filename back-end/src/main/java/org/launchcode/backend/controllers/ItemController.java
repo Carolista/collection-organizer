@@ -35,20 +35,6 @@ public class ItemController {
 }
 
 
-//Need to look into ResponseEntity
-//Need to look into HttpStatus
-//Work on the item.getId()
-//    @PostMapping
-//    public ResponseEntity<?> postItem(@RequestBody Item item, @RequestHeader HttpHeaders headers) {
-//
-//            itemRepository.save(item);
-//
-//            int id = item.getId();
-//            Map<String, String> map = Collections.singletonMap("id", Integer.toString(id));
-//            return new ResponseEntity<>(map, HttpStatus.CREATED);
-//        }
-//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-
 
     //TODO: processAddItemForm
 
