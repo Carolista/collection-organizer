@@ -76,4 +76,8 @@ export class ViewItemsService {
         return this.listOfItems.slice();
     }
 
+    getItemData(index: number){
+        return this.listOfItems[index];
+    }
+
 }

@@ -9,8 +9,8 @@ const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'member-page', component: MemberPageComponent},
   {path: 'add-item', component: AddItemFormComponent},
-  {path: 'page-not-found', component: PageNotFoundComponent},
-  {path: '**', redirectTo: '/page-not-found'}
+  {path: 'page-not-found', component: PageNotFoundComponent}
+  // {path: '**', redirectTo: '/page-not-found'}
 ]
 
 @NgModule({

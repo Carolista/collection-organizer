@@ -6,10 +6,21 @@
           <button>Add an Item to My Collection</button>
           <hr>
       </div>
+
+      <!-- possibly need to add down below[index]="i" -->
         
         <div class="row align-items-end">
-            <div class="col text-center" *ngFor="let item of items; let i = index">
-                <a routerLink="link-will-point-to-item-detail-component-use-index-i">
+            <div class="col text-center" *ngFor="let item of items; let i = index"
+               
+               [collectibleItem]="item"
+
+               routerLinkActive="active"
+               style="cursor: pointer;" 
+               
+               
+               >
+                <a 
+                [routerLink]="i">
                     <img [src]="item.imagePath"
                     >
                     <h5>{{item.title}}</h5>
