@@ -11,10 +11,10 @@
         <div class="row align-items-end">
             <div class="col text-center" *ngFor="let item of items; let i = index">
                 <a routerLink="link-will-point-to-item-detail-component-use-index-i">
-                    <img [src]="item"
+                    <img [src]="item.imagePath"
                     >
-                    <h5>Item Title goes here-very long title</h5>
-                    <p>A few words from the descriptin will go here</p>
+                    <h5>{{item.title}}</h5>
+                    <p>{{item.description}}</p>
                 </a>
             </div>
         </div>
