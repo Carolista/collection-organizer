@@ -1,4 +1,9 @@
 <button>back to my viewing</button>
+<hr>
+<div *ngIf='userLoggedIn'>
+    <button>Edit this item</button> |  
+    <button>Delete this item</button>
+</div>
 <div>
     <img [src]=itemData.imagePath height="600">
     <h3>{{itemData.title}}</h3>
