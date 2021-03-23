@@ -2,11 +2,10 @@
     <h1>My Collection</h1>
                 <hr>
     <div class="row">
-        <!-- <div class="col-12"> -->
-            <!-- <div> -->
-                
-            <!-- </div> -->
-        <!-- </div> -->
+      <div *ngIf='viewMyCollection'>
+          <button>Add an Item to My Collection</button>
+          <hr>
+      </div>
         
         <div class="row align-items-end">
             <div class="col text-center" *ngFor="let item of items; let i = index">
