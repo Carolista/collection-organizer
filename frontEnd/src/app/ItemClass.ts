@@ -1,5 +1,8 @@
 export class Item {
-    public id: number;
+    // public id: number;
+
+    //USING THIS CLASS TEMPORARILY TO GET OTHER LOGIC IN PLACE
+
     public imagePath: string;
     public title: string;
     public description: string;
