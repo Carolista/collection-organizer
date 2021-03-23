@@ -1,20 +1,32 @@
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div>
-                <h1>My Collection</h1>
+    <h1>My Collection</h1>
                 <hr>
+    <div class="row">
+        <!-- <div class="col-12"> -->
+            <!-- <div> -->
+                
+            <!-- </div> -->
+        <!-- </div> -->
+        
+        <div class="row align-items-end">
+            <div class="col text-center" *ngFor="let item of items; let i = index">
+                <a routerLink="link-will-point-to-item-detail-component-use-index-i">
+                    <img [src]="item"
+                    >
+                    <h5>Item Title goes here-very long title</h5>
+                    <p>A few words from the descriptin will go here</p>
+                </a>
             </div>
         </div>
-        <div class="row"
-        *ngFor="let item of items; let i = index"
+        
+        
+        
+        <div >
+            <div class="row row-cols-4"
+        
         >
-        <a routerLink="link-will-point-to-item-detail-component-use-index-i">
-            <img [src]="item"
-            width="200">
-            <h5>Item Title goes here</h5>
-            <p>A few words from the descriptin will go here</p>
-        </a>
+        
+        </div>
         </div>
         <!-- <div class="row row-cols-4">
             
