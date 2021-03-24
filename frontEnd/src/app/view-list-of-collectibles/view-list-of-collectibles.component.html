@@ -6,17 +6,12 @@
           <button>Add an Item to My Collection</button>
           <hr>
       </div>
-
-      <!-- possibly need to add down below[index]="i" -->
         
         <div class="row align-items-end">
             <div class="col text-center" *ngFor="let item of items; let i = index"
-               
-               [collectibleItem]="item"
 
                routerLinkActive="active"
                style="cursor: pointer;" 
-               
                
                >
                 <a 
@@ -28,7 +23,5 @@
                 </a>
             </div>
         </div>
-        
-        <app-item-detail></app-item-detail>
     </div>
   </div>

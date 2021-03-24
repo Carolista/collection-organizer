@@ -11,7 +11,7 @@ import { ViewItemsService } from '../viewItems.service';
 export class ItemDetailComponent implements OnInit {
 
   userLoggedIn: boolean = true;
-  // @Input() index: number;
+
   itemData: Item;
   id: number;
   new: string;
@@ -33,11 +33,12 @@ export class ItemDetailComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.itemData = this.viewItemsService.getItemData(this.id);
+        console.log( this.id);
       }
 
     );
 
-    // this.itemData = this.viewItemsService.getItemData(3);
+    // this.itemData = this.viewItemsService.getItemData(0);
 
   }
 

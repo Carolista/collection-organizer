@@ -4,13 +4,15 @@ import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { MemberPageComponent } from "./member-page/member-page.component";
 import { AddItemFormComponent } from "./add-item-form/add-item-form.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { ItemDetailComponent } from './view-list-of-collectibles/item-detail/item-detail.component';
 
 const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'member-page', component: MemberPageComponent},
   {path: 'add-item', component: AddItemFormComponent},
-  {path: 'page-not-found', component: PageNotFoundComponent}
-  // {path: '**', redirectTo: '/page-not-found'}
+  {path: 'page-not-found', component: PageNotFoundComponent},
+  {path: ':id', component: ItemDetailComponent},
+  {path: '**', redirectTo: '/page-not-found'}
 ]
 
 @NgModule({
