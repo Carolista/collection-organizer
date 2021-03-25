@@ -11,21 +11,31 @@ const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'member-page', component: MemberPageComponent, children: [
     {path: 'my-collections', component: ViewListOfCollectiblesComponent, children: [
+      {path: '', component: ViewListOfCollectiblesComponent},
+      {path: 'my-collections', component: ViewListOfCollectiblesComponent},
       {path: 'item-detail', component: ItemDetailComponent},
+      {path: 'add-item', component: AddItemFormComponent}
     ]},
     {path: 'add-item', component: AddItemFormComponent}
   ]},
-    //put child routes to collections and item detail pages here
   {path: 'page-not-found', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/page-not-found'}
 ]
+/* const appRoutes: Routes = [
+    {path: '', redirectTo: '/recipe-book', pathMatch: 'full'},
+    {path: 'recipe-book', component: RecipeBookComponent, canActivate:[AuthGuard], children: [
+        {path: '', component: RecipeStartComponent},
+        {path: 'new', component: RecipeEditComponent},
+        {path: ':id', component: RecipeDetailComponent, resolve: [RecipeResolverService]},
+        {path: ':id/edit', component: RecipeEditComponent, resolve: [RecipeResolverService]}
+    ]},
+    {path: 'shopping-list', component: ShoppingListComponent},
+    {path: 'auth', component: AuthComponent}
+]*/
 
 @NgModule({
-  imports: [
-   RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'}), 
-   //"scrollPositionRestortion" allows scroll position on newly loaded page to be reset to top of page)
-  ],
-  exports: [RouterModule] 
+  imports: [RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'})],
+  exports: [RouterModule]
 })
 
 export class AppRoutingModule { }
