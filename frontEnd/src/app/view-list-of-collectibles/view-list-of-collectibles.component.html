@@ -2,11 +2,12 @@
     <h1>My Collection</h1>
                 <hr>
     <div class="row">
-      <div *ngIf='viewMyCollection'>
-          <button>Add an Item to My Collection</button>
-          <hr>
-      </div>
-        
+        <div *ngIf='viewMyCollection'>
+            <button>Add an Item to My Collection</button>
+            <hr>
+        </div>
+
+        <!-- item collection template: start-->
         <div class="row align-items-end">
             <div class="col text-center" *ngFor="let item of items; let i = index">
                 <a routerLink="link-will-point-to-item-detail-component-use-index-i">
@@ -17,8 +18,10 @@
                 </a>
             </div>
         </div>
-        
-        <app-item-detail></app-item-detail>
+        <!-- item colleciton template: end-->
+
+        <!-- <app-item-detail></app-item-detail> 
+        (now on its own page)-->
         <!-- <div class="row row-cols-4">
             
         </div>

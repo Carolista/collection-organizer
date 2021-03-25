@@ -5,18 +5,15 @@ import { MemberPageComponent } from "./member-page/member-page.component";
 import { AddItemFormComponent } from "./add-item-form/add-item-form.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { ViewListOfCollectiblesComponent } from './view-list-of-collectibles/view-list-of-collectibles.component';
-import { ItemDetailComponent } from './view-list-of-collectibles/item-detail/item-detail.component'
+import { ItemDetailComponent } from './item-detail/item-detail.component'
 
 const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'member-page', component: MemberPageComponent, children: [
-    {path: 'my-collections', component: ViewListOfCollectiblesComponent, children: [
-      {path: '', component: ViewListOfCollectiblesComponent},
-      {path: 'my-collections', component: ViewListOfCollectiblesComponent},
-      {path: 'item-detail', component: ItemDetailComponent},
-      {path: 'add-item', component: AddItemFormComponent}
-    ]},
-    {path: 'add-item', component: AddItemFormComponent}
+    {path: 'my-collections', component: ViewListOfCollectiblesComponent},
+    {path: 'item-detail', component: ItemDetailComponent},
+    {path: 'add-item', component: AddItemFormComponent},
+    {path: '', component: ViewListOfCollectiblesComponent}
   ]},
   {path: 'page-not-found', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/page-not-found'}
