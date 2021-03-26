@@ -1,15 +1,29 @@
-<button routerLinkActive="selected">
-    <a routerLink="/member-page/my-collections">back to my viewing</a>
-</button>
+<div class="container">
+    <h1>My Collection</h1>
+                <hr>
+    <div class="row">
+      <div *ngIf='viewMyCollection'>
+          <button>Add an Item to My Collection</button>
+          <hr>
+      </div>
+        
+        <div class="row align-items-end">
+            <div class="col text-center" *ngFor="let item of items; let i = index"
 
-<hr>
-<div *ngIf='userLoggedIn'>
-    <button>Edit this item</button> |  
-    <button>Delete this item</button>
-</div>
-<div>
-    <img [src]=itemData.imagePath height="600">
-    <h3>{{itemData.title}}</h3>
-    <p>{{itemData.description}}</p>
-</div>
+               routerLinkActive="active"
+               style="cursor: pointer;" 
+               
+               >
+                <a 
+                [routerLink]="i">
+                    <img [src]="item.imagePath"
+                    >
+                    <h5>{{item.title}}</h5>
+                    <p>{{item.description}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+
 
