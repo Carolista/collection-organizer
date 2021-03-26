@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Item } from '../ItemClass';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item-form',
@@ -15,7 +16,7 @@ export class AddItemFormComponent implements OnInit {
   browseMainCategories = ['Fine Arts', 'Culture', 'Decorative arts', 'Machines and Transportation',
     'Fashion and Textiles', 'Natural History'];
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit():void{
     this.addItemForm = new FormGroup ({
@@ -68,6 +69,8 @@ export class AddItemFormComponent implements OnInit {
     console.log(this.addItemForm.value);
     this.addItemForm.reset();
     this.formSubmitted = true;
+    this.router.navigate(['/member-page/my-collections']);
+
   }
 
 }
