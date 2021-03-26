@@ -16,7 +16,7 @@ const appRoutes: Routes = [
     {path: '', component: ViewListOfCollectiblesComponent}
   ]},
   {path: 'page-not-found', component: PageNotFoundComponent},
-  {path: '**', redirectTo: '/page-not-found'}
+  // {path: '**', redirectTo: '/page-not-found'}
 ]
 /* const appRoutes: Routes = [
     {path: '', redirectTo: '/recipe-book', pathMatch: 'full'},

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Item } from 'src/app/ItemClass';
-// import { ViewItemsService } from 
+import { ViewItemsService } from '../viewItems.service'
 
 @Component({
   selector: 'app-item-detail',
@@ -38,7 +38,7 @@ export class ItemDetailComponent implements OnInit {
 
     );
 
-    // this.itemData = this.viewItemsService.getItemData(0);
+    this.itemData = this.viewItemsService.getItemData(this.id);
 
   }
 

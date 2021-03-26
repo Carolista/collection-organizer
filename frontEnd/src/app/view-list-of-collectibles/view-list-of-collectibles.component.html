@@ -1,18 +1,22 @@
+  
 <div class="container">
     <h1>My Collection</h1>
                 <hr>
     <div class="row">
-        <div *ngIf='viewMyCollection'>
-            <button routerLinkActive="selected">
-                <a routerLink="/member-page/add-item">Add an item to my collection</a>
-            </button>
-            <hr>
-        </div>
-
-        <!-- item collection template: start-->
+      <div *ngIf='viewMyCollection'>
+          <button>Add an Item to My Collection</button>
+          <hr>
+      </div>
+        
         <div class="row align-items-end">
-            <div class="col text-center" *ngFor="let item of items; let i = index">
-                <a routerLink="/member-page/item-detail">
+            <div class="col text-center" *ngFor="let item of items; let i = index"
+
+               routerLinkActive="active"
+               style="cursor: pointer;" 
+               
+               >
+                <a 
+                [routerLink]="i">
                     <img [src]="item.imagePath"
                     >
                     <h5>{{item.title}}</h5>
@@ -20,99 +24,5 @@
                 </a>
             </div>
         </div>
-        <!-- item colleciton template: end-->
-
-        <!-- <app-item-detail></app-item-detail> 
-        (now on its own page)-->
-        <!-- <div class="row row-cols-4">
-            
-        </div>
-        
-        <div class="col">
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-
-        </div>
-        <div class="col">
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-
-        </div>
-        <div class="col">
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-        </div>
-        <div class="col">
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-        </div>
-        <div class="row row-cols-4">
-            
-        </div>
-        
-        <div class="col">
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-
-        </div>
-        <div class="col">
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-
-        </div>
-        <div class="col">
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-        </div>
-        <div class="col">
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-        </div> -->
-
-
-
-      <!-- <div class="col">
-        <h1>My Collection</h1>
-        <div>
-            <a routerLink="link-will-point-to-item-detail-component">
-                <img src="https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg"
-                width="200">
-                <h5>Item Title goes here</h5>
-                <p>A few words from the descriptin will go here</p>
-            </a>
-        </div>
-      </div> -->
     </div>
   </div>
