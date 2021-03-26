@@ -62,13 +62,19 @@
                </div>
           </div>
           <button class="btn btn-secondary" type="submit">Submit</button>
-      </form>
-        <div *ngIf="formSubmitted">
+          <!--redirect is in the ts method if we want automatic redirect-->
+        </form>
+
+        <!--if we want confirmation and to redirect manually with a separate button-->
+        <!-- <div *ngIf="formSubmitted">
           This form has been submitted.
           <div>
-              <button>View my collection</button>
+              <button routerLinkActive="selected">
+                <a routerLink="/member-page/my-collections">View my collection</a>
+            </button>
           </div>
-        </div>
+        </div> -->
+
       </div>
     </div>
 </div>
