@@ -3,7 +3,9 @@
                 <hr>
     <div class="row">
         <div *ngIf='viewMyCollection'>
-            <button>Add an Item to My Collection</button>
+            <button routerLinkActive="selected">
+                <a routerLink="/member-page/add-item">Add an item to my collection</a>
+            </button>
             <hr>
         </div>
 
