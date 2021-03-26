@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+// import { Subject } from "rxjs";
 import { Item } from "./ItemClass"
 
 @Injectable({providedIn:'root'})
@@ -72,6 +74,24 @@ export class ViewItemsService {
     
     ];
 
+    fetchedItems: any = [];  // change to Item[] after I updated Item class to mirror the back end set up.
+
+    constructor(private http: HttpClient){
+        
+    };
+    //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
+
+    fetchItems(){
+      this.http.get('http://localhost:8080/api/item').toPromise().then ( data => {
+          for (let key in data){
+            if (data.hasOwnProperty(key)){
+              this.fetchedItems.push(data[key.valueOf()]);
+            }
+          }
+        });
+        console.log('testing click button');
+    }
+
     getItems(){
         return this.listOfItems.slice();
     }
@@ -79,5 +99,4 @@ export class ViewItemsService {
     getItemData(index: number){
         return this.listOfItems[index];
     }
-
 }
