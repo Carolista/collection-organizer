@@ -11,7 +11,7 @@ const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'member-page', component: MemberPageComponent, children: [
     {path: 'my-collections', component: ViewListOfCollectiblesComponent},
-    {path: 'item-detail', component: ItemDetailComponent},
+    {path: ':id', component: ItemDetailComponent},
     {path: 'add-item', component: AddItemFormComponent},
     {path: '', component: ViewListOfCollectiblesComponent}
   ]},
