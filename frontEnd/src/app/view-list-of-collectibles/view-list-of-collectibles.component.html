@@ -1,28 +1,26 @@
-  
 <div class="container">
-    <h1>My Collection</h1>
-                <hr>
-    <div class="row">
-      <div *ngIf='viewMyCollection'>
-          <button>Add an Item to My Collection</button>
-          <hr>
-      </div>
+  <h1>My Collection</h1>
+  <hr>
+  <div class="row">
+    <div *ngIf='viewMyCollection'>
+      <button routerLinkActive="selected">
+        <a routerLink="/member-page/add-item">Add an item to my collection</a>
+      </button>        
+      <hr>
+    </div>
         
-        <div class="row align-items-end">
-            <div class="col text-center" *ngFor="let item of items; let i = index"
-
-               routerLinkActive="active"
-               style="cursor: pointer;" 
-               
-               >
-                <a 
-                [routerLink]="i">
-                    <img [src]="item.imagePath"
-                    >
-                    <h5>{{item.title}}</h5>
-                    <p>{{item.description}}</p>
-                </a>
-            </div>
-        </div>
+    <div class="row align-items-end">
+      <div 
+        class="col text-center" 
+        *ngFor="let item of items; let i = index"
+        routerLinkActive="active"
+        style="cursor: pointer;">
+        <a [routerLink]="i">
+          <img [src]="item.imagePath">
+          <h5>{{item.title}}</h5>
+          <p>{{item.description}}</p>
+        </a>
+      </div>
     </div>
   </div>
+</div>
