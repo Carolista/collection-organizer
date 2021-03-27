@@ -36,9 +36,12 @@ public class ItemController {
         return itemRepository.findById(id);
     }
 
+
+    //Not sure which one - how to test?
+
     @PutMapping("/item/{id}") //Still editing
     public ResponseEntity<Item> updateItem(@PathVariable(value = "id") long id,
-                                           @Valid @RequestBody Item employeeDetails, Errors errors) {
+                                           @Valid @RequestBody Item employeeDetails) {
         Item item = itemRepository.findById(id)
                 .orElseThrow(() -> new ADD-EXCEPTION-HERE("Item not found for this id :: " + id));
 
@@ -47,13 +50,18 @@ public class ItemController {
         return ResponseEntity.ok(updatedItem);
     }
 
+//    public Item updateItem(Item item){
+//        return itemRepository.save(item);
+//    }
+
+    //TODO: displayViewItem -- view all
 
 }
 
 
     //TODO: processAddItemForm??
 
-    //TODO: displayViewItem
+
 
     //TODO: deleteItem
 
