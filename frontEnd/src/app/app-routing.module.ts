@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { ViewListOfCollectiblesComponent } from './view-list-of-collectibles/view-list-of-collectibles.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component'
 
+//n.b. these routes work until an add-item form is submitted; they stop working at that point because there is no way to update the temporary simulated item array to include the newly added "item" index number; to reset, stop serving the page and re-serve 
 const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'member-page', component: MemberPageComponent, children: [
@@ -18,17 +19,6 @@ const appRoutes: Routes = [
   {path: 'page-not-found', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/page-not-found'}
 ]
-/* const appRoutes: Routes = [
-    {path: '', redirectTo: '/recipe-book', pathMatch: 'full'},
-    {path: 'recipe-book', component: RecipeBookComponent, canActivate:[AuthGuard], children: [
-        {path: '', component: RecipeStartComponent},
-        {path: 'new', component: RecipeEditComponent},
-        {path: ':id', component: RecipeDetailComponent, resolve: [RecipeResolverService]},
-        {path: ':id/edit', component: RecipeEditComponent, resolve: [RecipeResolverService]}
-    ]},
-    {path: 'shopping-list', component: ShoppingListComponent},
-    {path: 'auth', component: AuthComponent}
-]*/
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'})],
