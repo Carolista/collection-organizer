@@ -1,5 +1,7 @@
 package org.launchcode.backend.models;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -8,9 +10,9 @@ public class Item extends AbstractEntity {
     private String imagePath;
     private String creator;
 
-//    @NotNull(message="Category required")
-//    @ManyToOne
-//    private Category category;
+    @NotNull(message="Category required")
+    @ManyToOne
+    private Category category;
 //
 //    @ManyToMany
 //    private List<Keyword> keywords = new ArrayList<>();
