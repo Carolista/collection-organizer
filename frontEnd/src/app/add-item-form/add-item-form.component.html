@@ -1,10 +1,14 @@
 <div class="container">
     <div class="row">
       <div class="col">
-          <h1>Add an item to your collection</h1>
-          <p>Please fill out the form below and click submit button to add an item to your collection.
-              Please note: some fields are required.
-          </p>
+        <a routerLink="/member-page">
+          <h3>back to my viewing</h3>
+        </a>
+        <hr>
+        <h1>Add an item to your collection</h1>
+        <p>Please fill out the form below and click submit button to add an item to your collection.
+            Please note: some fields are required.
+        </p>
         <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()"> 
           <div class="col-6">
               <div class="col-md">
