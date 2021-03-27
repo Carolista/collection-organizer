@@ -12,9 +12,9 @@ export class NavbarHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onFetchMyCollectionData(){
-    this.viewItemsService.fetchItems();
-  }
+  // decided to move this to view-list-of-collections ngOnInit
+  // // onFetchMyCollectionData(){
+  // //   this.viewItemsService.fetchItems();
+  // // }
 
 }
