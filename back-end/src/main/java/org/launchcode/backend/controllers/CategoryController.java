@@ -1,4 +1,7 @@
 package org.launchcode.backend.controllers;
 
-public class CategoryController {
+import org.launchcode.backend.models.Category;
+import org.springframework.data.repository.CrudRepository;
+
+public class CategoryController{
 }
