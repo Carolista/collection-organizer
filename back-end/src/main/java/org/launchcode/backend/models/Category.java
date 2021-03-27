@@ -24,4 +24,7 @@ public class Category extends AbstractEntity{
         return items;
     }
 
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 }
