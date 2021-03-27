@@ -1,5 +1,6 @@
 package org.launchcode.backend.controllers;
 
+import org.launchcode.backend.exception.ItemNotFoundException;
 import org.launchcode.backend.models.Item;
 import org.launchcode.backend.models.data.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.Optional;
 
 
@@ -42,8 +44,7 @@ public class ItemController {
     @PutMapping("/item/{id}") //Still editing
     public ResponseEntity<Item> updateItem(@PathVariable(value = "id") long id,
                                            @Valid @RequestBody Item employeeDetails) {
-        Item item = itemRepository.findById(id)
-                .orElseThrow(() -> new ADD-EXCEPTION-HERE("Item not found for this id :: " + id));
+        Item item = itemRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("An item with the ID " + id + "was not found."));
 
         item.setTitle(item.getTitle());
         final Item updatedItem = itemRepository.save(item);
@@ -54,12 +55,9 @@ public class ItemController {
 //        return itemRepository.save(item);
 //    }
 
-    //TODO: displayViewItem -- view all
 
 }
 
-
-    //TODO: processAddItemForm??
 
 
 
