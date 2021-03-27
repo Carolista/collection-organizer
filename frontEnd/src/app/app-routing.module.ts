@@ -11,12 +11,12 @@ const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'member-page', component: MemberPageComponent, children: [
     {path: 'my-collections', component: ViewListOfCollectiblesComponent},
-    {path: ':id', component: ItemDetailComponent},
     {path: 'add-item', component: AddItemFormComponent},
+    {path: ':id', component: ItemDetailComponent},
     {path: '', component: ViewListOfCollectiblesComponent}
   ]},
   {path: 'page-not-found', component: PageNotFoundComponent},
-  // {path: '**', redirectTo: '/page-not-found'}
+  {path: '**', redirectTo: '/page-not-found'}
 ]
 /* const appRoutes: Routes = [
     {path: '', redirectTo: '/recipe-book', pathMatch: 'full'},
