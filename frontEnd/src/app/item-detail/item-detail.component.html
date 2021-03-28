@@ -5,7 +5,7 @@
 <hr>
 <div *ngIf='userLoggedIn'>
     <button>Edit this item</button> |  
-    <button>Delete this item</button>
+    <button (click)="onDelete()">Delete this item</button>
 </div>
 <div class="text-center">
     <img [src]=itemData.imagePath height="600">
