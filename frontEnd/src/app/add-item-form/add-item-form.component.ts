@@ -69,7 +69,7 @@ export class AddItemFormComponent implements OnInit {
     console.log(this.addItemForm.value);
     this.addItemForm.reset();
     this.formSubmitted = true;
-    this.router.navigate(['/member-page/my-collections']);
+    this.router.navigate(['/member-page']);
 
   }
 
