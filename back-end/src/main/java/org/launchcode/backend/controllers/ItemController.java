@@ -39,8 +39,6 @@ public class ItemController {
     }
 
 
-    //Not sure which one - how to test?
-
     @PutMapping("/item/{id}") //Still editing
     public ResponseEntity<Item> updateItem(@PathVariable(value = "id") long id,
                                            @Valid @RequestBody Item employeeDetails) {
@@ -51,6 +49,7 @@ public class ItemController {
         return ResponseEntity.ok(updatedItem);
     }
 
+    // Alternative to saving - keeping here in case needed
 //    public Item updateItem(Item item){
 //        return itemRepository.save(item);
 //    }
