@@ -5,6 +5,10 @@
           <p>Please fill out the form below and click submit button to add an item to your collection.
               Please note: some feilds are required.
           </p>
+           <a routerLink="/member-page">
+          <h3>back to my viewing</h3>
+        </a>
+        <hr>
             <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()"> 
                 <div class="col-6">
               <div class="col-md">
