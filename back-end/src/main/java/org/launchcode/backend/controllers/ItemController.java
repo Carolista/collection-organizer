@@ -40,7 +40,7 @@ public class ItemController {
 
 
     @PutMapping("/item/{id}") //Still editing
-    public ResponseEntity<Item> updateItem(@PathVariable(value = "id") long id,
+    public ResponseEntity<Item> updateItem(@PathVariable(value = "id") Long id,
                                            @Valid @RequestBody Item employeeDetails) {
         Item item = itemRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("An item with the ID " + id + "was not found."));
 
@@ -53,6 +53,10 @@ public class ItemController {
 //    public Item updateItem(Item item){
 //        return itemRepository.save(item);
 //    }
+
+    public void deleteItem(Long id){
+       itemRepository.deleteEmployeeById(id);
+    }
 
 
 }
