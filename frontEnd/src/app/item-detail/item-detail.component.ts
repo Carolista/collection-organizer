@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Item } from 'src/app/ItemClass';
@@ -16,7 +17,8 @@ export class ItemDetailComponent implements OnInit {
   id: number;
   new: string;
 
-  constructor(private viewItemsService: ViewItemsService,
+  constructor(private http: HttpClient,
+              private viewItemsService: ViewItemsService,
               private route: ActivatedRoute,
               private router: Router
               ) { }
@@ -41,7 +43,8 @@ export class ItemDetailComponent implements OnInit {
       'This item will be permanently deleted. Are you sure you want to delete this itme?');
     if (confirm === true) {
     this.viewItemsService.deleteItem(this.id);
-    //add code to upload the changes to the back end
+    //add code to delete the item on the back end, will need to include some infor the the back end.
+    this. http.delete('http://localhost:8080/api/item').subscribe(response =>{console.log(response)});
     this.router.navigate(['/member-page']);
     } 
   }
