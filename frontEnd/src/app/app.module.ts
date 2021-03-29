@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AddItemFormComponent } from './add-item-form/add-item-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     LandingPageComponent,
     MemberPageComponent,
     PageNotFoundComponent,
-    AddItemFormComponent
+    AddItemFormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
