@@ -55,7 +55,7 @@ public class ItemController {
 //    }
 
     public void deleteItem(Long id){
-       itemRepository.deleteEmployeeById(id);
+       itemRepository.deleteItemById(id);
     }
 
 
