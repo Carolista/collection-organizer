@@ -10,6 +10,14 @@ public class Item extends AbstractEntity {
     private String imagePath;
     private String creator;
 
+    @Size(max = 500, message = "Description too long!")
+    private String description;
+
+    private String mediaType;
+    private String placeOfOrigin;
+    private int yearAcquired;
+    private int yearCreated;
+
     @NotNull(message="Category required")
     @ManyToOne
     private Category category;
@@ -18,32 +26,27 @@ public class Item extends AbstractEntity {
     @ManyToOne
     private SubCategory subCategory;
 
-    private int yearCreated;
-    private String placeOfOrigin;
-    private int yearAcquired;
-    private String condition;
-    private String mediaType;
+   // private String condition;
 
-    @Size(max = 500, message = "Description too long!")
-    private String description;
+   // private String references;
 
-    private String references;
-
-    public Item(String title, String imagePath, String creator, Category category, SubCategory subCategory,
-                int yearCreated, String placeOfOrigin, int yearAcquired, String condition, String mediaType,
-                String description, String references) {
-        super(title);
+    public Item( String imagePath, String creator, String description, String mediaType, String placeOfOrigin,  int yearAcquired, int yearCreated,
+                Category category, SubCategory subCategory)
+//, String references , String condition
+    {
+        //String title,
+       // super(title);
         this.imagePath = imagePath;
         this.creator = creator;
-        this.category = category;
-        this.subCategory = subCategory;
-        this.yearCreated = yearCreated;
+        this.description = description;
+        this.mediaType = mediaType;
         this.placeOfOrigin = placeOfOrigin;
         this.yearAcquired = yearAcquired;
-        this.condition = condition;
-        this.mediaType = mediaType;
-        this.description = description;
-        this.references = references;
+        this.yearCreated = yearCreated;
+        this.category = category;
+        this.subCategory = subCategory;
+        //this.condition = condition;
+       // this.references = references;
     }
 
     public Item() {
@@ -57,6 +60,7 @@ public class Item extends AbstractEntity {
         this.imagePath = imagePath;
     }
 
+
     public String getCreator() {
         return creator;
     }
@@ -65,28 +69,20 @@ public class Item extends AbstractEntity {
         this.creator = creator;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public SubCategory getSubCategory() {
-        return subCategory;
+    public String getMediaType() {
+        return mediaType;
     }
 
-    public void setSubCategory(SubCategory subCategory) {
-        this.subCategory = subCategory;
-    }
-
-    public int getYearCreated() {
-        return yearCreated;
-    }
-
-    public void setYearCreated(int yearCreated) {
-        this.yearCreated = yearCreated;
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
     public String getPlaceOfOrigin() {
@@ -105,35 +101,43 @@ public class Item extends AbstractEntity {
         this.yearAcquired = yearAcquired;
     }
 
-    public String getCondition() {
-        return condition;
+    public int getYearCreated() {
+        return yearCreated;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setYearCreated(int yearCreated) {
+        this.yearCreated = yearCreated;
     }
 
-    public String getMediaType() {
-        return mediaType;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setMediaType(String mediaType) {
-        this.mediaType = mediaType;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public String getDescription() {
-        return description;
+    public SubCategory getSubCategory() {
+        return subCategory;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSubCategory(SubCategory subCategory) {
+        this.subCategory = subCategory;
     }
 
-    public String getReferences() {
-        return references;
-    }
+//    public String getCondition() {
+//        return condition;
+//    }
+//
+//    public void setCondition(String condition) {
+//        this.condition = condition;
+   // }
 
-    public void setReferences(String references) {
-        this.references = references;
-    }
+//    public String getReferences() {
+//        return references;
+//    }
+//
+//    public void setReferences(String references) {
+//        this.references = references;
+//    }
 }
