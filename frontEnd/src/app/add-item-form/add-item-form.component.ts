@@ -40,9 +40,9 @@ export class AddItemFormComponent implements OnInit {
       'yearCreated': new FormControl (null),
       'placeOfOrigin': new FormControl(null),
       'yearAcquired': new FormControl(null),
-      'condition': new FormControl (null),
+      'cond': new FormControl (null),
       'mediaType': new FormControl (null),
-      'references': new FormControl (null)
+      'refs': new FormControl (null)
     });
 
   }
