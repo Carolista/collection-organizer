@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AddItemFormComponent } from './add-item-form/add-item-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
     MemberPageComponent,
     PageNotFoundComponent,
     AddItemFormComponent,
+    FooterComponent,
     ItemDetailComponent
   ],
   imports: [
