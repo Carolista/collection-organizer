@@ -31,7 +31,6 @@
                         </div>
                     </div>
                 </label><br>
-                
                         <label for="subCategory">Subcategory<br>
 
                             <!-- <ul [ngSwitch]="addItemForm.get('category').value">
@@ -46,7 +45,7 @@
 
                             <div class="col" [ngSwitch]="addItemForm.get('category').value">
                                 <div class="radio" *ngFor="let subCategory of fineArts">
-                                    <label *ngSwitchCase="'Fine Arts'">
+                                    <label *ngSwitchCase="' Fine Arts'">
                                       <input
                                         type="radio"
                                         formControlName="subCategory"
@@ -55,7 +54,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="radio" *ngFor="let subCategory of culture">
-                                        <label *ngSwitchCase="'Culture'">
+                                        <label *ngSwitchCase="' Culture'">
                                           <input
                                             type="radio"
                                             formControlName="subCategory"
@@ -65,7 +64,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="radio" *ngFor="let subCategory of decorativeArts">
-                                        <label *ngSwitchCase="'Decorative arts'">
+                                        <label *ngSwitchCase="' Decorative arts'">
                                           <input
                                             type="radio"
                                             formControlName="subCategory"
@@ -75,7 +74,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="radio" *ngFor="let subCategory of machinesAndTransportation">
-                                        <label *ngSwitchCase="'Machines and Transportation'">
+                                        <label *ngSwitchCase="' Machines and Transportation'">
                                           <input
                                             type="radio"
                                             formControlName="subCategory"
@@ -85,7 +84,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="radio" *ngFor="let subCategory of fashionAndTextiles">
-                                        <label *ngSwitchCase="'Fashion and Textiles'">
+                                        <label *ngSwitchCase="' Fashion and Textiles'">
                                           <input
                                             type="radio"
                                             formControlName="subCategory"
@@ -95,7 +94,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="radio" *ngFor="let subCategory of naturalHistory">
-                                        <label *ngSwitchCase="'Natural History'">
+                                        <label *ngSwitchCase="' Natural History'">
                                           <input
                                             type="radio"
                                             formControlName="subCategory"
@@ -103,10 +102,10 @@
                                         </label>
                                     </div>
                                 </div>
-                                <span *ngSwitchDefault>Please choose a category</span>
+                               <span *ngSwitchDefault>Please choose a category</span>
                             </div>
+                        
                         </label><br>
-
                 <label for="description">Description<br>
                     <textarea formControlName="description" id="description"
                     rows="6" cols="50"
