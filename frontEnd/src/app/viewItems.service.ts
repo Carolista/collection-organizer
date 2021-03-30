@@ -100,4 +100,9 @@ export class ViewItemsService {
     getItemData(index: number){
         return this.listOfItems[index];
     }
+
+    deleteItem(index: number){
+      this.listOfItems.splice(index, 1);
+      // this.recipeChanged.next(this.recipes.slice());
+  }
 }
