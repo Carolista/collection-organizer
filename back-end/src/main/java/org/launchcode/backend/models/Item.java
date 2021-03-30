@@ -26,16 +26,16 @@ public class Item extends AbstractEntity {
     @ManyToOne
     private SubCategory subCategory;
 
-   // private String condition;
+    private String cond;
 
-   // private String references;
+    private String refs;
 
-    public Item( String imagePath, String creator, String description, String mediaType, String placeOfOrigin,  int yearAcquired, int yearCreated,
-                Category category, SubCategory subCategory)
-//, String references , String condition
+    public Item( String title, String imagePath, String creator, String description, String mediaType, String placeOfOrigin,  int yearAcquired, int yearCreated,
+                Category category, SubCategory subCategory, String cond, String refs)
+
     {
-        //String title,
-       // super(title);
+
+        super(title);
         this.imagePath = imagePath;
         this.creator = creator;
         this.description = description;
@@ -45,8 +45,8 @@ public class Item extends AbstractEntity {
         this.yearCreated = yearCreated;
         this.category = category;
         this.subCategory = subCategory;
-        //this.condition = condition;
-       // this.references = references;
+        this.cond = cond;
+        this.refs = refs;
     }
 
     public Item() {
@@ -130,19 +130,19 @@ public class Item extends AbstractEntity {
 
 
 
-//    public String getCondition() {
-//        return condition;
-//    }
-//
-//    public void setCondition(String condition) {
-//        this.condition = condition;
-   // }
+    public String getCond() {
+        return cond;
+    }
 
-//    public String getReferences() {
-//        return references;
-//    }
-//
-//    public void setReferences(String references) {
-//        this.references = references;
-//    }
+    public void setCond(String cond) {
+        this.cond = cond;
+    }
+
+    public String getRefs() {
+        return refs;
+    }
+
+    public void setRefs(String references) {
+        this.refs = refs;
+    }
 }
