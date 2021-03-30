@@ -9,23 +9,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-item-form.component.scss']
 })
 export class AddItemFormComponent implements OnInit {
-  postData: { 
-    url: string;
-    category: string;
-    keywords: string[];
-    title: string;
-    countryCreator: string;
-    year: number;
-    condition: string;
-    media: string;
-    description: string;
-    references: string;}
+
+  // postData: { 
+  //   url: string;
+  //   category: string;
+  //   keywords: string[];
+  //   title: string;
+  //   countryCreator: string;
+  //   year: number;
+  //   condition: string;
+  //   media: string;
+  //   description: string;
+  //   references: string;}
+
   addItemForm: FormGroup;
   formSubmitted = false;
   browseMainCategories = ['Fine Arts', 'Culture', 'Decorative arts', 'Machines and Transportation',
     'Fashion and Textiles', 'Natural History'];
 
-  subCategories = ['a', 'b', 'c'];
+  fineArts = ['Painting', 'Sculpture', 'Prints/Photographs/Drawings/Digital', 'European',
+  ' Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian', 'Near and Middle Eastern', 
+  'American', 'Pre-20th century', 'Modern/Contemporary'];
+
+  culture = ['Collectibles (Figurines/toys/misc.)', 'Ephemera (Autographs/Advertising/Posters/etc.)', 
+  'Numismatics/Coins and medals/Monies ', 'Military and wartime', 'Philately/Stamps',
+  'Sports', 'Political/Fraternal/Organizational', 'Breweriana/Tobacciana/Petroliana',
+  'Entertainment media (music/movies/video games)', 'Print entertainment media (Comics/Books/Newspapers)'];
+
+  decorativeArts= ['Pre-20th century', 'Victorian Era', 'Art Deco/Art Nouveau/Arts and Crafts',
+  'Mid-Century Modern', 'Ceramics/Pottery/China/Porcelain', 'Folk Art',
+  'Textiles','Furniture','Architecture'];
+
+  superhero: string;
   
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -44,7 +59,7 @@ export class AddItemFormComponent implements OnInit {
       'mediaType': new FormControl (null),
       'refs': new FormControl (null)
     });
-
+    // this.superhero = 'Culture';
   }
 
 
@@ -52,7 +67,7 @@ export class AddItemFormComponent implements OnInit {
     // let formData = this.addItemForm.value;
     // this.http.post('urlLinkGoesHere', formData);
     //do I need to subscribe here for the post to function
-    this.postData  = this.addItemForm.value
+    // this.postData  = this.addItemForm.value
 
     this.http.post('http://localhost:8080/api/item', 
               this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});

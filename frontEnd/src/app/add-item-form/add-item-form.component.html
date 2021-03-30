@@ -31,20 +31,52 @@
                         </div>
                     </div>
                 </label><br>
-                    <div class="col">
-                        <label for="category">Subcategory<br>
-                            <div class="col">
-                                <div class="radio" *ngFor="let subCategory of subCategories">
-                                    <label>
+                        <label for="subCategory">Subcategory<br>
+
+                            <ul [ngSwitch]="addItemForm.get('category').value">
+                                <li *ngSwitchCase="'Fine Arts'">Fine Arts</li>
+                                <li *ngSwitchCase="'Culture'">Culture</li>
+                                <li *ngSwitchCase="'Decorative arts'">Decorative arts</li>
+                                <li *ngSwitchCase="'Machines and Transportation'">Machines and Transportation</li>
+                                <li *ngSwitchCase="'Fashion and Textiles'">Fashion and Textiles</li>
+                                <li *ngSwitchCase="'Natural History'">Natural History</li>
+                                <li *ngSwitchDefault>Please choose a category</li>
+                              </ul>
+
+                            <div class="col" [ngSwitch]="addItemForm.get('category').value">
+                                <div class="radio" *ngFor="let subCategory of fineArts">
+                                    <label *ngSwitchCase="'Fine Arts'">
                                       <input
                                         type="radio"
-                                        formControlName="category"
+                                        formControlName="subCategory"
                                         [value]="subCategory">{{ subCategory }}
                                     </label>
                                 </div>
                             </div>
+
+                            <div class="col" [ngSwitch]="addItemForm.get('category').value">
+                                <div class="radio" *ngFor="let subCategory of culture">
+                                    <label *ngSwitchCase="'Culture'">
+                                      <input
+                                        type="radio"
+                                        formControlName="subCategory"
+                                        [value]="subCategory">{{ subCategory }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col" [ngSwitch]="addItemForm.get('category').value">
+                                <div class="radio" *ngFor="let subCategory of decorativeArts">
+                                    <label *ngSwitchCase="'Decorative arts'">
+                                      <input
+                                        type="radio"
+                                        formControlName="subCategory"
+                                        [value]="subCategory">{{ subCategory }}
+                                    </label>
+                                </div>
+                            </div>
+
                         </label><br>
-                    </div>
                 <label for="description">Description<br>
                     <textarea formControlName="description" id="description"
                     rows="6" cols="50"
