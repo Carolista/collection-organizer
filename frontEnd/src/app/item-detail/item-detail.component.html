@@ -1,0 +1,14 @@
+<a routerLink="/member-page">
+    <h3>back to my viewing</h3>
+</a>
+
+<hr>
+<div *ngIf='userLoggedIn'>
+    <button>Edit this item</button> |  
+    <button (click)="onDelete()">Delete this item</button>
+</div>
+<div class="text-center">
+    <img [src]=itemData.imagePath height="600">
+    <h3>{{itemData.title}}</h3>
+    <p>{{itemData.description}}</p>
+</div>
