@@ -40,8 +40,18 @@ export class AddItemFormComponent implements OnInit {
   'Mid-Century Modern', 'Ceramics/Pottery/China/Porcelain', 'Folk Art',
   'Textiles','Furniture','Architecture'];
 
-  superhero: string;
-  
+  machinesAndTransportation = ['Cameras', 'Cars and Motorcycles', 'Aviation and Space',
+  'Nautical', 'Electronics', 'Models	(cars, trains, etc.)',
+  'Radios', 'Telephones', 'Office', 'Clocks'
+];
+
+fashionAndTextiles = ['Clothing and shoes', 'Fine Jewelry', 'Costume Jewelry', 
+'Accessories (watches, handbags, pens, etc.)', 'Arms and Armor (incl. knives/swords/firearms/etc.)'];
+
+naturalHistory = ['Animals/Zoology', 'Botany', 'Shells',
+'Fossils', 'Rocks, minerals, and gems', 'Precious metals',
+'Natural history collateral (books/guides/tools/etc.)', 'Medical/Scientific', 'Maps/Globes' ];
+
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit():void{
@@ -59,7 +69,7 @@ export class AddItemFormComponent implements OnInit {
       'mediaType': new FormControl (null),
       'refs': new FormControl (null)
     });
-    // this.superhero = 'Culture';
+    
   }
 
 
