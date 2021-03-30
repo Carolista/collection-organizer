@@ -121,9 +121,14 @@ public class Item extends AbstractEntity {
         return subCategory;
     }
 
+
+
     public void setSubCategory(SubCategory subCategory) {
         this.subCategory = subCategory;
     }
+
+
+
 
 //    public String getCondition() {
 //        return condition;
