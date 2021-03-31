@@ -9,11 +9,11 @@ public class Item extends AbstractEntity {
 
     private String imagePath;
 
-//    @NotNull(message="Category required")
+    @NotNull(message="Category required")
 //    @ManyToOne
     private String category;
 
-//    @NotNull(message="Subcategory required")
+    @NotNull(message="Subcategory required")
 //    @ManyToOne
     private String subCategory;
 
