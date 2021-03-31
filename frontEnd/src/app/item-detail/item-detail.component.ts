@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Item } from 'src/app/ItemClass';
+import { Item } from 'src/app/ItemClassTemp';
 import { ViewItemsService } from '../viewItems.service'
 
 @Component({
@@ -16,13 +17,8 @@ export class ItemDetailComponent implements OnInit {
   id: number;
   new: string;
 
-  // itemData = {
-  //   imagePath: 'https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg',
-  //   title: 'Item Title goes here-very long title',
-  //   description: 'A few words of description will go here, sample of a few lines of words.  The details of the item will be expended a back-end team will add more controllers and we have one common class to work with.'
-  // };
-
-  constructor(private viewItemsService: ViewItemsService,
+  constructor(private http: HttpClient,
+              private viewItemsService: ViewItemsService,
               private route: ActivatedRoute,
               private router: Router
               ) { }
@@ -40,6 +36,17 @@ export class ItemDetailComponent implements OnInit {
 
     this.itemData = this.viewItemsService.getItemData(this.id);
 
+  }
+
+  onDelete(){
+    let confirm = window.confirm(
+      'This item will be permanently deleted. Are you sure you want to delete this itme?');
+    if (confirm === true) {
+    this.viewItemsService.deleteItem(this.id);
+    //add code to delete the item on the back end, will need to include some infor the the back end.
+    this. http.delete('http://localhost:8080/api/item').subscribe(response =>{console.log(response)});
+    this.router.navigate(['/member-page']);
+    } 
   }
 
 }
