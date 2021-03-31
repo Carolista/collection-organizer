@@ -102,7 +102,7 @@ export class ViewItemsService {
 }
 
   deleteItem(index: number){
-    this.listOfItems.splice(index, 1);
+    this.fetchedItems.splice(index, 1);
     // this.recipeChanged.next(this.recipes.slice());
   }
 }
