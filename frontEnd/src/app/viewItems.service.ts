@@ -89,7 +89,8 @@ export class ViewItemsService {
             }
           }
         });
-        console.log('testing click button');
+        console.log('fetchItems() method is called from the view-list-of-collectibles component ');
+        console.log(this.fetchedItems);
     }
 
     getItems(){
