@@ -8,15 +8,6 @@ import javax.validation.constraints.Size;
 public class Item extends AbstractEntity {
 
     private String imagePath;
-    private String creator;
-
-    @Size(max = 500, message = "Description too long!")
-    private String description;
-
-    private String mediaType;
-    private String placeOfOrigin;
-    private int yearAcquired;
-    private int yearCreated;
 
     @NotNull(message="Category required")
     @ManyToOne
@@ -26,28 +17,34 @@ public class Item extends AbstractEntity {
     @ManyToOne
     private SubCategory subCategory;
 
-    private String cond;
+    @Size(max = 500, message = "Description too long!")
+    private String description;
 
+    private String creator;
+    private int yearCreated;
+    private String placeOfOrigin;
+    private int yearAcquired;
+    private String cond;
+    private String mediaType;
     private String refs;
 
-    public Item( String title, String imagePath, String creator, String description, String mediaType, String placeOfOrigin,  int yearAcquired, int yearCreated,
-                Category category, SubCategory subCategory, String cond, String refs)
-
-    {
-
+    public Item(String title, String imagePath, Category category, SubCategory subCategory, String description,
+                String creator, int yearCreated, String placeOfOrigin, int yearAcquired, String cond,
+                String mediaType, String refs) {
         super(title);
         this.imagePath = imagePath;
-        this.creator = creator;
-        this.description = description;
-        this.mediaType = mediaType;
-        this.placeOfOrigin = placeOfOrigin;
-        this.yearAcquired = yearAcquired;
-        this.yearCreated = yearCreated;
         this.category = category;
         this.subCategory = subCategory;
+        this.description = description;
+        this.creator = creator;
+        this.yearCreated = yearCreated;
+        this.placeOfOrigin = placeOfOrigin;
+        this.yearAcquired = yearAcquired;
         this.cond = cond;
+        this.mediaType = mediaType;
         this.refs = refs;
     }
+
 
     public Item() {
     }
