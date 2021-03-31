@@ -9,13 +9,13 @@ public class Item extends AbstractEntity {
 
     private String imagePath;
 
-    @NotNull(message="Category required")
-    @ManyToOne
-    private Category category;
+//    @NotNull(message="Category required")
+//    @ManyToOne
+    private String category;
 
-    @NotNull(message="Subcategory required")
-    @ManyToOne
-    private SubCategory subCategory;
+//    @NotNull(message="Subcategory required")
+//    @ManyToOne
+    private String subCategory;
 
     @Size(max = 500, message = "Description too long!")
     private String description;
@@ -28,7 +28,7 @@ public class Item extends AbstractEntity {
     private String mediaType;
     private String refs;
 
-    public Item(String title, String imagePath, Category category, SubCategory subCategory, String description,
+    public Item(String title, String imagePath, String category, String subCategory, String description,
                 String creator, int yearCreated, String placeOfOrigin, int yearAcquired, String cond,
                 String mediaType, String refs) {
         super(title);
@@ -106,21 +106,21 @@ public class Item extends AbstractEntity {
         this.yearCreated = yearCreated;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
-    public SubCategory getSubCategory() {
+    public String getSubCategory() {
         return subCategory;
     }
 
 
 
-    public void setSubCategory(SubCategory subCategory) {
+    public void setSubCategory(String subCategory) {
         this.subCategory = subCategory;
     }
 
