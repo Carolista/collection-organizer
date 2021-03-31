@@ -1,84 +1,174 @@
 <div class="container">
-    <div class="row">
-      <div class="col">
-        <a routerLink="/member-page">
-          <h3>back to my viewing</h3>
-        </a>
-        <hr>
-        <h1>Add an item to your collection</h1>
-        <p>Please fill out the form below and click submit button to add an item to your collection.
-            Please note: some fields are required.
-        </p>
-        <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()"> 
-          <div class="col-6">
-              <div class="col-md">
-                  <!-- <label for="url">URL link<br>
-                      <input formControlName="url" type="text" id="url">
-                  </label><br>
-                  <span *ngIf="!addItemForm.get('url').valid && addItemForm.get('url').touched"><nobr>Please enter url</nobr></span> -->
-                  <!-- <label for="category">Category<br>
-                    <div class="col">
-                        <div class="radio" *ngFor="let category of browseMainCategories">
-                            <label>
-                              <input
-                                type="radio"
-                                formControlName="category"
-                                [value]="category">{{ category }}
-                            </label>
-                        </div>
-                    </div>
-                </label><br> -->
-                <!-- <label for="keywords">Keywords<br>
-                    <input formControlName="keywords" id="keywords" type="text">
-                </label><br> -->
-                <label for="title">Title<br>
-                    <input formControlName="title" id="title" type="text">
-                </label><br>
-                <!-- <label for="country/creator">Country/Creator<br>
-                    <input formControlName="country/creator" id="country/creator" type="text">
-                </label><br>
-                <label for="year">Year (4 digits only, e.g. 1945)<br>
-                    <input formControlName="year" id="year" type="number">
-                </label><br> -->
-                <!-- <label for="condition">Condition<br>
-                    <input formControlName="condition" id="condition" type="text"> -->
-                    <!-- <select formControlName="condition" id="condition">
-                        <option value="fair">fair</option>
-                        <option value = "good">good</option>
-                        <option value = "very-good">very good</option>
-                        <option value = "excellent">excellent</option>
-                    </select>
-                </label><br> -->
-                <!-- <label for="media">Media<br>
-                    <input formControlName="media" id="media" type="text">
-                </label><br> -->
-                <!-- <label for="description">Description<br>
-                    <input formControlName="description" id="description" type="text"> -->
-                    <!-- <textarea formControlName="description" id="description"
-                    rows="6" cols="50"
-                    > -->
+  <div class="row">
+    <div class="col">
+      <h1>Add an item to your collection</h1>
+      <p>Please fill out the form below and click the submit button to add an item to your collection.
+          Please note: some fields are required.
+      </p>
+      <a routerLink="/member-page">
+        <h3>back to my viewing</h3>
+      </a>
+      <hr>
 
-                    <!-- </textarea> -->
-                <!-- </label><br>
-                <label for="references">References<br>
-                    <input formControlName="references" id="references" type="text">
-                </label><br> -->
-               </div>
+      <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()"> 
+        <div class="col-6">
+          <div class="col-md">
+            <label for="title">Title<br>
+              <input formControlName="title" id="title" type="text">
+            </label>
+            <br>
+
+            <label for="imagePath">Please submit a URL link<br>
+              <input formControlName="imagePath" type="text" id="imagePath">
+            </label>
+            <br>
+            <span *ngIf="!addItemForm.get('imagePath').valid && addItemForm.get('imagePath').touched">
+              <nobr>Please enter url</nobr>
+            </span>
+
+            <label for="category">Category<br>
+              <div class="col">
+                <div class="radio" *ngFor="let category of browseMainCategories">
+                  <label>
+                    <input
+                      type="radio"
+                      formControlName="category"
+                      [value]="category">{{ category }}
+                  </label>
+                </div>
+              </div>
+            </label>
+            <br>
+
+            <label for="subCategory">Subcategory<br>
+              <div class="col" [ngSwitch]="addItemForm.get('category').value">
+                <div class="radio" *ngFor="let subCategory of fineArts">
+                  <label *ngSwitchCase="' Fine Arts'">
+                    <input
+                      type="radio"
+                      formControlName="subCategory"
+                      [value]="subCategory">{{ subCategory }}
+                  </label>
+                </div>
+
+                <div class="col">
+                  <div class="radio" *ngFor="let subCategory of culture">
+                    <label *ngSwitchCase="' Culture'">
+                      <input
+                        type="radio"
+                        formControlName="subCategory"
+                        [value]="subCategory">{{ subCategory }}
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="radio" *ngFor="let subCategory of decorativeArts">
+                    <label *ngSwitchCase="' Decorative arts'">
+                      <input
+                        type="radio"
+                        formControlName="subCategory"
+                        [value]="subCategory">{{ subCategory }}
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="radio" *ngFor="let subCategory of machinesAndTransportation">
+                    <label *ngSwitchCase="' Machines and Transportation'">
+                      <input
+                        type="radio"
+                        formControlName="subCategory"
+                        [value]="subCategory">{{ subCategory }}
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="radio" *ngFor="let subCategory of fashionAndTextiles">
+                    <label *ngSwitchCase="' Fashion and Textiles'">
+                      <input
+                        type="radio"
+                        formControlName="subCategory"
+                        [value]="subCategory">{{ subCategory }}
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="radio" *ngFor="let subCategory of naturalHistory">
+                    <label *ngSwitchCase="' Natural History'">
+                      <input
+                        type="radio"
+                        formControlName="subCategory"
+                        [value]="subCategory">{{ subCategory }}
+                    </label>
+                  </div>
+                </div>
+
+                <span *ngSwitchDefault>Please choose a category</span>
+              </div>
+            </label><br>
+
+            <label for="description">Description<br>
+              <textarea 
+                formControlName="description" 
+                id="description"
+                rows="6" 
+                cols="50">
+              </textarea>
+            </label>
+            <br>
+
+            <label for="creator">Creator<br>
+              <input formControlName="creator" id="creator" type="text">
+            </label>
+            <br>
+
+            <label for="yearCreated">Year Created<br>
+              <input formControlName="yearCreated" id="yearCreated" type="number">
+            </label>
+            <br>
+
+            <label for="placeOfOrigin">Place of Origin<br>
+              <input formControlName="placeOfOrigin" id="placeOfOrigin" type="text">
+            </label>
+            <br>
+
+            <label for="yearAcquired">Year Acquired<br>
+              <input formControlName="yearAcquired" id="yearAcquired" type="number">
+            </label>
+            <br>
+
+            <label for="cond">Condition<br>
+              <select formControlName="cond" id="cond">
+                <option value="fair">fair</option>
+                <option value = "good">good</option>
+                <option value = "very-good">very good</option>
+                <option value = "excellent">excellent</option>
+              </select>
+            </label>
+            <br>
+
+            <label for="mediaType">Media<br>
+              <input formControlName="mediaType" id="mediaType" type="text">
+            </label>
+            <br>
+
+            <label for="refs">References<br>
+              <input formControlName="refs" id="refs" type="text">
+            </label>
+            <br>
           </div>
-          <button class="btn btn-secondary" type="submit">Submit</button>
-          <!--redirect is in the ts method if we want automatic redirect-->
-        </form>
-
-        <!--if we want confirmation and to redirect manually with a separate button-->
-        <!-- <div *ngIf="formSubmitted">
-          This form has been submitted.
-          <div>
-              <button routerLinkActive="selected">
-                <a routerLink="/member-page/my-collections">View my collection</a>
-            </button>
-          </div>
-        </div> -->
-
+        </div>
+        <button class="btn btn-secondary" type="submit">Submit</button>
+      </form>
+      
+      <div *ngIf="formSubmitted">This form has been submitted.
+        <div>
+          <button>View my collection</button>
+        </div>
       </div>
     </div>
+  </div>
 </div>
