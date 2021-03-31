@@ -1,17 +1,17 @@
 export class Item {
-    // public id: number;
+  // public id: number;
 
-    //USING THIS CLASS TEMPORARILY TO GET OTHER LOGIC IN PLACE
+  //USING THIS CLASS TEMPORARILY TO GET OTHER LOGIC IN PLACE
 
-    public imagePath: string;
-    public title: string;
-    public description: string;
+  public imagePath: string;
+  public title: string;
+  public description: string;
 
-    constructor(imagePath: string, title: string, description: string)
-        
-        {
-        this.imagePath = imagePath;
-        this.title = title; 
-        this.description = description;
-    }
+  constructor(imagePath: string, title: string, description: string)
+      
+  {
+    this.imagePath = imagePath;
+    this.title = title; 
+    this.description = description;
+  }
 }
