@@ -73,7 +73,7 @@ export class ViewItemsService {
 
   fetchItems(){
     if (!this.fetchedItems.length){
-      this.http.get('http://localhost:8080/api/item').toPromise().then ( data => {
+      this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
         for (let key in data){
           if (data.hasOwnProperty(key)){
             this.fetchedItems.push(data[key.valueOf()]);
@@ -104,8 +104,10 @@ export class ViewItemsService {
     return this.fetchedItems[index];
 }
 
-  deleteItem(index: number){
+  deleteItem(index: number, id: number){
     this.fetchedItems.splice(index, 1);
-    // this.recipeChanged.next(this.recipes.slice());
+    this.http.delete('http://localhost:8080/api/item/'+ id).subscribe(data=>{
+      console.log(data)
+    });
   }
 }
