@@ -1,6 +1,13 @@
-<div class="container">
-  <app-navbar-header></app-navbar-header>
-  <router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <app-navbar-header></app-navbar-header>
+      <router-outlet></router-outlet>
+  <!-- <app-view-list-of-collectibles></app-view-list-of-collectibles> -->
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>
+
+<!--when placed inside the container, this component still has white margins added to the sides; placing it outside of the container does not seem to limit its responsive resizing-->
 
