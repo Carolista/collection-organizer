@@ -12,6 +12,7 @@ import { ViewItemsService } from '../viewItems.service'
 export class ItemDetailComponent implements OnInit {
 
   userLoggedIn: boolean = true;
+  
 
   itemData: Item;
   id: number;
@@ -29,13 +30,21 @@ export class ItemDetailComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.itemData = this.viewItemsService.getItemData(this.id);
+        this.viewItemsService.fetchedItemsIndex = this.id;
         console.log( this.id);
       }
 
     );
 
-    this.itemData = this.viewItemsService.getItemData(this.id);
+    // this.itemData = this.viewItemsService.getItemData(this.id);
+    this.viewItemsService.valuesForEditingItem = this.itemData;
+    console.log ('values for editing item',this.viewItemsService.valuesForEditingItem);
+  }
 
+  onEdit(){
+    this.router.navigate(['/member-page/add-item']);
+    this.viewItemsService.editMode = true;
+    console.log ('edit mode', this.viewItemsService.editMode);
   }
 
   onDelete(){

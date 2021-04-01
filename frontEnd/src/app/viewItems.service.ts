@@ -7,6 +7,11 @@ import { Item } from "./ItemClass"
 @Injectable({providedIn:'root'})
 export class ViewItemsService {
 
+  editMode: boolean = false;
+  editedItemValue: Item;
+  valuesForEditingItem: Item;
+  fetchedItemsIndex: number;
+
   //soon list of items will be fetching an array of objects from the back end.
   listOfItems: any = [
     {
@@ -72,6 +77,8 @@ export class ViewItemsService {
   //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
 
   fetchItems(){
+    //needs to be updated to accomidate edit items function from the item detail component
+    //currently doesn't work properly when edditing items or adding items.
     if (!this.fetchedItems.length){
       this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
         for (let key in data){
@@ -103,6 +110,20 @@ export class ViewItemsService {
   getItemData(index: number){
     return this.fetchedItems[index];
 }
+
+  editItem(index:number, itemId: number){
+    
+    this.fetchedItems.splice(index, 1, this.editedItemValue);
+
+    //this method needs to be tested with the back end
+    this.http.put('http://localhost:8080/api/item/'+ itemId, this.editedItemValue).subscribe( data=>{
+      console.log(data)
+    });
+
+    this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
+      console.log(data)
+    });
+  }
 
   deleteItem(index: number, itemId: number){
     this.fetchedItems.splice(index, 1);
