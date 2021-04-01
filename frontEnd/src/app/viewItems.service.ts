@@ -72,13 +72,16 @@ export class ViewItemsService {
   //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
 
   fetchItems(){
-    this.http.get('http://localhost:8080/api/item').toPromise().then ( data => {
+    if (!this.fetchedItems.length){
+      this.http.get('http://localhost:8080/api/item').toPromise().then ( data => {
         for (let key in data){
           if (data.hasOwnProperty(key)){
             this.fetchedItems.push(data[key.valueOf()]);
           }
         }
       });
+    }
+    
       console.log('fetchItems() method is called from the view-list-of-collectibles component');
       console.log (this.fetchedItems);
     }
