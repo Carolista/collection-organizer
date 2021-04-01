@@ -27,7 +27,7 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   }
 
 ngOnDestroy():void {
-  
+  // this.viewItemsService.fetchedItems = [];
 }
 
 }

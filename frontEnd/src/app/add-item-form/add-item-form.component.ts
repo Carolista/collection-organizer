@@ -104,6 +104,7 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
         this.addItemForm.value.refs);
 
       this.viewItemsService.editItem(this.viewItemsService.fetchedItemsIndex, this.formPresetValue.id);
+      // console.log('edited item value', this.viewItemsService.editedItemValue);
     }else{
       this.http.post('http://localhost:8080/api/item', 
               this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});

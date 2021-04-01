@@ -79,7 +79,7 @@ export class ViewItemsService {
   fetchItems(){
     //needs to be updated to accomidate edit items function from the item detail component
     //currently doesn't work properly when edditing items or adding items.
-    if (!this.fetchedItems.length){
+     
       this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
         for (let key in data){
           if (data.hasOwnProperty(key)){
@@ -87,22 +87,14 @@ export class ViewItemsService {
           }
         }
       });
-    }
-    
-      console.log('fetchItems() method is called from the view-list-of-collectibles component');
-      console.log (this.fetchedItems);
-    }
-    getFetchedItems(){
-      console.log(this.fetchedItems);
-      console.log('this fetched items talks to view -list component')
-      return this.fetchedItems.slice(0); 
+     
     }
  
  
-    getItems(){
-    console.log("got items");
-    return this.listOfItems.slice();  
-  }
+  //   getItems(){
+  //   console.log("got items");
+  //   return this.listOfItems.slice();  
+  // }
 
   // getItemData(index: number){
   //     return this.listOfItems[index];
@@ -112,12 +104,14 @@ export class ViewItemsService {
 }
 
   editItem(index:number, itemId: number){
-    
+    // console.log('EDITED VALUE SAVES', this.editedItemValue);
+
     this.fetchedItems.splice(index, 1, this.editedItemValue);
 
     //this method needs to be tested with the back end
     this.http.put('http://localhost:8080/api/item/'+ itemId, this.editedItemValue).subscribe( data=>{
       console.log(data)
+      
     });
 
     this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
