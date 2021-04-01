@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Item } from 'src/app/ItemClassTemp';
+import { Item } from 'src/app/ItemClass';
 import { ViewItemsService } from '../viewItems.service'
 
 @Component({
@@ -39,12 +39,13 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onDelete(){
+
+    //here this.id refers to index inside the array, and itemId reffers to the id number assigned from the back end
     let confirm = window.confirm(
       'This item will be permanently deleted. Are you sure you want to delete this itme?');
     if (confirm === true) {
-    this.viewItemsService.deleteItem(this.id);
-    //add code to delete the item on the back end, will need to include some infor the the back end.
-    this. http.delete('http://localhost:8080/api/item').subscribe(response =>{console.log(response)});
+    this.viewItemsService.deleteItem(this.id, this.itemData.id);
+
     this.router.navigate(['/member-page']);
     } 
   }
