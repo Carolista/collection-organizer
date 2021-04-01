@@ -82,17 +82,18 @@ export class ViewItemsService {
       });
     }
     
-      console.log('fetchItems() method is called from the view-list-of-collectibles component');
-      console.log (this.fetchedItems);
-    }
-    getFetchedItems(){
-      console.log(this.fetchedItems);
-      console.log('this fetched items talks to view -list component')
-      return this.fetchedItems.slice(0); 
-    }
+    console.log('fetchItems() method is called from the view-list-of-collectibles component');
+    console.log (this.fetchedItems);
+  }
+
+  getFetchedItems(){
+    console.log(this.fetchedItems);
+    console.log('this fetched items talks to view -list component')
+    return this.fetchedItems.slice(0); 
+  }
  
  
-    getItems(){
+  getItems(){
     console.log("got items");
     return this.listOfItems.slice();  
   }
@@ -102,7 +103,7 @@ export class ViewItemsService {
   // }
   getItemData(index: number){
     return this.fetchedItems[index];
-}
+  }
 
   deleteItem(index: number, itemId: number){
     this.fetchedItems.splice(index, 1);
