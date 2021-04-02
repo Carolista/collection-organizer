@@ -1,11 +1,16 @@
 package org.launchcode.backend.controllers;
 
+import org.launchcode.backend.exception.ItemNotFoundException;
 import org.launchcode.backend.models.Item;
 import org.launchcode.backend.models.data.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.Optional;
 
 
@@ -32,14 +37,32 @@ public class ItemController {
     public Optional<Item> get(@PathVariable("id") long id) {
         return itemRepository.findById(id);
     }
+
+
+    @PutMapping("/item/{id}") //Still editing
+    public ResponseEntity<Item> updateItem(@PathVariable(value = "id") Long id,
+                                           @Valid @RequestBody Item employeeDetails) {
+        Item item = itemRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("An item with the ID " + id + "was not found."));
+
+        item.setTitle(item.getTitle());
+        final Item updatedItem = itemRepository.save(item);
+        return ResponseEntity.ok(updatedItem);
+    }
+
+    // Alternative to saving - keeping here in case needed
+//    public Item updateItem(Item item){
+//        return itemRepository.save(item);
+//    }
+
+    public void deleteItem(Long id){
+       itemRepository.deleteItemById(id);
+    }
+
+
 }
 
 
-    //TODO: processAddItemForm
 
-    //TODO: displayViewItem
 
     //TODO: deleteItem
-
-    //TODO: take a look at FE form creation page to verify keywords needed to properly render view - i.e. "title?"
 
