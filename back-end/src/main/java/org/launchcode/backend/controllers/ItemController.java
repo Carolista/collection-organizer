@@ -33,13 +33,13 @@ public class ItemController {
         itemRepository.save(item);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Optional<Item> get(@PathVariable("id") long id) {
         return itemRepository.findById(id);
     }
 
 
-    @PutMapping("/item/{id}") //Still editing
+    @PutMapping("{id}") //Still editing
     public ResponseEntity<Item> updateItem(@PathVariable(value = "id") Long id,
                                            @Valid @RequestBody Item employeeDetails) {
         Item item = itemRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("An item with the ID " + id + "was not found."));
