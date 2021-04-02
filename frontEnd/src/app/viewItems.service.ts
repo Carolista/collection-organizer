@@ -1,7 +1,7 @@
   
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-// import { Subject } from "rxjs";
+import { map } from 'rxjs/operators';
 import { Item } from "./ItemClass"
 
 @Injectable({providedIn:'root'})
@@ -80,14 +80,29 @@ export class ViewItemsService {
     //needs to be updated to accomidate edit items function from the item detail component
     //currently doesn't work properly when edditing items or adding items.
      
-      this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
-        for (let key in data){
-          if (data.hasOwnProperty(key)){
-            this.fetchedItems.push(data[key.valueOf()]);
+    //original syntax  
+    // this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
+    //     for (let key in data){
+    //       if (data.hasOwnProperty(key)){
+    //         this.fetchedItems.push(data[key.valueOf()]);
+    //       }
+    //     }
+    //   });
+
+     //new syntax will use observables, I hope it will fix the bug 
+     return this.http
+      .get('http://localhost:8080/api/item/')
+      .pipe(
+        map(fetchedData=>{
+          const fetchedItems: Item[] = [];
+          for (const key in fetchedData){
+            if(fetchedData.hasOwnProperty(key)){
+              fetchedItems.push(fetchedData[key.valueOf()]);
+            }
           }
-        }
-      });
-     
+          return fetchedItems;
+        })
+      );
     }
  
  

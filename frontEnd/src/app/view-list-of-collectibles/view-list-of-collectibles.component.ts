@@ -13,15 +13,16 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   items: Item[] = [];
 
   constructor(private viewItemsService: ViewItemsService) { 
-    this.items = this.viewItemsService.fetchedItems;
   }
 
   ngOnInit(): void {
-    // this.items = this.viewItemsService.getItems();
-    this.viewItemsService.fetchItems();
-    // this.items = this.viewItemsService.getFetchedItems();
-    console.log(this.items);
-
+    // this.items = this.viewItemsService.getItems(); //used when we couldn't load from back end
+    this.viewItemsService.fetchItems().subscribe(
+      fetchedItems =>{
+        this.items = fetchedItems;
+        this.viewItemsService.fetchedItems = fetchedItems;
+      }
+    )
     /*alternative way of getting items without using a function, which might be better for once we are fetching to an array in that service:*/
     // this.items = this.viewItemsService.listOfItems;
   }
