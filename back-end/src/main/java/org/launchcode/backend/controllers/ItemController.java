@@ -64,5 +64,3 @@ public class ItemController {
 
 
 
-    //TODO: deleteItem
-
