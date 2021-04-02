@@ -54,6 +54,7 @@ public class ItemController {
 //        return itemRepository.save(item);
 //    }
 
+    @DeleteMapping("{id}")
     public void deleteItem(Long id){
        itemRepository.deleteItemById(id);
     }
