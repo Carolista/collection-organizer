@@ -4,11 +4,14 @@
 
 <hr>
 <div *ngIf='userLoggedIn'>
-    <button>Edit this item</button> |  
+    <button (click)="onEdit()">Edit this item</button> |  
     <button (click)="onDelete()">Delete this item</button>
 </div>
+<hr>
+<h3>{{itemData.category}}</h3>
 <div class="text-center">
     <img [src]=itemData.imagePath height="600">
     <h3>{{itemData.title}}</h3>
     <p>{{itemData.description}}</p>
+    <p>{{itemData.cond}}</p>
 </div>
