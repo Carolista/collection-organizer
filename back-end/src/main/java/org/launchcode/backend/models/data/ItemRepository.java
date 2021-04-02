@@ -11,5 +11,5 @@ import javax.transaction.Transactional;
 //@Transactional
 public interface ItemRepository extends CrudRepository <Item, Long>{
 
-
+    void deleteItemById(Long id);
 }
