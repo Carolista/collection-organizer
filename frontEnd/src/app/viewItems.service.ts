@@ -8,8 +8,8 @@ import { Item } from "./ItemClass"
 export class ViewItemsService {
 
   editMode: boolean = false;
-  editedItemValue: Item;
-  valuesForEditingItem: Item;
+  editedItemValue: Item; //these values are for the edited item data to be saved and posted to the back end
+  valuesForEditingItem: Item; //these values are for the input field to be changed out in the add-item-form
   fetchedItemsIndex: number;
 
   //soon list of items will be fetching an array of objects from the back end.
@@ -71,7 +71,7 @@ export class ViewItemsService {
     }
   ];
 
-  fetchedItems: Item[] = [];  // change to Item[] after I updated Item class to mirror the back end set up.
+  fetchedItems: Item[] = [];  
 
   constructor(private http: HttpClient){};
   //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
@@ -116,7 +116,7 @@ export class ViewItemsService {
   // }
   getItemData(index: number){
     return this.fetchedItems[index];
-}
+  }
 
   editItem(index:number, itemId: number){
     // console.log('EDITED VALUE SAVES', this.editedItemValue);
