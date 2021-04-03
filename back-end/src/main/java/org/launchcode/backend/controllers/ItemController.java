@@ -38,20 +38,25 @@ public class ItemController {
         return itemRepository.findById(id);
     }
 
-    @PutMapping("{id}") //Still editing
-    public ResponseEntity<Item> updateItem(@PathVariable(value = "id") Long id,
-                                           @Valid @RequestBody Item employeeDetails) {
-        Item item = itemRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("An item with the ID " + id + "was not found."));
 
+    @PutMapping("{id}")
+    public Item updateItem(@RequestBody Item item, @PathVariable("id") Long id){
         item.setTitle(item.getTitle());
-        final Item updatedItem = itemRepository.save(item);
-        return ResponseEntity.ok(updatedItem);
-    }
+        item.setImagePath(item.getImagePath());
+        item.setCategory(item.getCategory());
+        item.setSubCategory(item.getSubCategory());
+        item.setDescription(item.getDescription());
+        item.setCreator(item.getCreator());
+        item.setYearCreated(item.getYearCreated());
+        item.setPlaceOfOrigin(item.getPlaceOfOrigin());
+        item.setYearAcquired(item.getYearAcquired());
+        item.setCond(item.getCond());
+        item.setMediaType(item.getMediaType());
+        item.setRefs(item.getRefs());
 
-    // Alternative to saving - keeping here in case needed
-//    public Item updateItem(Item item){
-//        return itemRepository.save(item);
-//    }
+        return itemRepository.save(item);
+
+    }
 
     @DeleteMapping("{id}")
     public void deleteItem(@PathVariable(value = "id") Long id){
