@@ -161,14 +161,19 @@
             <br>
           </div>
         </div>
-        <button class="btn btn-secondary" type="submit">Submit</button>
+        <button class="btn btn-secondary" type="submit"
+        *ngIf="!editMode"
+        >Submit</button>
+        <button class="btn btn-secondary" type="submit"
+        *ngIf="editMode"
+        >Save Changes</button>
       </form>
       
-      <div *ngIf="formSubmitted">This form has been submitted.
+      <!-- <div *ngIf="formSubmitted">This form has been submitted.
         <div>
           <button>View my collection</button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

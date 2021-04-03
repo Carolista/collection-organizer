@@ -1,14 +1,19 @@
   
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-// import { Subject } from "rxjs";
-import { Item } from "./ItemClassTemp"
+import { map } from 'rxjs/operators';
+import { Item } from "./ItemClass"
 
 @Injectable({providedIn:'root'})
 export class ViewItemsService {
 
+  editMode: boolean = false;
+  editedItemValue: Item; //these values are for the edited item data to be saved and posted to the back end
+  valuesForEditingItem: Item; //these values are for the input field to be changed out in the add-item-form
+  fetchedItemsIndex: number;
+
   //soon list of items will be fetching an array of objects from the back end.
-  listOfItems: Item[] = [
+  listOfItems: any = [
     {
       imagePath: 'https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg',
       title: 'Item Title goes here-very long title',
@@ -66,34 +71,71 @@ export class ViewItemsService {
     }
   ];
 
-  fetchedItems: any = [];  // change to Item[] after I updated Item class to mirror the back end set up.
+  fetchedItems: Item[] = [];  
 
   constructor(private http: HttpClient){};
   //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
 
   fetchItems(){
-    this.http.get('http://localhost:8080/api/item').toPromise().then ( data => {
-        for (let key in data){
-          if (data.hasOwnProperty(key)){
-            this.fetchedItems.push(data[key.valueOf()]);
+    //needs to be updated to accomidate edit items function from the item detail component
+    //currently doesn't work properly when edditing items or adding items.
+     
+    //original syntax  
+    // this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
+    //     for (let key in data){
+    //       if (data.hasOwnProperty(key)){
+    //         this.fetchedItems.push(data[key.valueOf()]);
+    //       }
+    //     }
+    //   });
+
+     //new syntax will use observables, I hope it will fix the bug 
+     return this.http
+      .get('http://localhost:8080/api/item/')
+      .pipe(
+        map(fetchedData=>{
+          const fetchedItems: Item[] = [];
+          for (const key in fetchedData){
+            if(fetchedData.hasOwnProperty(key)){
+              fetchedItems.push(fetchedData[key.valueOf()]);
+            }
           }
-        }
-      });
-      console.log('fetchItems() method is called from the view-list-of-collectibles component');
-      console.log (this.fetchedItems);
+          return fetchedItems;
+        })
+      );
     }
+ 
+ 
+  //   getItems(){
+  //   console.log("got items");
+  //   return this.listOfItems.slice();  
+  // }
 
-  getItems(){
-    console.log("got items");
-    return this.listOfItems.slice();  
-  }
-
+  // getItemData(index: number){
+  //     return this.listOfItems[index];
+  // }
   getItemData(index: number){
-      return this.listOfItems[index];
+    return this.fetchedItems[index];
   }
 
-  deleteItem(index: number){
-    this.listOfItems.splice(index, 1);
-    // this.recipeChanged.next(this.recipes.slice());
+  editItem(index:number, itemId: number){
+    this.fetchedItems.splice(index, 1, this.editedItemValue);
+
+    //this method needs to be tested with the back end
+    this.http.put('http://localhost:8080/api/item/'+ itemId, this.editedItemValue).subscribe( data=>{
+      console.log(data)
+    });
+
+    //this code was deleting the item from the database
+    // this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
+    //   console.log(data)
+    // });
+  }
+
+  deleteItem(index: number, itemId: number){
+    this.fetchedItems.splice(index, 1);
+    this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
+      console.log(data)
+    });
   }
 }

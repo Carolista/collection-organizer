@@ -19,6 +19,7 @@ public abstract class AbstractEntity {
     @Size(min=3, max=100, message="Name must be between 3 and 100 characters.")
     public String title;
 
+
     public AbstractEntity(String title) {
         this.title = title;
     }
@@ -28,10 +29,6 @@ public abstract class AbstractEntity {
     public Long getId() {
         return id;
     }
-
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
 
     public String getTitle() {
         return title;
