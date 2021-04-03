@@ -128,10 +128,6 @@ export class ViewItemsService {
       console.log(data)
       
     });
-
-    this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
-      console.log(data)
-    });
   }
 
   deleteItem(index: number, itemId: number){
