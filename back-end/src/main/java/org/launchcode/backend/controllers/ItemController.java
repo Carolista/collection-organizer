@@ -38,7 +38,6 @@ public class ItemController {
         return itemRepository.findById(id);
     }
 
-
     @PutMapping("{id}") //Still editing
     public ResponseEntity<Item> updateItem(@PathVariable(value = "id") Long id,
                                            @Valid @RequestBody Item employeeDetails) {
@@ -55,10 +54,10 @@ public class ItemController {
 //    }
 
     @DeleteMapping("{id}")
-    public void deleteItem(Long id){
-       itemRepository.deleteItemById(id);
-    }
+    public void deleteItem(@PathVariable(value = "id") Long id){
+       itemRepository.deleteById(id);
 
+    }
 
 }
 
