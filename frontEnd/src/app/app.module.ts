@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { AboutTeamComponent } from './landing-page/about-team/about-team.component';
+import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
     PageNotFoundComponent,
     AddItemFormComponent,
     FooterComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    AboutTeamComponent,
+    AboutProjectComponent,
   ],
   imports: [
     BrowserModule,
