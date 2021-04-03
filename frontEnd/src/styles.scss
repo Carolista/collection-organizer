@@ -14,6 +14,7 @@ $danger:        #842D1C;
 $light:         #E9E9E9;
 $dark:          #2E2F2E;
 $muted:         #9C9C9D;
+$tertiary:      #575554;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(
@@ -25,7 +26,9 @@ $theme-colors: map-merge(
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+    "dark":       $dark,
+    "muted":      $muted,
+    "tertiary":   $tertiary,
   ),
   $theme-colors
 );
