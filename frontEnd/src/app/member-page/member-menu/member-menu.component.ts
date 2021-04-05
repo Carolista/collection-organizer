@@ -22,6 +22,8 @@ export class MemberMenuComponent implements OnInit {
       }
     )
 
+    console.log(this.viewItemsService.fetchedItems);
+
   }
 
 }
