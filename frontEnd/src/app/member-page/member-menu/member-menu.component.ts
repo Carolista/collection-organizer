@@ -37,4 +37,8 @@ export class MemberMenuComponent implements OnInit {
     console.log(this.memberCategories);
     console.log(this.memberSubCategories);
   }
+
+  onSelectCategory(selectedCategory){
+    console.log("category selected: " + selectedCategory);
+  }
 }
