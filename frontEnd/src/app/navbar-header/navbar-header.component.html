@@ -11,11 +11,17 @@
         <img src="../assets/logo-placeholder.svg" style="height: 2.5rem">
       </a>
 
-      <form class="form-inline ml-3">
+      <form 
+      [formGroup]="userSearch"
+      (ngSubmit)="onSearch()"
+      class="form-inline ml-3">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="SEARCH">
+          <input 
+          formControlName="userInput"
+          type="search" 
+          class="form-control" placeholder="SEARCH">
           <div class="input-group-append">
-            <button type="button" class="btn btn-primary"></button>
+            <button type="submit" class="btn btn-primary">search</button>
           </div>
         </div>
       </form>
