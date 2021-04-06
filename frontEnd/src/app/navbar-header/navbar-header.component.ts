@@ -25,14 +25,14 @@ export class NavbarHeaderComponent implements OnInit {
   }
 
   onSearch(){
-    console.log(typeof this.userSearch.get('userInput').value);
+    // console.log(typeof this.userSearch.get('userInput').value);
     
     //onces this method is proven to be working, I will move it into the service
     //for testing purposes only, I leave it in this component.
 
       const searchStringParams = { params: new HttpParams({fromString: this.userSearch.get('userInput').value}) };
       this.http.get("http://localhost:8080/api/item", searchStringParams).subscribe(response =>{
-        console.log(response);
+        console.log(response.valueOf());
       });
     
   }
