@@ -4,8 +4,15 @@
 
   <ul class="text-left text-muted list-unstyled">
     <li *ngIf="this.items.length > 0"><a>All Items</a></li>
-    <li *ngIf="this.items.length > 0"><a>My Collections</a>
-       
+    <li *ngIf="this.items.length > 0" class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown">My Collections</a>
+      <ul class="dropdown-menu">
+        <a class="dropdown-item" 
+          style="cursor: pointer"
+          *ngFor="let category of memberCategories; let i = index"
+          (click)="onSelectCategory(i)">{{category}}
+        </a>
+      </ul>
     </li>
     <li class="text-white">My Profile</li>
     <!--could also make this a button-->
