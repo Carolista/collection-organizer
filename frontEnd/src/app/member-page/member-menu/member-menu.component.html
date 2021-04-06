@@ -2,22 +2,32 @@
   <h3 class="text-center text-primary" style="padding-top: 12px;">Options</h3>
   <hr>
 
-  <ul class="text-left text-muted list-unstyled">
-    <li *ngIf="this.items.length > 0"><a>All Items</a></li>
-    <li *ngIf="this.items.length > 0" class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown">My Collections</a>
-      <ul class="dropdown-menu">
-        <a class="dropdown-item" 
+  <!-- <ul class="text-left text-muted list-unstyled"> -->
+    <div *ngIf="this.items.length > 0"><a>All Items</a></div>
+    <div *ngIf="this.items.length > 0">
+      <a>My Collections</a>
+      <!--apply better styling to list-group and list-group-items-->
+      <ul class="list-group bg-primary" style="font-size: smaller">
+        <a class="list-group-item"
           style="cursor: pointer"
           *ngFor="let category of memberCategories; let i = index"
           (click)="onSelectCategory(i)">{{category}}
         </a>
       </ul>
-    </li>
-    <li class="text-white">My Profile</li>
+    </div>
+    <div class="text-white">My Profile</div>
     <!--could also make this a button-->
-    <li routerLinkActive="selected"><a routerLink="../member-page/add-item">Add Item</a></li>
-  </ul>
+    <div routerLinkActive="selected"><a routerLink="../member-page/add-item">Add Item</a></div>
+  <!-- </ul> -->
+
+  <!-- <ul class='list-group'>My Categories
+    <a 
+        class='list-group-item' 
+        style="cursor: pointer"
+        *ngFor='let category of memberCategories; let i = index'>
+    {{ item.category }})
+    </a>
+</ul> -->
 </div>
 
 
