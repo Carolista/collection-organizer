@@ -1,7 +1,42 @@
-<div class="container">
-  <div class="row justify-content-xl-center" style="min-height: 200vh">
-    <div class="col-12 bg-light">
-      <h1 class="font-weight-light">Splash image and other landing info goes here</h1>
+<!-- component container div not necessary because app.component parent div is class container-fluid-->
+
+  <!--Splash image/buttons-->
+  <div class="container-fluid">
+    <div class="row pb-5">
+      <!-- <div class="px-5 mx-5"> -->
+        <img 
+          src="../assets/photos/Hero_collage_v3.png" 
+          alt="Collage of collection photographs with tagline" 
+          style="max-height: 90vh; max-width: 100vw; padding-inline: 5; margin-inline: 5;"
+        >
+      <!-- </div> -->
     </div>
   </div>
-</div>
+
+  <!--How to use section-->
+  <div class="row justify-content-xl-center bg-primary py-5">
+    <div class="py-3 px-5 mx-5">
+      <h1 class="font-weight-light text-light">About this Project</h1>
+      <p class="text-light">
+        One of the joys of collecting is learning about the objects you collect. Documenting dates, purchase prices, and background information adds value to both the objects and the collection as a whole, and allows you to make informed decisions about new acquisitions. But how do you organize all of these details in one place? Moreover, how can you connect with like-minded enthusiasts and learn from the vast expertise of the crowd?
+      </p>
+       
+      <p class="text-light">
+        Modeled on museum catalogs and databases, this app allows registered users to store and organize information about their collections, including purchase and provenance details, photographs, condition reports, and research notes. It also allows users to post and edit guides on categories of objects on which they have expertise. Both registered users and non-users can access these guides and fora to further their own research.
+      </p>
+      <div class="row justify-content-center">
+        <a class="btn btn-outline-info justify-center text-light" href="about-project">LEARN MORE</a>
+      </div>
+    </div>
+  </div>
+
+  <!--About this project section-->
+  <div class="row justify-content-xl-center py-5">
+    <div class="py-3 px-5 mx-5">
+      <h1 class="font-weight-light text-secondary">About Us</h1>
+      <p>This app was created as a fullstack capstone project for LaunchCode's LiftOff program (Spring 2021 cohort). Team members Anna McBride, Anya Wynne, Casey Gardonio-Foat, Chandler EuBank, and Tara Kotthoff built the project from scratch under the mentorship of Carrie Jones. For more information about each team member and the LaunchCode program, 
+        <a class="text-secondary font-weight-bold" href="about-team">click here.</a>
+      </p>
+    </div>
+  </div>
+<!-- </div> -->

@@ -119,15 +119,17 @@ export class ViewItemsService {
   }
 
   editItem(index:number, itemId: number){
-    // console.log('EDITED VALUE SAVES', this.editedItemValue);
-
     this.fetchedItems.splice(index, 1, this.editedItemValue);
 
     //this method needs to be tested with the back end
     this.http.put('http://localhost:8080/api/item/'+ itemId, this.editedItemValue).subscribe( data=>{
       console.log(data)
-      
     });
+
+    //this code was deleting the item from the database
+    // this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
+    //   console.log(data)
+    // });
   }
 
   deleteItem(index: number, itemId: number){
