@@ -1,0 +1,20 @@
+
+$gold: #d3be46;
+$blue-gray: rgb(76, 87, 93);
+
+.row {
+    // background-color: rgb(204, 212, 221);
+    background-color: whitesmoke;
+    border-bottom: 1.5px solid $gold;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+h3 {
+    margin-top: 3px;
+    padding: 14px;
+    color: $gold;
+    background-color: $blue-gray;
+    border: 1.5px solid rgb(181, 196, 204);
+    border-radius: 5px;
+}

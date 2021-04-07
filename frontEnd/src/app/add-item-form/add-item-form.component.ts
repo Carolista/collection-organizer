@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewItemsService } from '../viewItems.service';
 import { Item } from '../ItemClass';
+import { CategoriesService } from '../categories.service';
 
 @Component({
   selector: 'app-add-item-form',
@@ -17,8 +18,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
 
   addItemForm: FormGroup;
   // formSubmitted = false;
-  browseMainCategories = [' Fine Arts', ' Culture', ' Decorative arts', ' Machines and Transportation',
-    ' Fashion and Textiles', ' Natural History'];
+  browseMainCategories: string[];
 
   fineArts = [' Painting', ' Sculpture', ' Prints/Photographs/Drawings/Digital', ' European',
   ' Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian', ' Near and Middle Eastern', 
@@ -47,10 +47,12 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
 
   constructor(private http: HttpClient, 
               private router: Router,
-              private viewItemsService: ViewItemsService) { }
+              private viewItemsService: ViewItemsService,
+              private categoriesService: CategoriesService) { }
 
   ngOnInit():void{
 
+    this.browseMainCategories = this.categoriesService.browseMainCategories;
     this.editMode = this.viewItemsService.editMode;
     // console.log ('add item form edit mode', this.editMode)
     if (this.editMode){
