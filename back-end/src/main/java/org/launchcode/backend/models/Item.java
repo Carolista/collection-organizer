@@ -1,4 +1,9 @@
 package org.launchcode.backend.models;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
+import org.hibernate.mapping.List;
+import org.launchcode.backend.models.data.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -48,6 +53,10 @@ public class Item extends AbstractEntity {
 
     public Item() {
     }
+
+
+
+
 
     public String getImagePath() {
         return imagePath;
@@ -142,4 +151,15 @@ public class Item extends AbstractEntity {
     public void setRefs(String references) {
         this.refs = refs;
     }
+
+
+
+    @Autowired
+    private ItemRepository itemRepository;
+
+    public List<Item> search(String keyword) {
+        return itemRepository.search(keyword);
+    }
+
+
 }
