@@ -14,36 +14,13 @@ export class NavbarHeaderComponent implements OnInit {
 
   categories:string[];
   userSearch: FormGroup;
-  subCategory:string;
-  categoryArrIndex: number;//may not need this data, but saving it just in case
+  clickedCategory:string;
+  categoryArrIndex: number;
   switchCase: string;
   
-  subCategoriesArr = [
-    [' Painting', ' Sculpture', ' Prints/Photographs/Drawings/Digital', ' European',
-    ' Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian', ' Near and Middle Eastern', 
-    ' American', ' Pre-20th century', ' Modern/Contemporary'],
-    [' Collectibles (Figurines/toys/misc.)', ' Ephemera (Autographs/Advertising/Posters/etc.)', 
-    ' Numismatics/Coins and medals/Monies ', ' Military and wartime', ' Philately/Stamps',
-    ' Sports', ' Political/Fraternal/Organizational', ' Breweriana/Tobacciana/Petroliana',
-    ' Entertainment media (music/movies/video games)', ' Print entertainment media (Comics/Books/Newspapers)'],
-    [' Pre-20th century', ' Victorian Era', ' Art Deco/Art Nouveau/Arts and Crafts',
-    ' Mid-Century Modern', ' Ceramics/Pottery/China/Porcelain', ' Folk Art',
-    ' Textiles',' Furniture',' Architecture'],
-    [' Cameras', ' Cars and Motorcycles', ' Aviation and Space',
-    ' Nautical', ' Electronics', ' Models	(cars, trains, etc.)',
-    ' Radios', ' Telephones', ' Office', ' Clocks'],
-    [' Clothing and shoes', ' Fine Jewelry', ' Costume Jewelry', 
-    ' Accessories (watches, handbags, pens, etc.)', ' Arms and Armor (incl. knives/swords/firearms/etc.)'],
-    [' Animals/Zoology', ' Botany', ' Shells',
-    ' Fossils', ' Rocks, minerals, and gems', ' Precious metals',
-    ' Natural history collateral (books/guides/tools/etc.)', ' Medical/Scientific', ' Maps/Globes' ]
-  ]
+  subCategoriesArr: string[][];
 
   selectedSubcategoryArr: string [];
-  
-  fineArts = [' Painting', ' Sculpture', ' Prints/Photographs/Drawings/Digital', ' European',
-  ' Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian', ' Near and Middle Eastern', 
-  ' American', ' Pre-20th century', ' Modern/Contemporary'];
 
   constructor(private viewItemsService: ViewItemsService,
               private http: HttpClient,
@@ -52,6 +29,7 @@ export class NavbarHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.categories = this.categoriesService.browseMainCategories;
+    this.subCategoriesArr = this.categoriesService.subCategoriesArr;
     this.userSearch = new FormGroup ({
       'userInput': new FormControl(null)
     });
@@ -65,17 +43,40 @@ export class NavbarHeaderComponent implements OnInit {
     //for testing purposes only, I leave it in this component.
 
       const searchStringParams = { params: new HttpParams({fromString: this.userSearch.get('userInput').value}) };
+      this.viewItemsService.userSelectedParams = searchStringParams;
       this.http.get("http://localhost:8080/api/item", searchStringParams).subscribe(response =>{
         console.log(response.valueOf());
       });
     
   }
 
-  onBrowse(clickedArrIndex:number){
-    this.categoryArrIndex=clickedArrIndex; //may not need this data but saving it just in case
-    this.subCategory = this.categories[clickedArrIndex];
+  onBrowseCategories(clickedArrIndex:number){
+    this.categoryArrIndex=clickedArrIndex; //need this value to access subcategories
+    this.clickedCategory = this.categories[clickedArrIndex];
     this.selectedSubcategoryArr = this.subCategoriesArr[clickedArrIndex];
     this.switchCase = this.categories[clickedArrIndex];
+    //this function needs to be tested, after moved to the service
+    
+    const browseStringParams = { params: new HttpParams({fromString: this.clickedCategory}) };
+
+    this.viewItemsService.userSelectedParams = browseStringParams;
+
+      this.http.get("http://localhost:8080/api/item", browseStringParams).subscribe(response =>{
+        console.log(response.valueOf());
+      });
+      console.log(this.viewItemsService.userSelectedParams)
+  }
+
+  onBrowseSubcategories(clickedSubcategoryArrIndex:number){
+  //this function needs to be tested, after moved to the service
+  const browseStringParams = 
+  { params: new HttpParams({fromString: this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
+  this.http.get("http://localhost:8080/api/item", browseStringParams).subscribe(response =>{
+    console.log(response.valueOf());
+  });
+
+  this.viewItemsService.userSelectedParams = browseStringParams;
+  console.log(this.viewItemsService.userSelectedParams)
   }
 
   // decided to move this to view-list-of-collections ngOnInit
