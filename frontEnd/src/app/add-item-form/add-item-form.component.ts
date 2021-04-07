@@ -35,8 +35,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
 
   machinesAndTransportation = [' Cameras', ' Cars and Motorcycles', ' Aviation and Space',
   ' Nautical', ' Electronics', ' Models	(cars, trains, etc.)',
-  ' Radios', ' Telephones', ' Office', ' Clocks'
-];
+  ' Radios', ' Telephones', ' Office', ' Clocks'];
 
 fashionAndTextiles = [' Clothing and shoes', ' Fine Jewelry', ' Costume Jewelry', 
 ' Accessories (watches, handbags, pens, etc.)', ' Arms and Armor (incl. knives/swords/firearms/etc.)'];

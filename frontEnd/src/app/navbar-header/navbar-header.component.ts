@@ -15,12 +15,28 @@ export class NavbarHeaderComponent implements OnInit {
   categories:string[];
   userSearch: FormGroup;
   subCategory:string;
-  categoryArrIndex: number;
+  categoryArrIndex: number;//may not need this data, but saving it just in case
+  switchCase: string;
   
   subCategoriesArr = [
     [' Painting', ' Sculpture', ' Prints/Photographs/Drawings/Digital', ' European',
-  ' Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian', ' Near and Middle Eastern', 
-  ' American', ' Pre-20th century', ' Modern/Contemporary']
+    ' Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian', ' Near and Middle Eastern', 
+    ' American', ' Pre-20th century', ' Modern/Contemporary'],
+    [' Collectibles (Figurines/toys/misc.)', ' Ephemera (Autographs/Advertising/Posters/etc.)', 
+    ' Numismatics/Coins and medals/Monies ', ' Military and wartime', ' Philately/Stamps',
+    ' Sports', ' Political/Fraternal/Organizational', ' Breweriana/Tobacciana/Petroliana',
+    ' Entertainment media (music/movies/video games)', ' Print entertainment media (Comics/Books/Newspapers)'],
+    [' Pre-20th century', ' Victorian Era', ' Art Deco/Art Nouveau/Arts and Crafts',
+    ' Mid-Century Modern', ' Ceramics/Pottery/China/Porcelain', ' Folk Art',
+    ' Textiles',' Furniture',' Architecture'],
+    [' Cameras', ' Cars and Motorcycles', ' Aviation and Space',
+    ' Nautical', ' Electronics', ' Models	(cars, trains, etc.)',
+    ' Radios', ' Telephones', ' Office', ' Clocks'],
+    [' Clothing and shoes', ' Fine Jewelry', ' Costume Jewelry', 
+    ' Accessories (watches, handbags, pens, etc.)', ' Arms and Armor (incl. knives/swords/firearms/etc.)'],
+    [' Animals/Zoology', ' Botany', ' Shells',
+    ' Fossils', ' Rocks, minerals, and gems', ' Precious metals',
+    ' Natural history collateral (books/guides/tools/etc.)', ' Medical/Scientific', ' Maps/Globes' ]
   ]
 
   selectedSubcategoryArr: string [];
@@ -56,10 +72,10 @@ export class NavbarHeaderComponent implements OnInit {
   }
 
   onBrowse(clickedArrIndex:number){
-    this.categoryArrIndex=clickedArrIndex;
-    this.subCategory = this.categories[this.categoryArrIndex];
+    this.categoryArrIndex=clickedArrIndex; //may not need this data but saving it just in case
+    this.subCategory = this.categories[clickedArrIndex];
     this.selectedSubcategoryArr = this.subCategoriesArr[clickedArrIndex];
-    
+    this.switchCase = this.categories[clickedArrIndex];
   }
 
   // decided to move this to view-list-of-collections ngOnInit

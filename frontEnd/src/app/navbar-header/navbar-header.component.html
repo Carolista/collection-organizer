@@ -60,7 +60,7 @@
           <div class="row" [ngSwitch]="subCategory">
             <div *ngFor="let subCategory of selectedSubcategoryArr">
               
-               <div *ngSwitchCase="' Fine Arts'" class="col">{{subCategory}}</div>
+               <div *ngSwitchCase="switchCase" class="col">{{subCategory}}</div>
               
             </div>
         
