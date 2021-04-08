@@ -157,7 +157,7 @@ public class Item extends AbstractEntity {
 //    @Autowired
 //    private ItemRepository itemRepository;
 //
-//    public List<Item> search(String keyword) {
+//    private List<Item> search(String keyword) {
 //        return itemRepository.search(keyword);
 //    }
 
