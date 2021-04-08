@@ -1,3 +1,15 @@
-input.touched {
-    color: red;
+p {
+    color:firebrick;
+    font-weight: bold;
 }
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red; 
+  }
+
+ 
+  input {
+      margin-right: 8px;
+      margin-top: 5px;
+      margin-bottom: 12px;
+  }
