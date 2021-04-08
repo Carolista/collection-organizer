@@ -29,7 +29,7 @@
       <a 
           class='list-group-item' 
           style="cursor: pointer; font-size: smaller"
-          *ngFor='let category of memberCategories; let i = index'
+          *ngFor='let category of populatedCategories; let i = index'
           (click)="onSelectCategory(category)">
       {{ category }}
       </a>

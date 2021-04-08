@@ -10,8 +10,8 @@ import { ViewItemsService } from '../../viewItems.service';
 export class MemberMenuComponent implements OnInit {
  
   items: Item[] = []
-  memberCategories = [];
-  memberSubCategories = [];
+  populatedCategories = [];
+  populatedSubCategories = [];
 
   constructor(private viewItemsService: ViewItemsService) { }
 
@@ -25,17 +25,17 @@ export class MemberMenuComponent implements OnInit {
     this.items = this.viewItemsService.fetchedItems;
 
     for(let item of this.items) {
-      if(!this.memberCategories.includes(item.category)){
-        this.memberCategories.push(item.category);
+
+      if(!this.populatedCategories.includes(item.category.trim())){
+        this.populatedCategories.push(item.category.trim());
       };
-      if(!this.memberSubCategories.includes(item.subCategory)){
-        this.memberSubCategories.push(item.subCategory);
+ 
+      if(!this.populatedSubCategories.includes(item.subCategory.trim())){
+        this.populatedSubCategories.push(item.subCategory.trim());
       };
-   
+     
     }
     console.log(this.items);
-    console.log(this.memberCategories);
-    console.log(this.memberSubCategories);
   }
 
   onSelectCategory(selectedCategory){
