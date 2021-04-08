@@ -124,9 +124,14 @@ export class ViewItemsService {
   }
 
   deleteItem(index: number, itemId: number){
-    this.fetchedItems.splice(index, 1);
+    // this.fetchedItems.splice(index, 1);
     this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
       console.log(data)
     });
+    this.fetchItems().subscribe(
+      updatedItems =>{
+        this.fetchedItems = updatedItems;
+      }
+    )
   }
 }
