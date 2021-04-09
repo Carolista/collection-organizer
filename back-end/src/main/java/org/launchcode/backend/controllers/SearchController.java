@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 @Controller
+@RequestMapping("/api/search")
 public class SearchController {
 
     @Autowired
@@ -29,7 +32,7 @@ public class SearchController {
 
 //Anya has hers set to /api/item, should mine be at this location too?
 
-@GetMapping("/search")
+@GetMapping
     public String search (@Param("keyWord") String keyWord) {   //@Param set to value instead of keyword?
 
         List<Item> searchResult = itemRepository.search(keyWord);
