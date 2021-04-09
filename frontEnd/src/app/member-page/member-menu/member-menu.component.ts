@@ -12,6 +12,8 @@ export class MemberMenuComponent implements OnInit {
   items: Item[] = []
   populatedCategories = [];
   populatedSubCategories = [];
+  myCategoriesOpen: boolean = false;
+  categorySelected: boolean = false;
 
   constructor(private viewItemsService: ViewItemsService) { }
 
@@ -38,7 +40,12 @@ export class MemberMenuComponent implements OnInit {
     console.log(this.items);
   }
 
+  onOpenMyCategories(){
+    this.myCategoriesOpen = !this.myCategoriesOpen;
+  }
+
   onSelectCategory(selectedCategory){
+    this.categorySelected = !this.categorySelected;
     console.log("category selected: " + selectedCategory);
   }
 }
