@@ -54,18 +54,23 @@ export class ItemDetailComponent implements OnInit {
       'This item will be permanently deleted. Are you sure you want to delete this itme?');
     if (confirm === true) {
 
-      this.viewItemsService.fetchedItems.splice(this.id, 1);
+      // this.viewItemsService.fetchedItems.splice(this.id, 1);
 
     this.viewItemsService.deleteItem(this.id, this.itemData.id);
+    
 
-      this.viewItemsService.fetchItems().subscribe(
-        fetchedItems =>{
-          this.viewItemsService.fetchedItems = fetchedItems;
-        }
-      );
+      // this.viewItemsService.fetchItems().subscribe(
+      //   fetchedItems =>{
+      //     this.viewItemsService.fetchedItems = fetchedItems;
+      //   }
+      // );
     
     this.router.navigate(['/member-page']);
+      //angular router has some methods to reload the page, 
+      //we can look into it when we have time;
+
     } 
+    // location.reload();doesn't work
   }
 
 }
