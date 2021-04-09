@@ -31,10 +31,6 @@ export class MemberMenuComponent implements OnInit {
       if(!this.populatedCategories.includes(item.category.trim())){
         this.populatedCategories.push(item.category.trim());
       };
- 
-      if(!this.populatedSubCategories.includes(item.subCategory.trim())){
-        this.populatedSubCategories.push(item.subCategory.trim());
-      };
      
     }
     console.log(this.items);
@@ -45,7 +41,14 @@ export class MemberMenuComponent implements OnInit {
   }
 
   onSelectCategory(selectedCategory){
+    this.populatedSubCategories = [];
     this.categorySelected = !this.categorySelected;
+    for(let item of this.items){
+      if(item.category===selectedCategory && !this.populatedSubCategories.includes(item.subCategory.trim())){
+        this.populatedSubCategories.push(item.subCategory.trim());
+      }
+    }
     console.log("category selected: " + selectedCategory);
+    console.log(this.populatedSubCategories);
   }
 }
