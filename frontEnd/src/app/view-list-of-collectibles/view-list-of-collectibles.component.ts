@@ -11,6 +11,8 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
 
   viewMyCollection: boolean = true;
   items: Item[] = [];
+  categorySelected: boolean = false;
+  displayedItems: Item[] = [];
 
   constructor(private viewItemsService: ViewItemsService) { 
   }
@@ -27,8 +29,10 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
     // this.items = this.viewItemsService.listOfItems;
   }
 
-ngOnDestroy():void {
-  // this.viewItemsService.fetchedItems = [];
-}
+
+
+  ngOnDestroy():void {
+    // this.viewItemsService.fetchedItems = [];
+  }
 
 }

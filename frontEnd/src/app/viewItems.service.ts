@@ -74,6 +74,7 @@ export class ViewItemsService {
   // ];
 
   fetchedItems: Item[] = [];  
+  itemsToDisplay: Item[] = [];
 
   constructor(private http: HttpClient){};
 
@@ -96,15 +97,11 @@ export class ViewItemsService {
       );
     }
  
- 
   //   getItems(){
   //   console.log("got items");
   //   return this.listOfItems.slice();  
   // }
 
-  // getItemData(index: number){
-  //     return this.listOfItems[index];
-  // }
   getItemData(index: number){
     return this.fetchedItems[index];
   }
@@ -117,10 +114,6 @@ export class ViewItemsService {
       console.log(data)
     });
 
-    //this code was deleting the item from the database
-    // this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
-    //   console.log(data)
-    // });
   }
 
   deleteItem(index: number, itemId: number){
@@ -134,4 +127,14 @@ export class ViewItemsService {
       }
     )
   }
+
+  displayItems(selectedCategory){
+    for(let item of this.fetchedItems){
+      if(item.category.trim()===selectedCategory){
+        this.itemsToDisplay.push(item);
+      }
+    }
+    
+  }
+
 }

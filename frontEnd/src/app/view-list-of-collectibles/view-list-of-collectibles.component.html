@@ -9,7 +9,9 @@
       <hr>
     </div>
   </div>
-  <div class="row">
+
+  <!--display all fetched items if no category is selected-->
+  <div class="row" *ngIf="!categorySelected">
     <div class="row align-items-end">
       <div 
         class="col text-center" 
@@ -23,5 +25,23 @@
         </a>
       </div>
     </div>
+
+    <!--display only items in category if a category is selected-->
+    <div class="row" *ngIf="categorySelected">
+      <div class="row align-items-end">
+        <div 
+          class="col text-center" 
+          *ngFor="let item of displayedItems; let i = index"
+          routerLinkActive="active"
+          style="cursor: pointer;">
+          <a [routerLink]="i">
+            <img [src]="item.imagePath">
+            <h5>{{item.title}}</h5>
+            <p>{{item.description}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

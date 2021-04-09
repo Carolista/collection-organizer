@@ -48,7 +48,10 @@ export class MemberMenuComponent implements OnInit {
         this.populatedSubCategories.push(item.subCategory.trim());
       }
     }
+    this.viewItemsService.displayItems(selectedCategory);
+    console.log(this.viewItemsService.itemsToDisplay);
     console.log("category selected: " + selectedCategory);
     console.log(this.populatedSubCategories);
   }
+
 }
