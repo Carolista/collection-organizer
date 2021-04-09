@@ -30,13 +30,14 @@ public class SearchController {
 //Anya has hers set to /api/item, should mine be at this location too?
 
 @GetMapping("/search")
-    public String search (@Param("keyword") String keyword) {   //@Param set to value instead of keyword?
+    public String search (@Param("keyWord") String keyWord) {   //@Param set to value instead of keyword?
 
-        List<Item> searchResult = itemRepository.search(keyword);
+        List<Item> searchResult = itemRepository.search(keyWord);
         if (searchResult.equals("all") || searchResult.equals("")) {
             Item = itemRepository.findAll();
-        } else if (searchResult.equals("keyword")) {
-            Item = itemRepository.search(keyword);
+        } else if (searchResult.equals("keyWord")) {
+
+            Item = itemRepository.search(keyWord);
         }
            return "searchResult";
         }
