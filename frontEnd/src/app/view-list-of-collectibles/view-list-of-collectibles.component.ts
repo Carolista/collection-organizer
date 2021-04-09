@@ -17,8 +17,8 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   constructor(private viewItemsService: ViewItemsService) { 
     this.viewItemsService.selectedCategoryItems.subscribe(
       (selectedCategoryItems: Item[]) => {
-        this.categorySelected = true;
-        this.displayedItems = selectedCategoryItems;
+        // this.categorySelected = true;
+        this.items = selectedCategoryItems;
         console.log(this.displayedItems);
       }
     );
