@@ -46,10 +46,11 @@ export class NavbarHeaderComponent implements OnInit {
     //let params = new HttpParams({fromString: 'page=' + PageNo + '&sort=' + SortOn});
 
       this.viewItemsService.userSelectedParams = searchStringParams;
-      this.http.get("http://localhost:8080/api/item", searchStringParams).subscribe(response =>{
+      this.http.get("http://localhost:8080/api/search", searchStringParams).subscribe(response =>{
         console.log(response.valueOf());
+        
       });
-    
+    console.log(searchStringParams);
   }
 
   onBrowseCategories(clickedArrIndex:number){
