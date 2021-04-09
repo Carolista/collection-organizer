@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Item } from 'src/app/ItemClass';
 import { ViewItemsService } from '../viewItems.service'
@@ -53,10 +53,24 @@ export class ItemDetailComponent implements OnInit {
     let confirm = window.confirm(
       'This item will be permanently deleted. Are you sure you want to delete this itme?');
     if (confirm === true) {
-    this.viewItemsService.deleteItem(this.id, this.itemData.id);
 
+      // this.viewItemsService.fetchedItems.splice(this.id, 1);
+
+    this.viewItemsService.deleteItem(this.id, this.itemData.id);
+    
+
+      // this.viewItemsService.fetchItems().subscribe(
+      //   fetchedItems =>{
+      //     this.viewItemsService.fetchedItems = fetchedItems;
+      //   }
+      // );
+    
     this.router.navigate(['/member-page']);
+      //angular router has some methods to reload the page, 
+      //we can look into it when we have time;
+
     } 
+    // location.reload();doesn't work
   }
 
 }

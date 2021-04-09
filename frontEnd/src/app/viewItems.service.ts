@@ -1,6 +1,7 @@
   
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Params } from "@angular/router";
 import { map } from 'rxjs/operators';
 import { Item } from "./ItemClass"
 
@@ -11,6 +12,7 @@ export class ViewItemsService {
   editedItemValue: Item; //these values are for the edited item data to be saved and posted to the back end
   valuesForEditingItem: Item; //these values are for the input field to be changed out in the add-item-form
   fetchedItemsIndex: number;
+  userSelectedParams: Params;
 
   //soon list of items will be fetching an array of objects from the back end.
   listOfItems: any = [
@@ -74,22 +76,11 @@ export class ViewItemsService {
   fetchedItems: Item[] = [];  
 
   constructor(private http: HttpClient){};
-  //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
 
-  fetchItems(){
-    //needs to be updated to accomidate edit items function from the item detail component
-    //currently doesn't work properly when edditing items or adding items.
-     
-    //original syntax  
-    // this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
-    //     for (let key in data){
-    //       if (data.hasOwnProperty(key)){
-    //         this.fetchedItems.push(data[key.valueOf()]);
-    //       }
-    //     }
-    //   });
+  fetchItems(){    
 
-     //new syntax will use observables, I hope it will fix the bug 
+     //when we're fetching data with query params, update this method
+     //to includ query param as a second argument
      return this.http
       .get('http://localhost:8080/api/item/')
       .pipe(
@@ -119,21 +110,28 @@ export class ViewItemsService {
   }
 
   editItem(index:number, itemId: number){
-    // console.log('EDITED VALUE SAVES', this.editedItemValue);
-
     this.fetchedItems.splice(index, 1, this.editedItemValue);
 
     //this method needs to be tested with the back end
     this.http.put('http://localhost:8080/api/item/'+ itemId, this.editedItemValue).subscribe( data=>{
       console.log(data)
-      
     });
+
+    //this code was deleting the item from the database
+    // this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
+    //   console.log(data)
+    // });
   }
 
   deleteItem(index: number, itemId: number){
-    this.fetchedItems.splice(index, 1);
+    // this.fetchedItems.splice(index, 1);
     this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
       console.log(data)
     });
+    this.fetchItems().subscribe(
+      updatedItems =>{
+        this.fetchedItems = updatedItems;
+      }
+    )
   }
 }
