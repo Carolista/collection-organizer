@@ -31,7 +31,7 @@
       <div class="row align-items-end">
         <div 
           class="col text-center" 
-          *ngFor="let item of displayedItems; let i = index"
+          *ngFor="let item of this.displayedItems; let i = index"
           routerLinkActive="active"
           style="cursor: pointer;">
           <a [routerLink]="i">

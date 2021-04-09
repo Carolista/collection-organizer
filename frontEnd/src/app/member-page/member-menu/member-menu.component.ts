@@ -40,7 +40,7 @@ export class MemberMenuComponent implements OnInit {
     this.myCategoriesOpen = !this.myCategoriesOpen;
   }
 
-  onSelectCategory(selectedCategory){
+  onSelectCategory(selectedCategory: string){
     this.populatedSubCategories = [];
     this.categorySelected = !this.categorySelected;
     for(let item of this.items){
@@ -49,6 +49,8 @@ export class MemberMenuComponent implements OnInit {
       }
     }
     this.viewItemsService.displayItems(selectedCategory);
+    this.viewItemsService.selectedCategoryItems.emit(this.viewItemsService.itemsToDisplay);
+
     console.log(this.viewItemsService.itemsToDisplay);
     console.log("category selected: " + selectedCategory);
     console.log(this.populatedSubCategories);

@@ -15,6 +15,13 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   displayedItems: Item[] = [];
 
   constructor(private viewItemsService: ViewItemsService) { 
+    this.viewItemsService.selectedCategoryItems.subscribe(
+      (selectedCategoryItems: Item[]) => {
+        this.categorySelected = true;
+        this.displayedItems = selectedCategoryItems;
+        console.log(this.displayedItems);
+      }
+    );
   }
 
   ngOnInit(): void {

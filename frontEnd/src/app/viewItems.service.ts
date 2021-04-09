@@ -1,6 +1,6 @@
   
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Params } from "@angular/router";
 import { map } from 'rxjs/operators';
 import { Item } from "./ItemClass"
@@ -13,6 +13,10 @@ export class ViewItemsService {
   valuesForEditingItem: Item; //these values are for the input field to be changed out in the add-item-form
   fetchedItemsIndex: number;
   userSelectedParams: Params;
+  fetchedItems: Item[] = [];  
+  itemsToDisplay: Item[] = [];
+  selectedCategoryItems = new EventEmitter<Item[]>();
+
 
   //soon list of items will be fetching an array of objects from the back end.
   // listOfItems: any = [
@@ -73,9 +77,6 @@ export class ViewItemsService {
   //   }
   // ];
 
-  fetchedItems: Item[] = [];  
-  itemsToDisplay: Item[] = [];
-
   constructor(private http: HttpClient){};
 
   fetchItems(){    
@@ -134,7 +135,7 @@ export class ViewItemsService {
         this.itemsToDisplay.push(item);
       }
     }
-    
+    console.log(this.itemsToDisplay);
   }
 
 }
