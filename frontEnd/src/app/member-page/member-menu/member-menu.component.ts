@@ -22,18 +22,20 @@ export class MemberMenuComponent implements OnInit {
     this.viewItemsService.fetchItems().subscribe(
       fetchedItems =>{
         this.viewItemsService.fetchedItems = fetchedItems;
+        this.items = this.viewItemsService.fetchedItems;
+        for(let item of this.items) {
+
+          if(!this.populatedCategories.includes(item.category.trim())){
+            this.populatedCategories.push(item.category.trim());
+          };
+         
+        }
+        console.log(this.items);
       }
     );
-    this.items = this.viewItemsService.fetchedItems;
+    
 
-    for(let item of this.items) {
-
-      if(!this.populatedCategories.includes(item.category.trim())){
-        this.populatedCategories.push(item.category.trim());
-      };
-     
-    }
-    console.log(this.items);
+    
   }
 
   onOpenMyCategories(){

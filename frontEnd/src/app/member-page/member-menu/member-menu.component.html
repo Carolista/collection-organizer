@@ -5,7 +5,7 @@
       <h3 class="text-center text-primary" style="padding-top: 12px;">Options</h3>
   <hr>
 
-  <div *ngIf="this.items.length > 0" style="cursor: pointer"><a>All Items</a></div>
+  <div *ngIf="this.items.length > 0" style="cursor: pointer"><a>View All Items</a></div>
   
   <!--using list-group to display categories w/out dropdown; improve styling for list-group and list-group-items-->
     <!-- <ul class='list-group'>My Categories
@@ -49,8 +49,8 @@
         </a>
         <ul *ngIf="this.categorySelected" style="cursor: pointer">
           <li>
-            <a style="font-size: smaller;" 
-            *ngFor="let subcategory of populatedSubcategories; let i=index">{{ subcategory }}</a>
+            <!-- <a style="font-size: smaller;" 
+            *ngFor="let subcategory of populatedSubcategories; let i=index">{{ subcategory }}</a> -->
           </li>
         </ul>
       </li>
@@ -66,7 +66,8 @@
     </div> -->
      
   </div>
-  <div style="cursor: pointer">My Profile</div>
+
+  <!-- <div style="cursor: pointer">My Profile</div> -->
 
   <div routerLinkActive="selected"><a routerLink="../member-page/add-item">Add Item</a></div>
 
