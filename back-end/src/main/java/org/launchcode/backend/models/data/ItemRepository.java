@@ -28,7 +28,7 @@ public interface ItemRepository extends CrudRepository <Item, Long>{
             + "AGAINST(?1)",
             nativeQuery = true)
 
-    public List<Item> search(String searchTerm);
+    public ArrayList<Item> search(String searchResult);
 
 
 

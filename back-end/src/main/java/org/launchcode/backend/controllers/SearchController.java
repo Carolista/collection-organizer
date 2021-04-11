@@ -21,7 +21,7 @@ public class SearchController {
 
     @Autowired
     public ItemRepository itemRepository;
-    private Object Item;
+
 
     public SearchController() {
 
