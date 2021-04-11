@@ -34,12 +34,17 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
     )
     /*alternative way of getting items without using a function, which might be better for once we are fetching to an array in that service:*/
     // this.items = this.viewItemsService.listOfItems;
+    
   }
-
-
 
   ngOnDestroy():void {
     // this.viewItemsService.fetchedItems = [];
+  }
+
+  onFetchMyCollectionData(){
+    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+      this.viewItemsService.selectedCategoryItems.emit(myCollection);
+    });     
   }
 
 }

@@ -29,11 +29,8 @@ export class MemberMenuComponent implements OnInit {
 
           if(!this.populatedCategories.includes(item.category.trim())){
             this.populatedCategories.push(item.category.trim());
-            // this.populatedSubCategories.push(item.subCategory.trim());
           };
-         
         }
-        console.log(this.items);
       }
     );
     
@@ -65,16 +62,16 @@ export class MemberMenuComponent implements OnInit {
     this.categorySelected=!!this.categorySelected;  
     }
 
+    onFetchMyCollectionData(){
+      this.viewItemsService.fetchItems().subscribe (myCollection =>{
+        this.viewItemsService.selectedCategoryItems.emit(myCollection);
+      });  
+      
+    }
 
-   
+
     // this.viewItemsService.displayItems(selectedCategory);
     // this.viewItemsService.selectedCategoryItems.emit(this.viewItemsService.itemsToDisplay);
-
-    // console.log(this.viewItemsService.itemsToDisplay);
-    // console.log("category selected: " + selectedCategory);
-    // console.log(this.populatedSubCategories[0]);
-
-    // return this.populatedSubCategories;
     
 
 }

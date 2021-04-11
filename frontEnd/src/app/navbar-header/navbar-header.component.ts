@@ -81,9 +81,6 @@ export class NavbarHeaderComponent implements OnInit {
 
 
   onFetchMyCollectionData(){
-    //1 fetch all data from the back end
-    //2 emit that data as an event emmiter
-    //3 view collectibles page will subscribe
     this.viewItemsService.fetchItems().subscribe (myCollection =>{
       this.viewItemsService.selectedCategoryItems.emit(myCollection);
     });  

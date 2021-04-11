@@ -129,13 +129,14 @@ export class ViewItemsService {
     )
   }
 
-  displayItems(selectedCategory){
-    for(let item of this.fetchedItems){
-      if(item.category.trim()===selectedCategory){
-        this.itemsToDisplay.push(item);
-      }
-    }
-    console.log(this.itemsToDisplay);
-  }
+  //didn't need to use this method yet
+  // displayItems(selectedCategory){
+  //   for(let item of this.fetchedItems){
+  //     if(item.category.trim()===selectedCategory){
+  //       this.itemsToDisplay.push(item);
+  //     }
+  //   }
+  //   console.log(this.itemsToDisplay);
+  // }
 
 }

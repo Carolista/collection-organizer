@@ -1,13 +1,17 @@
 <!-- <div class="container"> -->
-  <h1>My Collection</h1>
+  <h1
+  style="cursor: pointer;"
+  (click)="onFetchMyCollectionData()"
+  >My Collection</h1>
   <hr>
-  <div class="row">
-    <div *ngIf='viewMyCollection'>
-      <button routerLinkActive="selected">
-        <a routerLink="/member-page/add-item">Add an item to my collection</a>
-      </button>        
-      <hr>
-    </div>
+  <div 
+  *ngIf='viewMyCollection'
+  class="d-flex justify-content-end">
+    <button 
+    class="rounded"
+    routerLinkActive="selected">
+      <a routerLink="/member-page/add-item">Add an item to my collection</a>
+    </button> 
   </div>
 
   <!--display all fetched items if no category is selected-->
@@ -44,4 +48,4 @@
     </div> -->
 
   </div>
-<!-- </div> -->
+<!-- </div>s -->
