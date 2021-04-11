@@ -1,7 +1,7 @@
-<!-- <div class="container bg-light" style="min-height: 100vh"> -->
+<div class="container">
 
   <div class="row">
-    <div class="col">
+    <div class="col-12">
       <h3 class="text-center text-primary" style="padding-top: 12px;">Options</h3>
   <hr>
 
@@ -43,15 +43,26 @@
   <div *ngIf="this.items.length > 0">
     <a style="cursor: pointer" (click)="onOpenMyCategories()">My Categories</a>
     <ul *ngIf="this.myCategoriesOpen" class="list-unstyled" style="cursor: pointer">
-      <li>
+      <li
+      *ngFor="let category of populatedCategories;
+      let i=index" (click)="onSelectCategory(category)"
+      >
         <a style="cursor: pointer; font-size: smaller" 
-        *ngFor="let category of populatedCategories; let i=index" (click)="onSelectCategory(category)">{{ category }}
+        >{{ category }}
         </a>
         <ul *ngIf="this.categorySelected" style="cursor: pointer">
-          <li>
-            <!-- <a style="font-size: smaller;" 
-            *ngFor="let subcategory of populatedSubcategories; let i=index">{{ subcategory }}</a> -->
-          </li>
+          <!-- <li>
+            <a>
+              {{subcategory.subCategory}}
+            </a>
+          </li> -->
+          <div *ngFor="let subcategory of viewSelectedCategory; let j=index">
+            <li *ngIf = "category == subcategory.category">
+              <a 
+              style="font-size: smaller;" 
+              >{{subcategory.subCategory}}</a>
+            </li>
+          </div>
         </ul>
       </li>
     </ul>
@@ -105,6 +116,6 @@
 
 
 
-<!-- </div> -->
+</div>
 
 

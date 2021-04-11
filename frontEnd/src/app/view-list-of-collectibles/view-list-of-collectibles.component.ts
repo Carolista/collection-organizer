@@ -19,7 +19,7 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
       (selectedCategoryItems: Item[]) => {
         // this.categorySelected = true;
         this.items = selectedCategoryItems;
-        console.log(this.displayedItems);
+        console.log(this.items);
       }
     );
   }

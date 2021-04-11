@@ -15,6 +15,8 @@ export class MemberMenuComponent implements OnInit {
   myCategoriesOpen: boolean = false;
   categorySelected: boolean = false;
 
+  viewSelectedCategory: Item[]=[];
+
   constructor(private viewItemsService: ViewItemsService) { }
 
   ngOnInit(): void {
@@ -27,14 +29,13 @@ export class MemberMenuComponent implements OnInit {
 
           if(!this.populatedCategories.includes(item.category.trim())){
             this.populatedCategories.push(item.category.trim());
+            // this.populatedSubCategories.push(item.subCategory.trim());
           };
          
         }
         console.log(this.items);
       }
     );
-    
-
     
   }
 
@@ -43,19 +44,35 @@ export class MemberMenuComponent implements OnInit {
   }
 
   onSelectCategory(selectedCategory: string){
-    this.populatedSubCategories = [];
+    // // this.populatedSubCategories = [];
     this.categorySelected = !this.categorySelected;
-    for(let item of this.items){
-      if(item.category===selectedCategory && !this.populatedSubCategories.includes(item.subCategory.trim())){
-        this.populatedSubCategories.push(item.subCategory.trim());
-      }
-    }
-    this.viewItemsService.displayItems(selectedCategory);
-    this.viewItemsService.selectedCategoryItems.emit(this.viewItemsService.itemsToDisplay);
+    this.viewSelectedCategory = [];
+    for(let item of this.items) {
 
-    console.log(this.viewItemsService.itemsToDisplay);
-    console.log("category selected: " + selectedCategory);
-    console.log(this.populatedSubCategories);
-  }
+      if(selectedCategory === item.category.trim()){
+        this.viewSelectedCategory.push(item);
+        console.log(this.viewSelectedCategory);
+      };
+
+    }
+    this.viewItemsService.selectedCategoryItems.emit(this.viewSelectedCategory);
+    this.categorySelected=!!this.categorySelected;  
+    }
+
+
+    // for(let item of this.items){
+    //   if(item.category===selectedCategory && !this.populatedSubCategories.includes(item.subCategory.trim())){
+    //     this.populatedSubCategories.push(item.subCategory.trim());
+    //   }
+    // }
+    // this.viewItemsService.displayItems(selectedCategory);
+    // this.viewItemsService.selectedCategoryItems.emit(this.viewItemsService.itemsToDisplay);
+
+    // console.log(this.viewItemsService.itemsToDisplay);
+    // console.log("category selected: " + selectedCategory);
+    // console.log(this.populatedSubCategories[0]);
+
+    // return this.populatedSubCategories;
+    
 
 }
