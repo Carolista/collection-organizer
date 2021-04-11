@@ -79,9 +79,15 @@ export class NavbarHeaderComponent implements OnInit {
   console.log(this.viewItemsService.userSelectedParams)
   }
 
-  // decided to move this to view-list-of-collections ngOnInit
-  // // onFetchMyCollectionData(){
-  // //   this.viewItemsService.fetchItems();
-  // // }
+
+  onFetchMyCollectionData(){
+    //1 fetch all data from the back end
+    //2 emit that data as an event emmiter
+    //3 view collectibles page will subscribe
+    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+      this.viewItemsService.selectedCategoryItems.emit(myCollection);
+    });  
+    
+  }
 
 }
