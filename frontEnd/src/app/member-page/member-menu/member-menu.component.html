@@ -57,7 +57,7 @@
             </a>
           </li> -->
           <div *ngFor="let subcategory of populatedSubCategories; let j=index">
-            <li *ngIf = "category == viewSelectedCategory[i].category">
+            <li *ngIf = "category == viewSelectedCategory[0].category">
               <a 
               style="font-size: smaller;" 
               >{{subcategory}}</a>
