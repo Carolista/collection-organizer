@@ -56,11 +56,11 @@
               {{subcategory.subCategory}}
             </a>
           </li> -->
-          <div *ngFor="let subcategory of viewSelectedCategory; let j=index">
-            <li *ngIf = "category == subcategory.category">
+          <div *ngFor="let subcategory of populatedSubCategories; let j=index">
+            <li *ngIf = "category == viewSelectedCategory[i].category">
               <a 
               style="font-size: smaller;" 
-              >{{subcategory.subCategory}}</a>
+              >{{subcategory}}</a>
             </li>
           </div>
         </ul>

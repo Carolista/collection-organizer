@@ -47,24 +47,26 @@ export class MemberMenuComponent implements OnInit {
     // // this.populatedSubCategories = [];
     this.categorySelected = !this.categorySelected;
     this.viewSelectedCategory = [];
+    this.populatedSubCategories = [];
     for(let item of this.items) {
 
       if(selectedCategory === item.category.trim()){
         this.viewSelectedCategory.push(item);
         console.log(this.viewSelectedCategory);
       };
+    }
 
+     for(let item of this.viewSelectedCategory){
+      if(!this.populatedSubCategories.includes(item.subCategory.trim())){
+        this.populatedSubCategories.push(item.subCategory.trim());
+      }
     }
     this.viewItemsService.selectedCategoryItems.emit(this.viewSelectedCategory);
     this.categorySelected=!!this.categorySelected;  
     }
 
 
-    // for(let item of this.items){
-    //   if(item.category===selectedCategory && !this.populatedSubCategories.includes(item.subCategory.trim())){
-    //     this.populatedSubCategories.push(item.subCategory.trim());
-    //   }
-    // }
+   
     // this.viewItemsService.displayItems(selectedCategory);
     // this.viewItemsService.selectedCategoryItems.emit(this.viewItemsService.itemsToDisplay);
 
