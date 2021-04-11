@@ -16,16 +16,13 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @Controller
-@RequestMapping("/api/search")
+@RequestMapping("search")
 public class SearchController {
 
     @Autowired
     public ItemRepository itemRepository;
 
-
-
     public List<Item> searchResult = new ArrayList<>();
-
 
     @GetMapping("")
     public List<Item> displaySearchResults(@Param("searchTerm")String searchTerm, @Param("category")String category,
