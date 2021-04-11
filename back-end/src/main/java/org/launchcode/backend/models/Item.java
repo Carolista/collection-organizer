@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 
 @Entity
 public class Item extends AbstractEntity {
@@ -153,12 +154,12 @@ public class Item extends AbstractEntity {
     }
 
 
-
+//
 //    @Autowired
 //    private ItemRepository itemRepository;
 //
-//    private List<Item> search(String keyword) {
-//        return itemRepository.search(keyword);
+//    private ArrayList<Item> search(String searchResult) {
+//        return itemRepository.search(searchResult);
 //    }
 
 

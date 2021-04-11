@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/search")
+@RequestMapping(value = "api/search", method = RequestMethod.POST)
 public class SearchController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class SearchController {
             }
         }
 
-        return search; // I've tried "search" "item/search" "searchResult"
+        return "item/search"; // I've tried "search" "item/search" "searchResult"
     }
 
 }
