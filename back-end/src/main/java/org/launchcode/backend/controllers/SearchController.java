@@ -28,10 +28,9 @@ public class SearchController {
     }
 
 
-//Anya has hers set to /api/item, should mine be at this location too?
 
     @GetMapping
-    public String searchResult(@RequestParam(value = "search") String search) {
+    public String searchResult(@Param(value = "search") String search) {
         ArrayList<Item> searchResult = new ArrayList<Item>();
         for(Item item :itemRepository.findAll()){
             if(item.equals(search.toLowerCase())){
@@ -39,7 +38,7 @@ public class SearchController {
             }
         }
 
-        return "searchResult";
+        return search; // I've tried "search" "item/search" "searchResult"
     }
 
 }
