@@ -23,32 +23,47 @@ public class SearchController {
     public ItemRepository itemRepository;
     private Object Item;
 
-    public SearchController(){
+    public SearchController() {
 
     }
 
 
 //Anya has hers set to /api/item, should mine be at this location too?
 
-@PostMapping
+    @GetMapping
+    public String searchResult(@RequestParam(value = "search") String search) {
+        ArrayList<Item> searchResult = new ArrayList<Item>();
+        for(Item item :itemRepository.findAll()){
+            if(item.equals(search.toLowerCase())){
+                searchResult.add(item);
+            }
+        }
+
+        return "searchResult";
+    }
+
+}
+//
 //@GetMapping
-    public String search (@RequestParam("keyWord") String keyWord) {   //@Param set to value instead of keyword?
+////@GetMapping
+//    public String search (@Param("searchTerm") String searchTerm) {
+//
+//      Iterable  <Item> searchResult = //new List <Item>();
+////        if (searchTerm.equals("")) {
+////            searchResult= itemRepository.findAll();
+////        } else {
+//            searchResult = itemRepository.search(searchTerm.toLowerCase());
+////        }
+//
+//           return "searchResult";
+//        }
 
-        List<Item> searchResult = itemRepository.search(keyWord.toLowerCase());
-        if (searchResult.equals("all") || searchResult.contains("")) {
-            Item = itemRepository.findAll();
-        } else if (searchResult.contains("keyWord")) {
-
-            Item = itemRepository.search(keyWord.toLowerCase());
-        }
-           return "searchResult";
-        }
 
 //
 // @PostMapping
 //    public String displaySearchResults
 
-}
+//}
 
 
 

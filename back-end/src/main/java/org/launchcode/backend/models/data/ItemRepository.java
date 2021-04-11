@@ -27,7 +27,11 @@ public interface ItemRepository extends CrudRepository <Item, Long>{
             + "MATCH(title, category, cond, creator, description, place_of_origin, refs, sub_category) "
             + "AGAINST(?1)",
             nativeQuery = true)
-    public List<Item> search(String keyWord);
+
+    public List<Item> search(String searchTerm);
+
+
+
 
 //    @PostMapping("/search")
 //    public List<Item> getFilteredData(@RequestBody Item item) {

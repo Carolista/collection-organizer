@@ -42,7 +42,7 @@ export class NavbarHeaderComponent implements OnInit {
     //onces this method is proven to be working, I will move it into the service
     //for testing purposes only, I leave it in this component.
 
-      const searchStringParams = { params: new HttpParams({fromString: 'keyWord=' + this.userSearch.get('userInput').value}) };
+      const searchStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.userSearch.get('userInput').value}) };
     //let params = new HttpParams({fromString: 'page=' + PageNo + '&sort=' + SortOn});
 
       this.viewItemsService.userSelectedParams = searchStringParams;
@@ -64,7 +64,7 @@ export class NavbarHeaderComponent implements OnInit {
 
     this.viewItemsService.userSelectedParams = browseStringParams;
 
-      this.http.get("http://localhost:8080/api/item", browseStringParams).subscribe(response =>{
+      this.http.get("http://localhost:8080/api/search", browseStringParams).subscribe(response =>{
         console.log(response.valueOf());
       });
       console.log(this.viewItemsService.userSelectedParams)
@@ -74,7 +74,7 @@ export class NavbarHeaderComponent implements OnInit {
   //this function needs to be tested, after moved to the service
   const browseStringParams = 
   { params: new HttpParams({fromString: this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
-  this.http.get("http://localhost:8080/api/item", browseStringParams).subscribe(response =>{
+  this.http.get("http://localhost:8080/api/search", browseStringParams).subscribe(response =>{
     console.log(response.valueOf());
   });
 
