@@ -16,6 +16,7 @@ export class NavbarHeaderComponent implements OnInit {
 
   onSignIn() {
     this.memberSignedIn = !this.memberSignedIn;
+    console.log(this.memberSignedIn);
   }
   
 }

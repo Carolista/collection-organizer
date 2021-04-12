@@ -21,20 +21,20 @@
       </form>
 
       <ul class="navbar-nav">
-        <!--add logic here to see if user is signed in-->
-        <li class="nav-item" *ngIf=!memberSignedIn" routerLinkActive="selected">
+        <li class="nav-item" *ngIf="!memberSignedIn" routerLinkActive="selected" role="button">
           <a class="nav-link text-uppercase font-weight-bold px-3" 
           routerLink="member-sign-in"
-          >sign in</a>
+          (click)="onSignIn">sign in</a>
         </li>
-        <li class="nav-item" *ngIf=!memberSignedIn" routerLinkActive="selected">
-          <a class="nav-link text-uppercase font-weight-bold px-3"
+        <li class="nav-item" *ngIf="!memberSignedIn" routerLinkActive="selected" role="button">
+          <a class="nav-link text-uppercase font-weight-bold px-3" 
           routerLink="member-sign-in"
-          >sign up</a>
+          (click)="onSignIn">sign up</a>
         </li>
-        <li class="nav-item" *ngIf="memberSignedIn">
+        <li class="nav-item" *ngIf="memberSignedIn" routerLink="selected" role="button">
           <!--add method here to log out when clicked-->
-          <a class="nav-link text-uppercase font-weight-bold px-3" href='#'>log out </a>
+          <a class="nav-link text-uppercase font-weight-bold px-3" 
+          routerLink="home" (click)="onSignIn">log out</a>
         </li>
       </ul>
 

@@ -14,7 +14,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AboutTeamComponent } from './landing-page/about-team/about-team.component';
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
-import { MemberAuthorizationComponent } from './member-authorization/member-authorization.component';
 import { MemberAuthenticationComponent } from './member-authentication/member-authentication.component';
 
 @NgModule({
@@ -30,7 +29,6 @@ import { MemberAuthenticationComponent } from './member-authentication/member-au
     ItemDetailComponent,
     AboutTeamComponent,
     AboutProjectComponent,
-    MemberAuthorizationComponent,
     MemberAuthenticationComponent,
   ],
   imports: [
