@@ -15,13 +15,21 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   displayedItems: Item[] = [];
 
   constructor(private viewItemsService: ViewItemsService) { 
+    //right now this functionality doesn't work because both subscriptions are executed.
+    //need to create a switch that will turn off category subscription if subcategory is selected
     this.viewItemsService.selectedCategoryItems.subscribe(
       (selectedCategoryItems: Item[]) => {
-        // this.categorySelected = true;
+        // this.categorySelected = true; ??? check how it works
         this.items = selectedCategoryItems;
-        console.log(this.items);
+        // console.log(this.items);
       }
     );
+      this.viewItemsService.selectedSubcategoryItems.subscribe(
+        (selectedSubcategoryItems: Item[]) =>{
+          this.items = selectedSubcategoryItems;
+        }
+      );
+    
   }
 
   ngOnInit(): void {

@@ -50,7 +50,6 @@ export class MemberMenuComponent implements OnInit {
 
       if(selectedCategory === item.category.trim()){
         this.viewSelectedCategory.push(item);
-        console.log(this.viewSelectedCategory);
       };
     }
 
@@ -61,6 +60,7 @@ export class MemberMenuComponent implements OnInit {
     }
     this.viewItemsService.selectedCategoryItems.emit(this.viewSelectedCategory);
     this.categorySelected=!!this.categorySelected;  
+    console.log('cat'+this.viewSelectedCategory);
     }
 
     onSelectedSubcategory(selectedSubcategory:string){
@@ -71,7 +71,7 @@ export class MemberMenuComponent implements OnInit {
           this.viewSelectedSubcategory.push(item);
         }
       }
-      this.viewItemsService.selectedCategoryItems.emit(this.viewSelectedSubcategory);
+      this.viewItemsService.selectedSubcategoryItems.emit(this.viewSelectedSubcategory);
       console.log('sub'+this.viewSelectedSubcategory);
     }
 
