@@ -4,11 +4,11 @@
       <form>
         <div class="form-group px-3 m-3">
           <label for="email" class="sr-only">Email</label>
-          <input class="form-control" type="email" id="email" placeholder="email" />
+          <input class="form-control" NgModel required password type="email" id="email" placeholder="email" />
         </div>
         <div class="form-group px-3 m-3">
           <label for="password" class="sr-only">Password</label>
-          <input class="form-control" type="password" id="password" placeholder="password" />
+          <input class="form-control" NgModel required email minlength="6" type="password" id="password" placeholder="password" />
         </div>
         <div class='row justify-content-center align-items-center m-3'>
           <div class="col-6">
