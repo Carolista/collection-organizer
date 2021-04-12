@@ -7,14 +7,15 @@ import { ViewItemsService } from '../viewItems.service'
   styleUrls: ['./navbar-header.component.scss']
 })
 export class NavbarHeaderComponent implements OnInit {
+  memberSignedIn: boolean = false;
 
-  constructor(private viewItemsService: ViewItemsService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-  // decided to move this to view-list-of-collections ngOnInit
-  // // onFetchMyCollectionData(){
-  // //   this.viewItemsService.fetchItems();
-  // // }
 
+  onSignIn() {
+    this.memberSignedIn = !this.memberSignedIn;
+  }
+  
 }
