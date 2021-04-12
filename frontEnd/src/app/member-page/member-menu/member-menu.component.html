@@ -62,6 +62,7 @@
           <div *ngFor="let subcategory of populatedSubCategories; let j=index">
             <li *ngIf = "category == viewSelectedCategory[0].category">
               <a 
+              (click)="onSelectedSubcategory(subcategory)"
               style="font-size: smaller;" 
               >{{subcategory}}</a>
             </li>
