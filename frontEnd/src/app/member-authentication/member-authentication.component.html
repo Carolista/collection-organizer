@@ -1,1 +1,26 @@
-<p>member-authentication works!</p>
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="height: 90vh">
+    <div class="col-12">
+      <form>
+        <div class="form-group px-3 m-3">
+          <label for="email" class="sr-only">Email</label>
+          <input class="form-control" type="email" id="email" placeholder="email" />
+        </div>
+        <div class="form-group px-3 m-3">
+          <label for="password" class="sr-only">Password</label>
+          <input class="form-control" type="password" id="password" placeholder="password" />
+        </div>
+        <div class='row justify-content-center align-items-center m-3'>
+          <div class="col-6">
+            <label for="logIn">Click to Sign Up!</label>
+            <button class="btn btn-primary btn-block text-uppercase px-3">Sign Up</button>
+          </div>
+          <div class="col-6">
+            <label for="logIn">Already Have an Account?</label>
+            <button class="btn btn-info btn-block text-uppercase" (click)="onSwitchAuthMode()">Log In</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -24,13 +24,13 @@
         <li class="nav-item" *ngIf="!memberSignedIn" routerLinkActive="selected" role="button">
           <a class="nav-link text-uppercase font-weight-bold px-3" 
           routerLink="member-sign-in"
-          (click)="onSignIn">sign in</a>
+          (click)="onSignIn">sign in/log in</a>
         </li>
-        <li class="nav-item" *ngIf="!memberSignedIn" routerLinkActive="selected" role="button">
+        <!-- <li class="nav-item" *ngIf="!memberSignedIn" routerLinkActive="selected" role="button">
           <a class="nav-link text-uppercase font-weight-bold px-3" 
           routerLink="member-sign-in"
           (click)="onSignIn">sign up</a>
-        </li>
+        </li> -->
         <li class="nav-item" *ngIf="memberSignedIn" routerLink="selected" role="button">
           <!--add method here to log out when clicked-->
           <a class="nav-link text-uppercase font-weight-bold px-3" 
