@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { User } from './user.model'
 
 //these values are specific to firebase; change them to match what spring security/auth0 sends back
-interface AuthResponseData {
+export interface AuthResponseData {
   kind: string,
   idToken: string,
   email: string,
@@ -50,6 +50,32 @@ export class AuthenticationService {
         password: password,
         returnSecureToken: true
       }
-    )
+    ). 
+    //can combine this and similar method in signup into private method
+    pipe(catchError(errorResponse => {
+      let errorMessage = "An error occured! Please try again.";
+      if(!errorResponse || !errorResponse.error.error){
+        return throwError(errorMessage);
+      }
+      switch(errorResponse.error.error.message){
+        case 'EMAIL_EXISTS': errorMessage = "That email is already registered";
+      }
+      return throwError(errorMessage);
+    }),
+      tap(resData =>{
+        this.handleAuthentication(
+          resData.email,
+          resData.localId,
+          resData.idToken,
+          resData.expiresIn,
+        )
+      })
+    );
+  }
+
+  //may need to add userId to parameters; find out how to make that work with resData properties
+  handleAuthentication(email: string, password: string, token: string, tokenExpiration: string){
+    const user = new User(email, password, token, tokenExpiration);
+    this.user.next(user);
   }
 }
