@@ -48,9 +48,11 @@
     <ul *ngIf="this.myCategoriesOpen" class="list-unstyled" style="cursor: pointer">
       <li
       *ngFor="let category of populatedCategories;
-      let i=index" (click)="onSelectCategory(category)"
+      let i=index"
       >
-        <a style="cursor: pointer; font-size: smaller" 
+        <a 
+        (click)="onSelectCategory(category)"
+        style="cursor: pointer; font-size: smaller"
         >{{ category }}
         </a>
         <ul *ngIf="this.categorySelected" style="cursor: pointer">

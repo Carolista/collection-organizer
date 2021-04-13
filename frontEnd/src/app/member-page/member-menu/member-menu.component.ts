@@ -42,7 +42,8 @@ export class MemberMenuComponent implements OnInit {
   }
 
   onSelectCategory(selectedCategory: string){
-    this.viewItemsService.subcategorySelected = false;
+    // this.viewItemsService.subcategorySelected = false; didin't work as intended
+
     this.categorySelected = !this.categorySelected;
     this.viewSelectedCategory = [];
     this.populatedSubCategories = [];
@@ -64,7 +65,8 @@ export class MemberMenuComponent implements OnInit {
     }
 
     onSelectedSubcategory(selectedSubcategory:string){
-      this.viewItemsService.subcategorySelected = true;
+      // this.viewItemsService.subcategorySelected = true; didn't work
+      this.viewItemsService.selectedCategoryItems.emit();
       this.viewSelectedSubcategory = [];
 
       for (let item of this.viewSelectedCategory){
@@ -72,7 +74,7 @@ export class MemberMenuComponent implements OnInit {
           this.viewSelectedSubcategory.push(item);
         }
       }
-      this.viewItemsService.selectedSubcategoryItems.emit(this.viewSelectedSubcategory);
+      this.viewItemsService.selectedCategoryItems.emit(this.viewSelectedSubcategory);
       console.log('sub'+this.viewSelectedSubcategory);
       console.log(this.viewItemsService.subcategorySelected);
     }

@@ -24,11 +24,11 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
         // console.log(this.items);
       }
     );
-      this.viewItemsService.selectedSubcategoryItems.subscribe(
-        (selectedSubcategoryItems: Item[]) =>{
-          this.items = selectedSubcategoryItems;
-        }
-      );
+      // this.viewItemsService.selectedSubcategoryItems.subscribe(
+      //   (selectedSubcategoryItems: Item[]) =>{
+      //     this.items = selectedSubcategoryItems;
+      //   }
+      // );
     
   }
 
