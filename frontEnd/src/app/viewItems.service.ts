@@ -15,6 +15,7 @@ export class ViewItemsService {
   userSelectedParams: Params;
   fetchedItems: Item[] = [];  
   itemsToDisplay: Item[] = [];
+  subcategorySelected: boolean;
   selectedCategoryItems = new EventEmitter<Item[]>();
   selectedSubcategoryItems = new EventEmitter<Item[]>();
 
