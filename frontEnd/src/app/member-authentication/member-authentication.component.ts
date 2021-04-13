@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { AuthenticationService } from '../authentication.service';
 
 //currently uses the template-driven approach; return to consider using reactive approach
 @Component({
@@ -16,16 +17,26 @@ export class MemberAuthenticationComponent implements OnInit {
   // email: string = '';
   // password: string = '';
 
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
   onSubmitSignIn(form: NgForm) {
+    if(!form.valid){
+      return
+    }
+
     console.log(form.value);
     this.memberData.email = form.value.email; 
     this.memberData.password = form.value.password;
     console.log(this.memberData);
+
+    this.authService.signup(form.value.email, form.value.password).subscribe(
+      responseData => {console.log(responseData)}, 
+      error => {console.log(error)}
+    );
+
     form.reset();
   }
 
