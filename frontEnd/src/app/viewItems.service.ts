@@ -16,8 +16,8 @@ export class ViewItemsService {
   fetchedItems: Item[] = [];  
   itemsToDisplay: Item[] = [];
   subcategorySelected: boolean;
-  selectedCategoryItems = new EventEmitter<Item[]>();
-  selectedSubcategoryItems = new EventEmitter<Item[]>();
+  viewSelectedItems = new EventEmitter<Item[]>();
+  
 
 
   //soon list of items will be fetching an array of objects from the back end.

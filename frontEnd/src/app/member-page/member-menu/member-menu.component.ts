@@ -9,9 +9,11 @@ import { ViewItemsService } from '../../viewItems.service';
 })
 export class MemberMenuComponent implements OnInit {
  
-  items: Item[] = []
+  items: Item[] = [];
+
   populatedCategories = [];
   populatedSubCategories = [];
+
   myCategoriesOpen: boolean = false;
   categorySelected: boolean = false;
 
@@ -42,7 +44,6 @@ export class MemberMenuComponent implements OnInit {
   }
 
   onSelectCategory(selectedCategory: string){
-    // this.viewItemsService.subcategorySelected = false; didin't work as intended
 
     this.categorySelected = !this.categorySelected;
     this.viewSelectedCategory = [];
@@ -59,14 +60,12 @@ export class MemberMenuComponent implements OnInit {
         this.populatedSubCategories.push(item.subCategory.trim());
       }
     }
-    this.viewItemsService.selectedCategoryItems.emit(this.viewSelectedCategory);
+    this.viewItemsService.viewSelectedItems.emit(this.viewSelectedCategory);
     this.categorySelected=!!this.categorySelected;  
-    console.log('cat'+this.viewSelectedCategory);
+   
     }
 
     onSelectedSubcategory(selectedSubcategory:string){
-      // this.viewItemsService.subcategorySelected = true; didn't work
-      this.viewItemsService.selectedCategoryItems.emit();
       this.viewSelectedSubcategory = [];
 
       for (let item of this.viewSelectedCategory){
@@ -74,14 +73,13 @@ export class MemberMenuComponent implements OnInit {
           this.viewSelectedSubcategory.push(item);
         }
       }
-      this.viewItemsService.selectedCategoryItems.emit(this.viewSelectedSubcategory);
-      console.log('sub'+this.viewSelectedSubcategory);
-      console.log(this.viewItemsService.subcategorySelected);
+      this.viewItemsService.viewSelectedItems.emit(this.viewSelectedSubcategory);
+
     }
 
     onFetchMyCollectionData(){
       this.viewItemsService.fetchItems().subscribe (myCollection =>{
-        this.viewItemsService.selectedCategoryItems.emit(myCollection);
+        this.viewItemsService.viewSelectedItems.emit(myCollection);
       });  
       
     }

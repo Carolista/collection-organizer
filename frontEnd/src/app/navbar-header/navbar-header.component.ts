@@ -82,7 +82,7 @@ export class NavbarHeaderComponent implements OnInit {
 
   onFetchMyCollectionData(){
     this.viewItemsService.fetchItems().subscribe (myCollection =>{
-      this.viewItemsService.selectedCategoryItems.emit(myCollection);
+      this.viewItemsService.viewSelectedItems.emit(myCollection);
     });  
     
   }
