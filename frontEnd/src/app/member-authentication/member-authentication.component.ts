@@ -9,13 +9,13 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./member-authentication.component.scss']
 })
 export class MemberAuthenticationComponent implements OnInit {
-  isSignUp = true;
+  signupMode: boolean = true;
   memberData = {
     email: '',
     password: ''
   }
-  // email: string = '';
-  // password: string = '';
+  //this can be fine tuned to display specific error messages; see Angular course, 20-295
+  errorMessage: string = null;
 
   constructor(private authService: AuthenticationService) { }
 
@@ -27,21 +27,39 @@ export class MemberAuthenticationComponent implements OnInit {
       return
     }
 
+    // if(form.touched){
+    //   this.errorMessage = '';
+    // } 
+
     console.log(form.value);
     this.memberData.email = form.value.email; 
     this.memberData.password = form.value.password;
     console.log(this.memberData);
 
-    this.authService.signup(form.value.email, form.value.password).subscribe(
-      responseData => {console.log(responseData)}, 
-      error => {console.log(error)}
-    );
+    if(this.signupMode){
+      this.authService.signup(form.value.email, form.value.password).subscribe(
+        responseData => {console.log(responseData)}, 
+        error => {
+          console.log(error); 
+          this.errorMessage = "An Error Occured!"
+        }
+      );
+    } else {
+      this.authService.login(form.value.email, form.value.password).subscribe(
+        responseData => {console.log(responseData)}, 
+        error => {
+          console.log(error); 
+          this.errorMessage = "An error occured! Please try again."
+        }
+      );
+    }
 
     form.reset();
+    this.errorMessage = null;
   }
 
-  onSwitchAuthMode(){
-    this.isSignUp = !this.isSignUp;
+  switchAuthMode(){
+    this.signupMode = !this.signupMode;
   }
 
 }
