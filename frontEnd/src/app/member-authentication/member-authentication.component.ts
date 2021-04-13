@@ -41,7 +41,7 @@ export class MemberAuthenticationComponent implements OnInit {
         responseData => {console.log(responseData)}, 
         error => {
           console.log(error); 
-          this.errorMessage = "An Error Occured!"
+          this.errorMessage = "An Error Occured! Please try again."
         }
       );
     } else {
@@ -49,13 +49,13 @@ export class MemberAuthenticationComponent implements OnInit {
         responseData => {console.log(responseData)}, 
         error => {
           console.log(error); 
+          //figure out how to get this to go away when form touched again
           this.errorMessage = "An error occured! Please try again."
         }
       );
     }
 
     form.reset();
-    this.errorMessage = null;
   }
 
   switchAuthMode(){
