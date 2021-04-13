@@ -15,7 +15,7 @@ export class MemberAuthenticationComponent implements OnInit {
     password: ''
   }
   //this can be fine tuned to display specific error messages; see Angular course, 20-295
-  errorMessage: string = null;
+  error: string = null;
 
   constructor(private authService: AuthenticationService) { }
 
@@ -39,18 +39,18 @@ export class MemberAuthenticationComponent implements OnInit {
     if(this.signupMode){
       this.authService.signup(form.value.email, form.value.password).subscribe(
         responseData => {console.log(responseData)}, 
-        error => {
-          console.log(error); 
-          this.errorMessage = "An Error Occured! Please try again."
+        errorMessage => {
+          console.log(errorMessage); 
+          this.error = errorMessage;
         }
       );
     } else {
       this.authService.login(form.value.email, form.value.password).subscribe(
         responseData => {console.log(responseData)}, 
-        error => {
-          console.log(error); 
+        errorMessage => {
+          console.log(errorMessage); 
           //figure out how to get this to go away when form touched again
-          this.errorMessage = "An error occured! Please try again."
+          this.error = errorMessage;
         }
       );
     }

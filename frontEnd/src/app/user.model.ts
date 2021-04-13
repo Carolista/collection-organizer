@@ -5,9 +5,9 @@ export class User {
 
   //make these private and accessible only after validation using a getter: Angular course 20-298
   public token: string;
-  public tokenExpiration: string;
+  public tokenExpiration: Date;
 
-  constructor(userId: number, email:string, password: string, token: string, tokenExpiration: date)
+  constructor(userId: number, email:string, password: string, token: string, tokenExpiration: Date)
       
   {
     this.userId = userId;

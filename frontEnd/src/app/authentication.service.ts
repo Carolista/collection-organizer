@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { User } from './user.model'
 
 //these values are specific to firebase; change them to match what spring security/auth0 sends back
 interface AuthResponseData {
@@ -16,6 +19,8 @@ interface AuthResponseData {
 
 export class AuthenticationService {
 
+  user = new Subject<User>()
+
   constructor(private http: HttpClient) { }
 
   signup(email: string, password: string) {
@@ -25,7 +30,17 @@ export class AuthenticationService {
         password: password,
         returnSecureToken: true,
       }
-    );
+    ).
+    pipe(catchError(errorResponse => {
+      let errorMessage = "An error occured! Please try again.";
+      if(!errorResponse || !errorResponse.error.error){
+        return throwError(errorMessage);
+      }
+      switch(errorResponse.error.error.message){
+        case 'EMAIL_EXISTS': errorMessage = "That email is already registered";
+      }
+      return throwError(errorMessage);
+    }));
   }
 
   login(email: string, password: string){
