@@ -10,6 +10,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AddItemFormComponent } from './add-item-form/add-item-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { FooterComponent } from './footer/footer.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AboutTeamComponent } from './landing-page/about-team/about-team.component';
@@ -35,7 +37,8 @@ import { MemberAuthenticationComponent } from './member-authentication/member-au
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
