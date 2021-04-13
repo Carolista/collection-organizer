@@ -47,14 +47,37 @@ public interface ItemRepository extends CrudRepository <Item, Long> {
 
 
     //***********start search option 1*******************
-    @Query(value = "SELECT * FROM item WHERE "
-            + "MATCH(title, category, cond, creator, description, place_of_origin, refs, sub_category) "
-            + "AGAINST(?1)",
-            nativeQuery = true)
-
-   public ArrayList<Item> search(String searchResult);
+//    @Query(value = "SELECT * FROM item WHERE "
+//            + "MATCH(title, category, cond, creator, description, place_of_origin, refs, sub_category) "
+//            + "AGAINST(?1)",
+//            nativeQuery = true)
+//
+//   public ArrayList<Item> search(String searchResult);
 
 //********************end search option 1*******************
+
+    public ArrayList<Item> findByTitle(String title);
+
+    public ArrayList<Item> findByCategory(String category);
+
+    public ArrayList<Item> findByCond(String cond);
+
+    public ArrayList<Item> findByCreator(String creator);
+
+    public ArrayList<Item> findByDescription(String description);
+
+    public ArrayList<Item> findByMediaType(String mediaType);
+
+    public ArrayList<Item> findByPlaceOfOrigin(String placeOfOrigin);
+
+    public ArrayList<Item> findByRefs(String refs);
+
+    public ArrayList<Item> findBySubCategory(String subCategory);
+
+    public ArrayList<Item> findByYearAcquired(int yearAcquired);
+
+    public ArrayList<Item> findByYearCreated(int yearCreated);
+
 
 
 
