@@ -33,6 +33,11 @@ $theme-colors: map-merge(
   $theme-colors
 );
 
+//investigate how to pass theme-colors to component-specific scss files
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
 //FONTS: 
 
 /*body fonts add BodoniModa Regular and BodoniModa Italic to default bootstrap fonts from
