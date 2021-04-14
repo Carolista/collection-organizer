@@ -13,6 +13,7 @@ export class MemberMenuComponent implements OnInit {
 
   populatedCategories = [];
   populatedSubCategories = [];
+  openCloseSubcategories = [];
 
   myCategoriesOpen: boolean = false;
   categorySelected: boolean = false;
@@ -32,20 +33,21 @@ export class MemberMenuComponent implements OnInit {
 
           if(!this.populatedCategories.includes(item.category.trim())){
             this.populatedCategories.push(item.category.trim());
+            this.openCloseSubcategories.push(false);
           };
         }
       }
     );
-    
+    console.log(this.openCloseSubcategories);
   }
 
   onOpenMyCategories(){
     this.myCategoriesOpen = !this.myCategoriesOpen;
   }
 
-  onSelectCategory(selectedCategory: string){
+  onSelectCategory(selectedCategory: string, index: number){
 
-    this.categorySelected = !this.categorySelected;
+    this.categorySelected = !this.openCloseSubcategories[index];
     this.viewSelectedCategory = [];
     this.populatedSubCategories = [];
     for(let item of this.items) {
@@ -61,7 +63,7 @@ export class MemberMenuComponent implements OnInit {
       }
     }
     this.viewItemsService.viewSelectedItems.emit(this.viewSelectedCategory);
-    this.categorySelected=!!this.categorySelected;  
+    // this.categorySelected=!!this.openCloseSubcategories[index];
    
     }
 
