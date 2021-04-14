@@ -2,11 +2,21 @@ package org.launchcode.backend.models;
 
 public enum CategoryType {
 
-    FINEARTS,
-    CULTURE,
-    DECORATIVEARTS,
-    MACHINESTRANSPORT,
-    FASHIONTEXTILES,
-    NATURALHISTORY
+    ARTS("Fine Arts"),
+    CULTURE("Culture"),
+    DECORATIVE("Decorative Arts"),
+    MACHINES("Machines & Transport"),
+    TEXTILES("Fashion & Textiles"),
+    HISTORY("Natural History");
+
+    private final String displayName;
+
+    CategoryType(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 
 }
