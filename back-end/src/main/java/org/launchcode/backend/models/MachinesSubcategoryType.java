@@ -23,4 +23,4 @@ public enum MachinesSubcategoryType {
         return displayName;
     }
 
-    }
+}
