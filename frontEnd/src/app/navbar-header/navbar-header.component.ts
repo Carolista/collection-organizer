@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from '../authentication.service';
 import { ViewItemsService } from '../viewItems.service'
 
 @Component({
@@ -6,12 +8,17 @@ import { ViewItemsService } from '../viewItems.service'
   templateUrl: './navbar-header.component.html',
   styleUrls: ['./navbar-header.component.scss']
 })
-export class NavbarHeaderComponent implements OnInit {
+export class NavbarHeaderComponent implements OnInit, OnDestroy {
   memberSignedIn: boolean = false;
+  userSubscription: Subscription;
+  isAuthenticated: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.userSubscription = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !user ? false : true
+    });
   }
 
   onSignIn() {
@@ -19,4 +26,8 @@ export class NavbarHeaderComponent implements OnInit {
     console.log(this.memberSignedIn);
   }
   
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
+  }
+
 }
