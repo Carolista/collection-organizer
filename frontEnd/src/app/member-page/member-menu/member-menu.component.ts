@@ -47,7 +47,9 @@ export class MemberMenuComponent implements OnInit {
 
   onSelectCategory(selectedCategory: string, index: number){
 
-    this.categorySelected = !this.openCloseSubcategories[index];
+    this.openCloseSubcategories.splice(index, 1, !this.openCloseSubcategories[index]);
+    // this.categorySelected = this.openCloseSubcategories[index];
+
     this.viewSelectedCategory = [];
     this.populatedSubCategories = [];
     for(let item of this.items) {
@@ -63,8 +65,9 @@ export class MemberMenuComponent implements OnInit {
       }
     }
     this.viewItemsService.viewSelectedItems.emit(this.viewSelectedCategory);
+    
     // this.categorySelected=!!this.openCloseSubcategories[index];
-   
+    this.openCloseSubcategories.splice(index, 1, !!this.openCloseSubcategories[index]);
     }
 
     onSelectedSubcategory(selectedSubcategory:string){

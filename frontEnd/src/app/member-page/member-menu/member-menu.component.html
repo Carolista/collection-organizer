@@ -56,7 +56,7 @@
         style="cursor: pointer; font-size: smaller"
         >{{ category }}
         </a>
-        <ul *ngIf="this.categorySelected" style="cursor: pointer">
+        <ul *ngIf="openCloseSubcategories[i]" style="cursor: pointer">
           <!-- <li>
             <a>
               {{subcategory.subCategory}}
