@@ -13,6 +13,7 @@ export class MemberMenuComponent implements OnInit {
 
   populatedCategories = [];
   populatedSubCategories = [];
+  allSubcategoriesItems = [];
   openCloseSubcategories = [];
 
   myCategoriesOpen: boolean = false;
@@ -35,6 +36,11 @@ export class MemberMenuComponent implements OnInit {
             this.populatedCategories.push(item.category.trim());
             this.openCloseSubcategories.push(false);
           };
+
+          if (!this.populatedSubCategories.includes(item.subCategory)){
+            this.populatedSubCategories.push(item.subCategory);
+            this.allSubcategoriesItems.push(item);
+          }
         }
       }
     );
@@ -73,13 +79,13 @@ export class MemberMenuComponent implements OnInit {
     onSelectedSubcategory(selectedSubcategory:string){
       this.viewSelectedSubcategory = [];
 
-      for (let item of this.viewSelectedCategory){
-        if (selectedSubcategory ===item.subCategory.trim() ){
+      for (let item of this.items){
+        if (selectedSubcategory ===item.subCategory ){
           this.viewSelectedSubcategory.push(item);
         }
       }
       this.viewItemsService.viewSelectedItems.emit(this.viewSelectedSubcategory);
-
+      console.log(this.viewSelectedSubcategory);
     }
 
     onFetchMyCollectionData(){
