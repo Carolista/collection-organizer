@@ -1,6 +1,6 @@
 package org.launchcode.backend.models;
 
-public enum CategoryType {
+public enum Category {
 
     ARTS("Fine Arts"),
     CULTURE("Culture"),
@@ -11,7 +11,7 @@ public enum CategoryType {
 
     private final String displayName;
 
-    CategoryType(String displayName) {
+    Category(String displayName) {
         this.displayName = displayName;
     }
 
