@@ -75,8 +75,6 @@ public class SearchController {
                 searchResult.add(item);
             }
         }
-
-        System.out.println("search");
         return searchResult;
     }
 
