@@ -1,6 +1,6 @@
 package org.launchcode.backend.models;
 
-public enum ArtsSubcategory {
+public enum ArtsSubcategory implements Category {
 
     PAINTING("Painting"),
     SCULPTURE("Sculpture"),
@@ -21,4 +21,10 @@ public enum ArtsSubcategory {
         return displayName;
     }
 
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }
+
