@@ -2,16 +2,6 @@ package org.launchcode.backend.models;
 
 public enum ArtsSubcategoryType {
 
-//    Painting
-//    Sculpture
-//    Prints/Photographs/Drawings/Digital
-//            European
-//    Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian
-//    Near and Middle Eastern
-//    American
-//    Pre-20th century
-//    Modern/Contemporary
-
     PAINTING("Painting"),
     SCULPTURE("Sculpture"),
     PRINTS("Prints/Photographs/Drawings/Digital European"),
@@ -30,4 +20,5 @@ public enum ArtsSubcategoryType {
     public String getDisplayName() {
         return displayName;
     }
+
 }
