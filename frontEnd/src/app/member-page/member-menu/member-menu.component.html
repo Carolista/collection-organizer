@@ -55,6 +55,7 @@
         (click)="onSelectCategory(category, i)"
         style="cursor: pointer; font-size: smaller"
         >{{ category }}
+        <span >  + </span>
         </a>
         <ul *ngIf="openCloseSubcategories[i]" style="cursor: pointer">
           <!-- <li>
