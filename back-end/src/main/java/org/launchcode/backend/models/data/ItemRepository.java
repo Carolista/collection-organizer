@@ -34,9 +34,6 @@ public interface ItemRepository extends CrudRepository <Item, Long>{
 
     List<Item> findBySearchTermAndCategoryAndSubCategory(String searchTerm, String category, String subCategory);
 
-//    @Query("select e from Employee e where e.deptId = :deptId")
-//    List<Employee> findEmployeeByDeptId(@Param("deptId") Long departmentId);
-
 
     @Query(value = "SELECT * FROM item WHERE "
             + "MATCH(title, category, cond, creator, description, place_of_origin, refs, sub_category) "
