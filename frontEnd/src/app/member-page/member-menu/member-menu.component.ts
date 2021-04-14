@@ -11,16 +11,14 @@ export class MemberMenuComponent implements OnInit {
  
   items: Item[] = [];
 
-  populatedCategories:string[] = [];
-  populatedSubCategories: string[] = [];
-  allSubcategoriesItems: Item[] = [];
+  populatedCategories = [];
+  populatedSubCategories = [];
 
   myCategoriesOpen: boolean = false;
-  categorySelected: boolean = true;
+  categorySelected: boolean = false;
 
   viewSelectedCategory: Item[]=[];
   viewSelectedSubcategory: Item[]= [];
-  
 
   constructor(private viewItemsService: ViewItemsService) { }
 
@@ -35,14 +33,7 @@ export class MemberMenuComponent implements OnInit {
           if(!this.populatedCategories.includes(item.category.trim())){
             this.populatedCategories.push(item.category.trim());
           };
-
-          if(!this.populatedSubCategories.includes(item.subCategory)){
-            this.populatedSubCategories.push(item.subCategory);
-            this.allSubcategoriesItems.push(item);
-          }
         }
-
-        console.log(this.allSubcategoriesItems);
       }
     );
     
@@ -54,9 +45,9 @@ export class MemberMenuComponent implements OnInit {
 
   onSelectCategory(selectedCategory: string){
 
-    // this.categorySelected = !this.categorySelected;
+    this.categorySelected = !this.categorySelected;
     this.viewSelectedCategory = [];
-    // this.populatedSubCategories = [];
+    this.populatedSubCategories = [];
     for(let item of this.items) {
 
       if(selectedCategory === item.category.trim()){
@@ -64,28 +55,26 @@ export class MemberMenuComponent implements OnInit {
       };
     }
 
-    //  for(let item of this.viewSelectedCategory){
-    //   if(!this.populatedSubCategories.includes(item.subCategory.trim())){
-    //     this.populatedSubCategories.push(item.subCategory.trim());
-    //   }
-    // }
+     for(let item of this.viewSelectedCategory){
+      if(!this.populatedSubCategories.includes(item.subCategory.trim())){
+        this.populatedSubCategories.push(item.subCategory.trim());
+      }
+    }
     this.viewItemsService.viewSelectedItems.emit(this.viewSelectedCategory);
-    // this.categorySelected=!!this.categorySelected;  
-    console.log('cat'+ this.viewSelectedCategory);
+    this.categorySelected=!!this.categorySelected;  
    
     }
 
     onSelectedSubcategory(selectedSubcategory:string){
-      this.viewSelectedCategory = [];
-      // this.populatedSubCategories = [];
-      for(let item of this.items) {
-  
-        if(selectedSubcategory == item.subCategory){
-          this.viewSelectedCategory.push(item);
-        };
+      this.viewSelectedSubcategory = [];
+
+      for (let item of this.viewSelectedCategory){
+        if (selectedSubcategory ===item.subCategory.trim() ){
+          this.viewSelectedSubcategory.push(item);
+        }
       }
-      this.viewItemsService.viewSelectedItems.emit(this.viewSelectedCategory);
-      console.log (this.viewSelectedCategory);
+      this.viewItemsService.viewSelectedItems.emit(this.viewSelectedSubcategory);
+
     }
 
     onFetchMyCollectionData(){
