@@ -1,6 +1,6 @@
 package org.launchcode.backend.models;
 
-public enum MachinesSubcategoryType {
+public enum MachinesSubcategory {
 
     CAMERAS("Cameras"),
     VEHICLES("Cars and Motorcycles"),
@@ -15,7 +15,7 @@ public enum MachinesSubcategoryType {
 
     private final String displayName;
 
-    MachinesSubcategoryType(String displayName) {
+    MachinesSubcategory(String displayName) {
         this.displayName = displayName;
     }
 

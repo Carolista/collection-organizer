@@ -1,6 +1,6 @@
 package org.launchcode.backend.models;
 
-public enum CultureSubcategoryType {
+public enum CultureSubcategory {
 
     COLLECTIBLES ("Collectibles (Figurines/toys/misc.)"),
     EPHEMERA ("Ephemera (Autographs/Advertising/Posters/etc.)"),
@@ -15,7 +15,7 @@ public enum CultureSubcategoryType {
 
     private final String displayName;
 
-    CultureSubcategoryType(String displayName) {
+    CultureSubcategory(String displayName) {
         this.displayName = displayName;
     }
 

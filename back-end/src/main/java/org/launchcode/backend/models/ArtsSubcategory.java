@@ -1,6 +1,6 @@
 package org.launchcode.backend.models;
 
-public enum ArtsSubcategoryType {
+public enum ArtsSubcategory {
 
     PAINTING("Painting"),
     SCULPTURE("Sculpture"),
@@ -13,7 +13,7 @@ public enum ArtsSubcategoryType {
 
     private final String displayName;
 
-    ArtsSubcategoryType(String displayName) {
+    ArtsSubcategory(String displayName) {
         this.displayName = displayName;
     }
 

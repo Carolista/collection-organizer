@@ -1,6 +1,6 @@
 package org.launchcode.backend.models;
 
-public enum TextilesSubcategoryType {
+public enum TextilesSubcategory {
 
     CLOTHING("Clothing and shoes"),
     FINE("Fine Jewelry"),
@@ -10,7 +10,7 @@ public enum TextilesSubcategoryType {
 
     private final String displayName;
 
-    TextilesSubcategoryType(String displayName) {
+    TextilesSubcategory(String displayName) {
         this.displayName = displayName;
     }
 

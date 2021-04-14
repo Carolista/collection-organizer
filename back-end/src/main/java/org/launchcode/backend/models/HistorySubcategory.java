@@ -1,6 +1,6 @@
 package org.launchcode.backend.models;
 
-public enum HistorySubcategoryType {
+public enum HistorySubcategory {
 
     ANIMALS("Animals/Zoology"),
     BOTANY("Botany"),
@@ -14,7 +14,7 @@ public enum HistorySubcategoryType {
 
     private final String displayName;
 
-    HistorySubcategoryType(String displayName) {
+    HistorySubcategory(String displayName) {
         this.displayName = displayName;
     }
 

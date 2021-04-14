@@ -1,6 +1,6 @@
 package org.launchcode.backend.models;
 
-public enum DecorativeSubcategoryType {
+public enum DecorativeSubcategory {
 
     PRETWENTIETH("Pre-20th century"),
     VICTORIAN("Victorian Era"),
@@ -14,7 +14,7 @@ public enum DecorativeSubcategoryType {
 
     private final String displayName;
 
-    DecorativeSubcategoryType(String displayName) {
+    DecorativeSubcategory(String displayName) {
         this.displayName = displayName;
     }
 
