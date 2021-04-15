@@ -67,7 +67,6 @@ public class Item extends AbstractEntity {
         this.imagePath = imagePath;
     }
 
-
     public String getCreator() {
         return creator;
     }

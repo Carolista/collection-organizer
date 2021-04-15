@@ -26,57 +26,19 @@ public class SearchController {
 
     }
 
-    //================start search option 2=================
-
-
-//    @GetMapping("")
-//    public List<Item> displaySearchResults(@Param("searchTerm")String searchTerm, @Param("category")String category,
-//                                           @Param("subCategory")String subCategory) {
-//
-//
-//     List<Item> searchResult = new ArrayList<>();
-//        if (searchTerm == null && category == null && subCategory == null) {
-//            searchResult = (List<Item>) itemRepository.findAll();
-//        }
-//        if (searchTerm != null && category == null && subCategory == null) {
-//            searchResult = itemRepository.findBySearchTerm(searchTerm);
-//        }
-//        if (searchTerm == null && category != null && subCategory == null) {
-//            searchResult = itemRepository.findByCategory(category);
-//        }
-//        if (searchTerm == null && category == null && subCategory != null) {
-//            searchResult = itemRepository.findBySubCategory(subCategory);
-//        }
-//        if (searchTerm != null && category != null && subCategory == null) {
-//            searchResult = itemRepository.findBySearchTermAndCategory(searchTerm, category);
-//        }
-//        if (searchTerm == null && category != null && subCategory != null) {
-//            searchResult = itemRepository.findByCategoryAndSubCategory(category, subCategory);
-//        }
-//        if (searchTerm != null && category != null && subCategory != null) {
-//            searchResult = itemRepository.findBySearchTermAndCategoryAndSubCategory(searchTerm, category, subCategory);
-//        }
-//        return searchResult;
-//
-//
-//    }
-
-//}
-    ////=============end of search option 2 ==========================
-
 
 
 //*********start search option 1****************************
-    @GetMapping
-    public ArrayList<Item> searchResult(@Param(value = "search") String search) {
-        ArrayList<Item> searchResult = new ArrayList<Item>();
-        for(Item item :itemRepository.findAll()){
-            if(item.getCategory().toLowerCase().equals(search.toLowerCase())){
-                searchResult.add(item);
-            }
-        }
-        return searchResult;
-    }
+//    @GetMapping("searchSearch")
+//    public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
+//        ArrayList<Item> searchResult = new ArrayList<Item>();
+//        for(Item item :itemRepository.findAll()) {
+//            if (itemRepository.findByTitle(search.toLowerCase()) != null) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
+//                searchResult.add(item);
+//            }
+//        }
+//        return searchResult;
+//    }
 
     @GetMapping("/titleSearch")
     public ArrayList<Item> searchByTitle(@Param("title") String title){
@@ -135,52 +97,7 @@ public class SearchController {
 
 
 
+
+
 }
-//////*****End search option 1************************
-
-
-
-
-
-
-
-//
-
-////rejected code I am not ready to delete yet
-//@GetMapping
-////@GetMapping
-//    public String search (@Param("searchTerm") String searchTerm) {
-//
-//      Iterable  <Item> searchResult = //new List <Item>();
-////        if (searchTerm.equals("")) {
-////            searchResult= itemRepository.findAll();
-////        } else {
-//            searchResult = itemRepository.search(searchTerm.toLowerCase());
-////        }
-//
-//           return "searchResult";
-//        }
-
-
-//
-// @PostMapping
-//    public String displaySearchResults
-
-//}
-
-
-
-
-
-//
-//    @RequestMapping(value="/search", method = RequestMethod.POST)
-//    public default String searchResults(@RequestParam(value = "search") String search, Model model){
-//        ArrayList<keyword> searchResults = new ArrayList<keyword>();
-//        for(Item item : itemRepository.findAll()){
-//            if(keyword.toLowerCase().contains(keyword.toLowerCase())){
-//                searchResults.add(keyword);
-//            }
-//
-//        }
-//    }
-
+///

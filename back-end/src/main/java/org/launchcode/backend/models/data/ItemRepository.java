@@ -78,6 +78,8 @@ public interface ItemRepository extends CrudRepository <Item, Long> {
 
     public ArrayList<Item> findByYearCreated(int yearCreated);
 
+   // public ArrayList<Item> findBySearch(String search);
+
 
 
 
