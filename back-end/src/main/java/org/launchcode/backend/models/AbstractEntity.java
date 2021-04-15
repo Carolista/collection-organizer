@@ -15,14 +15,12 @@ public abstract class AbstractEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message="Title is required.")
-    @Size(min=3, max=100, message="Name must be between 3 and 100 characters.")
-    public String title;
 
 
-    public AbstractEntity(String title) {
-        this.title = title;
-    }
+
+//    public AbstractEntity(String title) {
+//        this.title = title;
+//    }
 
     public AbstractEntity() {}
 
@@ -30,13 +28,13 @@ public abstract class AbstractEntity {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
 
     @Override
     public boolean equals(Object o) {
