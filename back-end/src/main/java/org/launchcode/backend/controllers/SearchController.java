@@ -29,16 +29,16 @@ public class SearchController {
 
 
 //*********start search option 1****************************
-//    @GetMapping("searchSearch")
-//    public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
-//        ArrayList<Item> searchResult = new ArrayList<Item>();
-//        for(Item item :itemRepository.findAll()) {
-//            if (itemRepository.findByTitle(search.toLowerCase()) != null) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
-//                searchResult.add(item);
-//            }
-//        }
-//        return searchResult;
-//    }
+    @GetMapping
+    public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
+        ArrayList<Item> searchResult = new ArrayList<Item>();
+        for(Item item :itemRepository.findByTitle(search)) {
+            if (item.getTitle().equals(search)) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
+                searchResult.add(item);
+            }
+        }
+        return searchResult;
+    }
 
     @GetMapping("/titleSearch")
     public ArrayList<Item> searchByTitle(@Param("title") String title){
