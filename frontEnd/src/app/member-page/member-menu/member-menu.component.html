@@ -1,0 +1,129 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center text-primary" style="padding-top: 12px;">Options</h3>
+  <hr>
+
+  <div *ngIf="this.items.length > 0" style="cursor: pointer">
+    <a
+    (click)="onFetchMyCollectionData()"
+    routerLink="/member-page"
+    >View All Items</a></div>
+  
+  <!--using list-group to display categories w/out dropdown; improve styling for list-group and list-group-items-->
+    <!-- <ul class='list-group'>My Categories
+      <a 
+          class='list-group-item' 
+          style="cursor: pointer; font-size: smaller"
+          *ngFor='let category of populatedCategories; let i = index'
+          (click)="onSelectCategory(category)">
+      {{ category }}
+      </a>
+    </ul> -->
+
+  <!--attempted code for displaying categories and subcatetories as dropdown menus-->
+  <!-- <div *ngIf="this.items.length > 0" class="dropdown">
+    <a class="dropdown-toggle" style="cursor: pointer" role="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">My Categories</a>
+    <ul class="dropdown-menu" style="cursor: pointer" aria-labelledby="categoryDropdown">
+      <li>
+        <a class="dropdown-item" style="cursor: pointer; font-size: smaller" 
+        *ngFor="let category of populatedCategories; let i=index" (click)="onSelectCategory(i)">{{ category }}
+        </a>
+      </li>
+    </ul>
+
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="/member-menu" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Dropdown link</a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div> -->
+
+  <!--temporary code for displaying categories and subcategories as lists-->
+  <div *ngIf="this.items.length > 0">
+    <a style="cursor: pointer" (click)="onOpenMyCategories()">My Categories</a>
+    <ul *ngIf="this.myCategoriesOpen" class="list-unstyled" style="cursor: pointer">
+      <li
+      *ngFor="let category of populatedCategories;
+      let i=index"
+      >
+        <a 
+        (click)="onSelectCategory(category, i)"
+        style="cursor: pointer; font-size: smaller"
+        >{{ category }}
+        <span >  + </span>
+        </a>
+        <ul *ngIf="openCloseSubcategories[i]" style="cursor: pointer">
+          <!-- <li>
+            <a>
+              {{subcategory.subCategory}}
+            </a>
+          </li> -->
+          <div *ngFor="let subcategory of allSubcategoriesItems; let j=index">
+            <li *ngIf = "category == allSubcategoriesItems[j].category">
+              <a 
+              (click)="onSelectedSubcategory(subcategory.subCategory)"
+              style="font-size: smaller;" 
+              >{{subcategory.subCategory}}</a>
+            </li>
+          </div>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="/member-menu" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Dropdown link</a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div> -->
+     
+  </div>
+
+  <!-- <div style="cursor: pointer">My Profile</div> -->
+
+  <div routerLinkActive="selected"><a routerLink="../member-page/add-item">Add Item</a></div>
+
+  <!--alternative formatting for above, using list instead of divs (also does not work with dropdown menus)-->
+  <!-- <ul class="text-left text-muted list-unstyled"> -->
+    <!-- <li *ngIf="this.items.length > 0"><a>All Items</a></li> -->
+    <!-- <li *ngIf="this.items.length > 0" class="dropdown">
+      <a class="dropdown-toggle" 
+        role="button"
+        data-toggle="dropdown" 
+        style="cursor: pointer"
+        id="dropdownMenuCategories" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false">My Collections
+      </a>
+      <ul class="dropdown-menu" style="font-size: smaller" aria-labelledby="dropdownMenuCategories">
+        <a class="dropdown-item"
+          style="cursor: pointer"
+          *ngFor="let category of memberCategories; let i = index"
+          (click)="onSelectCategory(i)">{{category}}
+        </a>
+      </ul>
+    </li> 
+    <li style="cursor: pointer">My Profile</li> -->
+    <!--add-item link; could also make this a button-->
+    <!-- <li routerLinkActive="selected"><a routerLink="../member-page/add-item">Add Item</a></li>
+  </ul> -->
+    </div>
+    
+    
+  </div>
+
+
+  
+
+
+
+</div>
+
+

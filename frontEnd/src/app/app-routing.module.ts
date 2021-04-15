@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'home', component: LandingPageComponent},
   {path: 'member-sign-in', component: MemberAuthenticationComponent},
+  {path: 'browse', component: ViewListOfCollectiblesComponent},
   {path: 'member-page', component: MemberPageComponent, canActivate: [AuthGuard], children: [
     {path: 'my-collections', component: ViewListOfCollectiblesComponent},
     {path: 'add-item', component: AddItemFormComponent},
