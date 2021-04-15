@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from './user.model'
+import { Router } from '@angular/router';
 
 //these values are specific to firebase; change them to match what spring security/auth0 sends back
 export interface AuthResponseData {
@@ -19,9 +20,10 @@ export interface AuthResponseData {
 
 export class AuthenticationService {
 
-  user = new Subject<User>()
+  user = new Subject<User>();
+  isAuthenticated: boolean = false
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   signup(email: string, password: string) {
     return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAheJfpJIYsQ_2ZanqZLDeAsQr7RA1BKfY',
@@ -73,9 +75,16 @@ export class AuthenticationService {
     );
   }
 
+  logout(){
+    this.user.next(null);
+    this.router.navigate(['/home'])
+  }
+
   //may need to add userId to parameters; find out how to make that work with resData properties
   handleAuthentication(email: string, password: string, token: string, tokenExpiration: string){
     const user = new User(email, password, token, tokenExpiration);
     this.user.next(user);
+    //need to figure out how to switch this back to false when user logs out
+    this.isAuthenticated = true;
   }
 }

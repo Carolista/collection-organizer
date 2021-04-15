@@ -48,7 +48,7 @@ export class MemberAuthenticationComponent implements OnInit {
     this.authenticationObs.subscribe(
       resData => {
         console.log(resData);
-        this.router.navigate(['/member-page']);
+        this.router.navigate(['member-page']);
       },
       errorMessage => {
         console.log(errorMessage);
@@ -78,7 +78,7 @@ export class MemberAuthenticationComponent implements OnInit {
 
     form.reset();
   }
-
+  
   switchAuthMode(){
     this.signupMode = !this.signupMode;
   }

@@ -9,7 +9,6 @@ import { ViewItemsService } from '../viewItems.service'
   styleUrls: ['./navbar-header.component.scss']
 })
 export class NavbarHeaderComponent implements OnInit, OnDestroy {
-  memberSignedIn: boolean = false;
   userSubscription: Subscription;
   isAuthenticated: boolean = false;
 
@@ -20,14 +19,14 @@ export class NavbarHeaderComponent implements OnInit, OnDestroy {
       this.isAuthenticated = !user ? false : true
     });
   }
-
-  onSignIn() {
-    this.memberSignedIn = !this.memberSignedIn;
-    console.log(this.memberSignedIn);
-  }
   
+  onLogOut(){
+    this.authService.logout();
+    this.isAuthenticated = false;
+    console.log(this.isAuthenticated);
+  }
+
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
   }
-
 }
