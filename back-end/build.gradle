@@ -29,5 +29,4 @@ test {
 	useJUnitPlatform()
 }
 
-// clean up old stuff
 // finish implementing stuff from chapter
