@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-@RequestMapping //do we need mapping here? "register"??
+@RequestMapping("auth") //do we need mapping here? "register"??
 public class AuthController {
 
     @Autowired

@@ -149,12 +149,10 @@ public class Item extends AbstractEntity {
         this.refs = refs;
     }
 
-    @Override
     public String getTitle() {
         return title;
     }
 
-    @Override
     public void setTitle(String title) {
         this.title = title;
     }
