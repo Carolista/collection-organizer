@@ -14,6 +14,8 @@ import { CategoriesService } from '../categories.service';
 export class NavbarHeaderComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   isAuthenticated: boolean = false;
+  //used for earlier sign-in method; delete if not needed
+  memberSignedIn: boolean = false;
   
   //Search and browse propoerties
   categories:string[];
@@ -48,18 +50,20 @@ export class NavbarHeaderComponent implements OnInit, OnDestroy {
 
   }
   
-  onLogOut(){
-    this.authService.logout();
-    this.isAuthenticated = false;
-    console.log(this.isAuthenticated);
-  }
-
   //User Authentication methods
+
+  //used for earlier sign-in method; delete if not needed
   onSignIn() {
     this.memberSignedIn = !this.memberSignedIn;
     console.log(this.memberSignedIn);
   }
 
+  onLogOut(){
+    this.authService.logout();
+    this.isAuthenticated = false;
+    console.log(this.isAuthenticated);
+  }
+  
   //Search and Browse methods
 
   onSearch(){

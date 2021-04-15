@@ -16,6 +16,7 @@ export class MemberAuthenticationComponent implements OnInit {
     email: '',
     password: ''
   }
+  memberSignedIn = null;
   //this can be fine tuned to display specific error messages; see Angular course, 20-295
   error: string = null;
   authenticationObs: Observable<AuthResponseData>
