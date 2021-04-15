@@ -33,7 +33,13 @@ public class SearchController {
     public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
         ArrayList<Item> searchResult = new ArrayList<Item>();
         for(Item item :itemRepository.findByTitle(search)) {
-            if (item.getTitle().equals(search)) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
+            if (item != null) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
+                searchResult.add(item);
+            }
+
+        }
+        for(Item item :itemRepository.findByCond(search)){
+            if (item != null) {
                 searchResult.add(item);
             }
         }
