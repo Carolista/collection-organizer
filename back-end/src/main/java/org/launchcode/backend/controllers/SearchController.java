@@ -46,20 +46,28 @@ public class SearchController {
 //        return searchResult;
 //    }
 
+    //Do we need to use a switch here? We need it to move to the next item in the repo if searchResult already
+    // contains that item.
+
     @GetMapping
     public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
         ArrayList<Item> searchResult = new ArrayList<Item>();
 
         for(Item item : itemRepository.findAll()) {
-            if(item != null && item.getDescription().contains(search.toLowerCase())) {
-                searchResult.add(item);
-            }
-            if(item != null && item.getTitle().contains(search.toLowerCase())) {
-                searchResult.add(item);
-            }
-//            if(item != null && item.getCreator().contains(search.toLowerCase())) {
+
+//            if(item != null && item.getCond().toLowerCase().contains(search.toLowerCase())){
 //                searchResult.add(item);
 //            }
+            if(item != null && item.getCategory().toLowerCase().contains(search.toLowerCase())){
+                searchResult.add(item);
+            }
+            if(item != null && item.getDescription().toLowerCase().contains(search.toLowerCase())) {
+                searchResult.add(item);
+            }
+            if(item != null && item.getTitle().toLowerCase().contains(search.toLowerCase())) {
+                searchResult.add(item);
+            }
+
         }
         return searchResult;
     }
