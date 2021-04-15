@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AboutTeamComponent } from './landing-page/about-team/about-team.component';
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
+import { MemberMenuComponent } from './member-page/member-menu/member-menu.component';
 import { MemberAuthenticationComponent } from './member-authentication/member-authentication.component';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MemberAuthenticationComponent } from './member-authentication/member-au
     NavbarHeaderComponent,
     LandingPageComponent,
     MemberPageComponent,
+    MemberMenuComponent,
     PageNotFoundComponent,
     AddItemFormComponent,
     FooterComponent,

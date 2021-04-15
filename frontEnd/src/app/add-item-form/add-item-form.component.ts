@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewItemsService } from '../viewItems.service';
 import { Item } from '../ItemClass';
+import { CategoriesService } from '../categories.service';
 
 @Component({
   selector: 'app-add-item-form',
@@ -17,40 +18,28 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
 
   addItemForm: FormGroup;
   // formSubmitted = false;
-  browseMainCategories = [' Fine Arts', ' Culture', ' Decorative arts', ' Machines and Transportation',
-    ' Fashion and Textiles', ' Natural History'];
+  browseMainCategories: string[];
 
-  fineArts = [' Painting', ' Sculpture', ' Prints/Photographs/Drawings/Digital', ' European',
-  ' Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian', ' Near and Middle Eastern', 
-  ' American', ' Pre-20th century', ' Modern/Contemporary'];
+  fineArts = this.categoriesService.subCategoriesArr[0];
 
-  culture = [' Collectibles (Figurines/toys/misc.)', ' Ephemera (Autographs/Advertising/Posters/etc.)', 
-  ' Numismatics/Coins and medals/Monies ', ' Military and wartime', ' Philately/Stamps',
-  ' Sports', ' Political/Fraternal/Organizational', ' Breweriana/Tobacciana/Petroliana',
-  ' Entertainment media (music/movies/video games)', ' Print entertainment media (Comics/Books/Newspapers)'];
+  culture = this.categoriesService.subCategoriesArr[1];
 
-  decorativeArts= [' Pre-20th century', ' Victorian Era', ' Art Deco/Art Nouveau/Arts and Crafts',
-  ' Mid-Century Modern', ' Ceramics/Pottery/China/Porcelain', ' Folk Art',
-  ' Textiles',' Furniture',' Architecture'];
+  decorativeArts= this.categoriesService.subCategoriesArr[2];
 
-  machinesAndTransportation = [' Cameras', ' Cars and Motorcycles', ' Aviation and Space',
-  ' Nautical', ' Electronics', ' Models	(cars, trains, etc.)',
-  ' Radios', ' Telephones', ' Office', ' Clocks'
-];
+  machinesAndTransportation = this.categoriesService.subCategoriesArr[3];
 
-fashionAndTextiles = [' Clothing and shoes', ' Fine Jewelry', ' Costume Jewelry', 
-' Accessories (watches, handbags, pens, etc.)', ' Arms and Armor (incl. knives/swords/firearms/etc.)'];
+  fashionAndTextiles = this.categoriesService.subCategoriesArr[4];
 
-naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
-' Fossils', ' Rocks, minerals, and gems', ' Precious metals',
-' Natural history collateral (books/guides/tools/etc.)', ' Medical/Scientific', ' Maps/Globes' ];
+  naturalHistory = this.categoriesService.subCategoriesArr[5];
 
   constructor(private http: HttpClient, 
               private router: Router,
-              private viewItemsService: ViewItemsService) { }
+              private viewItemsService: ViewItemsService,
+              private categoriesService: CategoriesService) { }
 
   ngOnInit():void{
 
+    this.browseMainCategories = this.categoriesService.browseMainCategories;
     this.editMode = this.viewItemsService.editMode;
     // console.log ('add item form edit mode', this.editMode)
     if (this.editMode){
@@ -67,7 +56,8 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
         Validators.required),
       'category': new FormControl (this.editMode ? this.formPresetValue.category : null, 
         Validators.required),
-      'subCategory': new FormControl(this.editMode ? this.formPresetValue.subCategory : null),
+      'subCategory': new FormControl(this.editMode ? this.formPresetValue.subCategory : null,
+        Validators.required),
       'description': new FormControl (this.editMode ? this.formPresetValue.description : null),
       'creator': new FormControl (this.editMode ? this.formPresetValue.creator : null),
       'yearCreated': new FormControl (this.editMode ? this.formPresetValue.yearCreated : null),
@@ -105,9 +95,25 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
 
       this.viewItemsService.editItem(this.viewItemsService.fetchedItemsIndex, this.formPresetValue.id);
       console.log('edited item value', this.viewItemsService.editedItemValue);
+
+      this.viewItemsService.fetchedItems.splice(this.viewItemsService.fetchedItemsIndex,1,this.viewItemsService.editedItemValue);
+
+      this.viewItemsService.fetchItems().subscribe(
+        fetchedItems =>{
+          this.viewItemsService.fetchedItems = fetchedItems;
+        }
+      );
+
     }else{
       this.http.post('http://localhost:8080/api/item', 
               this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
+
+      this.viewItemsService.fetchedItems.push(this.addItemForm.value);
+      this.viewItemsService.fetchItems().subscribe(
+        fetchedItems =>{
+          this.viewItemsService.fetchedItems = fetchedItems;
+        }
+      );
     }
 
     this.viewItemsService.editMode = false;
