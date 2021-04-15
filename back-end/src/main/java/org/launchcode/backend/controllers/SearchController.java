@@ -26,29 +26,20 @@ public class SearchController {
 
     }
 
-//for(Item item :itemRepository.findByTitle(search)) {
-//            if (item != null) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
-//                searchResult.add(item);
-//            }
-//
-//        }
-//        for(Item item :itemRepository.findByCond(search)){
-//            if (item != null) {
-//                searchResult.add(item);
-//            }
-//        }
+
 
 //*********start search option 1****************************
     @GetMapping
     public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
         ArrayList<Item> searchResult = new ArrayList<Item>();
+        for(Item item :itemRepository.findByTitle(search.toLowerCase())) {
+            if (item != null) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
+                searchResult.add(item);
+            }
 
-        for(Item item : itemRepository.findAll()) {
-            if(item != null && item.getDescription().contains(search)) {
-                searchResult.add(item);
-            } else if(item != null && item.getTitle().contains(search)) {
-                searchResult.add(item);
-            } else if(item != null && item.getCond().contains(search)) {
+        }
+        for(Item item :itemRepository.findByDescription(search.toLowerCase())){
+            if (item != null) {
                 searchResult.add(item);
             }
         }
