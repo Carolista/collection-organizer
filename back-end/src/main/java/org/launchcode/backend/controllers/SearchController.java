@@ -29,19 +29,37 @@ public class SearchController {
 
 
 //*********start search option 1****************************
+//    @GetMapping
+//    public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
+//        ArrayList<Item> searchResult = new ArrayList<Item>();
+//        for(Item item :itemRepository.findByTitle(search.toLowerCase())) {
+//            if (item != null) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
+//                searchResult.add(item);
+//            }
+//
+//        }
+//        for(Item item :itemRepository.findByDescription(search.toLowerCase())){
+//            if (item != null) {
+//                searchResult.add(item);
+//            }
+//        }
+//        return searchResult;
+//    }
+
     @GetMapping
     public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
         ArrayList<Item> searchResult = new ArrayList<Item>();
-        for(Item item :itemRepository.findByTitle(search.toLowerCase())) {
-            if (item != null) { //|| itemRepository.findByDescription(search.toLowerCase()) != null) {
-                searchResult.add(item);
-            }
 
-        }
-        for(Item item :itemRepository.findByDescription(search.toLowerCase())){
-            if (item != null) {
+        for(Item item : itemRepository.findAll()) {
+            if(item != null && item.getDescription().contains(search.toLowerCase())) {
                 searchResult.add(item);
             }
+            if(item != null && item.getTitle().contains(search.toLowerCase())) {
+                searchResult.add(item);
+            }
+//            if(item != null && item.getCreator().contains(search.toLowerCase())) {
+//                searchResult.add(item);
+//            }
         }
         return searchResult;
     }
