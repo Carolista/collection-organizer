@@ -25,8 +25,7 @@ const appRoutes: Routes = [
   {path: 'about-team', component: AboutTeamComponent},
   {path: 'about-project', component: AboutProjectComponent},
   {path: 'page-not-found', component: PageNotFoundComponent},
-  //commented out for now because all '' paths redirecting to page-not-found; fix this later
-  // {path: '**', pathMatch: 'full', redirectTo: '/page-not-found'}
+  {path: '**', pathMatch: 'full', redirectTo: '/page-not-found'}
 ]
 
 @NgModule({
