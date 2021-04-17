@@ -1,11 +1,16 @@
 package org.launchcode.backend.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 public class Item extends AbstractEntity {
+
+    @NotBlank(message="Title is required.")
+    @Size(min=3, max=100, message="Name must be between 3 and 100 characters.")
+    public String title;
 
     private String imagePath;
 
@@ -31,7 +36,8 @@ public class Item extends AbstractEntity {
     public Item(String title, String imagePath, String category, String subCategory, String description,
                 String creator, int yearCreated, String placeOfOrigin, int yearAcquired, String cond,
                 String mediaType, String refs) {
-        super(title);
+
+        this.title = title;
         this.imagePath = imagePath;
         this.category = category;
         this.subCategory = subCategory;
@@ -141,5 +147,13 @@ public class Item extends AbstractEntity {
 
     public void setRefs(String references) {
         this.refs = refs;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
