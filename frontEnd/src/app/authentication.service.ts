@@ -94,8 +94,8 @@ export class AuthenticationService {
     const userData: {
       email: string,
       id: string,
-      _token: string,
-      _tokenExpirationDate: string,
+      token: string,
+      tokenExpirationDate: string,
     } = JSON.parse(localStorage.getItem('userData'));
     if(!userData) {
       return;
@@ -103,8 +103,8 @@ export class AuthenticationService {
     const loadedUser = new User(
       userData.email,
       userData.id,
-      userData._token,
-      userData._tokenExpirationDate
+      userData.token,
+      userData.tokenExpirationDate
     );
 
     if(loadedUser.token) {

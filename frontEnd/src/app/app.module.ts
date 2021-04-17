@@ -18,6 +18,7 @@ import { AboutTeamComponent } from './landing-page/about-team/about-team.compone
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
 import { MemberMenuComponent } from './member-page/member-menu/member-menu.component';
 import { MemberAuthenticationComponent } from './member-authentication/member-authentication.component';
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { MemberAuthenticationComponent } from './member-authentication/member-au
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
