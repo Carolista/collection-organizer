@@ -61,6 +61,10 @@
             (click)="onSignIn">sign up</a>
           </li> -->
           <li class="nav-item" *ngIf="isAuthenticated" role="button">
+            <a class="nav-link text-uppercase font-weight-bold px-3" 
+            routerLink="member-page">my page</a>
+          </li>
+          <li class="nav-item" *ngIf="isAuthenticated" role="button">
             <!--add method here to log out when clicked-->
             <a class="nav-link text-uppercase font-weight-bold px-3" 
             href='#' (click)="onLogOut">log out</a>
