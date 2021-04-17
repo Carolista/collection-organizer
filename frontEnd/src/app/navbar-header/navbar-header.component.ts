@@ -52,7 +52,7 @@ export class NavbarHeaderComponent implements OnInit, OnDestroy {
   
   //User Authentication methods
 
-  //used for earlier sign-in method; delete if not needed
+  //used for earlier sign-in method; link now routes to sign-in page where logic is handled; delete this if not needed
   onSignIn() {
     this.memberSignedIn = !this.memberSignedIn;
     console.log(this.memberSignedIn);
@@ -60,6 +60,7 @@ export class NavbarHeaderComponent implements OnInit, OnDestroy {
 
   onLogOut(){
     this.authService.logout();
+    console.log("logout selected");
     this.isAuthenticated = false;
     console.log(this.isAuthenticated);
   }
