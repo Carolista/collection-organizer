@@ -4,6 +4,7 @@ import { Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from './user.model'
 import { Router } from '@angular/router';
+import { stringify } from '@angular/compiler/src/util';
 
 //these values are specific to firebase; change them to match what spring security/auth0 sends back
 export interface AuthResponseData {
@@ -86,5 +87,29 @@ export class AuthenticationService {
     this.user.next(user);
     //need to figure out how to switch this back to false when user logs out
     this.isAuthenticated = true;
+    localStorage.setItem('userData', JSON.stringify(user));
   }
+
+  autoLogin() {
+    const userData: {
+      email: string,
+      id: string,
+      _token: string,
+      _tokenExpirationDate: string,
+    } = JSON.parse(localStorage.getItem('userData'));
+    if(!userData) {
+      return;
+    } 
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      userData._tokenExpirationDate
+    );
+
+    if(loadedUser.token) {
+      this.user.next(loadedUser);
+    }
+  }
+  
 }
