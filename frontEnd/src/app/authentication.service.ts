@@ -96,7 +96,7 @@ export class AuthenticationService {
       id: string,
       token: string,
       tokenExpirationDate: string,
-    } = JSON.parse(localStorage.getItem('userData'));
+    } = JSON.parse(localStorage.getItem("userData"));
     if(!userData) {
       return;
     } 
