@@ -35,49 +35,50 @@ export class MemberAuthenticationComponent implements OnInit {
     //   this.errorMessage = '';
     // } 
 
-    console.log(form.value);
+    // console.log(form.value);
     this.memberData.email = form.value.email; 
     this.memberData.password = form.value.password;
-    console.log(this.memberData);
+    // console.log(this.memberData);
 
-    if (this.signupMode) {
-      this.authenticationObs = this.authService.signup(form.value.email, form.value.password);
-    } else {
-      this.authenticationObs = this.authService.login(form.value.email, form.value.password);
-    }
-
-    this.authenticationObs.subscribe(
-      resData => {
-        console.log(resData);
-        this.router.navigate(['member-page']);
-      },
-      errorMessage => {
-        console.log(errorMessage);
-        this.error = errorMessage;
-      }
-    );
-
-    //this code refactored using authenticationObservable
-    // if(this.signupMode){
-    //   this.authService.signup(form.value.email, form.value.password).subscribe(
-    //     responseData => {console.log(responseData)}, 
-    //     errorMessage => {
-    //       console.log(errorMessage); 
-    //       this.error = errorMessage;
-    //     }
-    //   );
+    // if (this.signupMode) {
+    //   this.authenticationObs = this.authService.signup(form.value.email, form.value.password);
     // } else {
-    //   this.authService.login(form.value.email, form.value.password).subscribe(
-    //     responseData => {console.log(responseData)}, 
-    //     errorMessage => {
-    //       console.log(errorMessage); 
-    //       //figure out how to get this to go away when form touched again
-    //       this.error = errorMessage;
-    //     }
-    //   );
+    //   this.authenticationObs = this.authService.login(form.value.email, form.value.password);
     // }
 
+    // this.authenticationObs.subscribe(
+    //   resData => {
+    //     console.log(resData);
+    //     this.router.navigate(['member-page']);
+    //   },
+    //   errorMessage => {
+    //     console.log(errorMessage);
+    //     this.error = errorMessage;
+    //   }
+    // );
+
+    // this code refactored using authenticationObservable
+    if(this.signupMode){
+      this.authService.signup(form.value.email, form.value.password).subscribe(
+        responseData => {console.log(responseData)}, 
+        errorMessage => {
+          console.log(errorMessage); 
+          this.error = errorMessage;
+        }
+      );
+    } else {
+      this.authService.login(form.value.email, form.value.password).subscribe(
+        responseData => {console.log(responseData)}, 
+        errorMessage => {
+          console.log(errorMessage); 
+          //figure out how to get this to go away when form touched again
+          this.error = errorMessage;
+        }
+      );
+    }
     form.reset();
+    this.router.navigate(['member-page']);
+
   }
   
   switchAuthMode(){
