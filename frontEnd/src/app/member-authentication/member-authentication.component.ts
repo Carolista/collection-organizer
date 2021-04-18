@@ -35,10 +35,8 @@ export class MemberAuthenticationComponent implements OnInit {
     //   this.errorMessage = '';
     // } 
 
-    console.log(form.value);
     this.memberData.email = form.value.email; 
     this.memberData.password = form.value.password;
-    console.log(this.memberData);
 
     if (this.signupMode) {
       this.authenticationObs = this.authService.signup(form.value.email, form.value.password);
@@ -57,7 +55,7 @@ export class MemberAuthenticationComponent implements OnInit {
       }
     );
 
-    //this code refactored using authenticationObservable
+    // this code refactored using authenticationObservable
     // if(this.signupMode){
     //   this.authService.signup(form.value.email, form.value.password).subscribe(
     //     responseData => {console.log(responseData)}, 
@@ -76,8 +74,9 @@ export class MemberAuthenticationComponent implements OnInit {
     //     }
     //   );
     // }
-
     form.reset();
+    this.router.navigate(['member-page']);
+
   }
   
   switchAuthMode(){
