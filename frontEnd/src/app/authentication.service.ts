@@ -27,24 +27,35 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) { }
 
   signup(email: string, password: string) {
+    console.log('request sent');
+
     return this.http.post<AuthResponseData>('http://localhost:8080/auth/register/',
       {
         email: email,
         password: password,
         returnSecureToken: true,
-      }
-    ).
-    pipe(catchError(errorResponse => {
-      let errorMessage = "An error occured! Please try again.";
-      if(!errorResponse || !errorResponse.error.error){
-        return throwError(errorMessage);
-      }
-      switch(errorResponse.error.error.message){
-        case 'EMAIL_EXISTS': errorMessage = "That email is already registered";
-      }
-      return throwError(errorMessage);
-    }));
+      });
   }
+
+  // signup(email: string, password: string) {
+  //   return this.http.post<AuthResponseData>('http://localhost:8080/auth/register/',
+  //     {
+  //       email: email,
+  //       password: password,
+  //       returnSecureToken: true,
+  //     }
+  //   ).
+  //   pipe(catchError(errorResponse => {
+  //     let errorMessage = "An error occured! Please try again.";
+  //     if(!errorResponse || !errorResponse.error.error){
+  //       return throwError(errorMessage);
+  //     }
+  //     switch(errorResponse.error.error.message){
+  //       case 'EMAIL_EXISTS': errorMessage = "That email is already registered";
+  //     }
+  //     return throwError(errorMessage);
+  //   }));
+  // }
 
   login(email: string, password: string){
     return this.http.post<AuthResponseData>('http://localhost:8080/auth/',
