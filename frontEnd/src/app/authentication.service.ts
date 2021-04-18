@@ -27,7 +27,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) { }
 
   signup(email: string, password: string) {
-    return this.http.post<AuthResponseData>('http://localhost:8080/auth/resgister/',
+    return this.http.post<AuthResponseData>('http://localhost:8080/auth/register/',
       {
         email: email,
         password: password,
