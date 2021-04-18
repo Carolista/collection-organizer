@@ -14,8 +14,8 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*")
-@Controller
-@RequestMapping("auth") //do we need mapping here? "register"??
+@RestController
+@RequestMapping("/api/auth") //do we need mapping here? "register"??
 public class AuthController {
 
     @Autowired
