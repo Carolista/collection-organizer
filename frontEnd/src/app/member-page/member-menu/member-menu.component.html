@@ -52,6 +52,7 @@
       let i=index"
       >
         <a 
+        routerLink="/member-page"
         (click)="onSelectCategory(category, i)"
         style="cursor: pointer; font-size: smaller"
         >{{ category }}
@@ -67,6 +68,7 @@
           <div *ngFor="let subcategory of allSubcategoriesItems; let j=index">
             <li *ngIf = "category == allSubcategoriesItems[j].category">
               <a 
+              routerLink="/member-page"
               (click)="onSelectedSubcategory(subcategory.subCategory)"
               style="font-size: smaller;" 
               >{{subcategory.subCategory}}</a>

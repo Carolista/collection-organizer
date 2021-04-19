@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Item } from '../../ItemClass';
 import { ViewItemsService } from '../../viewItems.service';
 
@@ -23,8 +22,7 @@ export class MemberMenuComponent implements OnInit {
   viewSelectedCategory: Item[]=[];
   viewSelectedSubcategory: Item[]= [];
 
-  constructor(private router: Router,
-              private viewItemsService: ViewItemsService) { }
+  constructor(private viewItemsService: ViewItemsService) { }
 
   ngOnInit(): void {
     /*method used in ngOnInit in view-list-of-collectibles component*/
@@ -76,9 +74,6 @@ export class MemberMenuComponent implements OnInit {
     
     // this.categorySelected=!!this.openCloseSubcategories[index];
     this.openCloseSubcategories.splice(index, 1, !!this.openCloseSubcategories[index]);
-
-    this.router.navigate(['/member-page']);
-
     }
 
     onSelectedSubcategory(selectedSubcategory:string){
@@ -91,7 +86,6 @@ export class MemberMenuComponent implements OnInit {
       }
       this.viewItemsService.viewSelectedItems.emit(this.viewSelectedSubcategory);
       console.log(this.viewSelectedSubcategory);
-      this.router.navigate(['/member-page']);
     }
 
     onFetchMyCollectionData(){
@@ -108,5 +102,4 @@ export class MemberMenuComponent implements OnInit {
 
 }
 
-
-// routerLink="../member-page/my-collections"
+// window.location.reload();
