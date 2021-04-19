@@ -58,6 +58,12 @@ public class SearchController {
 //            if(item != null && item.getCond().toLowerCase().contains(search.toLowerCase())){
 //                searchResult.add(item);
 //            }
+//            if(item != null && item.getMediaType().contains(search.toLowerCase())){
+//                searchResult.add(item);
+//            }
+            if(item != null && item.getSubCategory().toLowerCase().contains(search.toLowerCase())){
+                searchResult.add(item);
+            }
             if(item != null && item.getCategory().toLowerCase().contains(search.toLowerCase())){
                 searchResult.add(item);
             }
