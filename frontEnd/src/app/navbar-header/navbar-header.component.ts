@@ -60,11 +60,11 @@ export class NavbarHeaderComponent implements OnInit {
     this.switchCase = this.categories[clickedArrIndex];
     //this function needs to be tested, after moved to the service
     
-    const browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.clickedCategory}) };
+    const browseStringParams = { params: new HttpParams({fromString: 'category=' + this.clickedCategory}) };
 
     this.viewItemsService.userSelectedParams = browseStringParams;
 
-      this.http.get("http://localhost:8080/api/search", browseStringParams).subscribe(response =>{
+      this.http.get("http://localhost:8080/api/search/categorySearch", browseStringParams).subscribe(response =>{
         console.log(response.valueOf());
       });
       console.log(this.viewItemsService.userSelectedParams)
@@ -73,13 +73,14 @@ export class NavbarHeaderComponent implements OnInit {
   onBrowseSubcategories(clickedSubcategoryArrIndex:number){
   //this function needs to be tested, after moved to the service
   const browseStringParams = 
-  { params: new HttpParams({fromString: 'searchTerm=' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
-  this.http.get("http://localhost:8080/api/search", browseStringParams).subscribe(response =>{
+  { params: new HttpParams({fromString: 'subCategory=' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
+  this.http.get("http://localhost:8080/api/search/subCategorySearch", browseStringParams).subscribe(response =>{
     console.log(response.valueOf());
   });
 
   this.viewItemsService.userSelectedParams = browseStringParams;
   console.log(this.viewItemsService.userSelectedParams)
+  console.log(this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]);
   }
 
   // decided to move this to view-list-of-collections ngOnInit
