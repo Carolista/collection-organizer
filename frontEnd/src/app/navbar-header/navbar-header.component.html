@@ -59,13 +59,14 @@
             </a>  
             </div>      
           </div>
-  
         </div>
-        <div class="row" [ngSwitch]="clickedCategory">
-              <div *ngFor="let subCategory of selectedSubcategoryArr; let i">
+        <div class="row" 
+        *ngIf="isOpen"
+        [ngSwitch]="clickedCategory">
+              <div *ngFor="let subCategory of selectedSubcategoryArr">
                 
                   <div *ngSwitchCase="switchCase" class="col">
-                    <a 
+                    <a
                     href="#"
                     routerLink="member-page"
                     (click)="onBrowseSubcategories()"

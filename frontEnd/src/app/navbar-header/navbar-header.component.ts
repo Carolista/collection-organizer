@@ -17,6 +17,8 @@ export class NavbarHeaderComponent implements OnInit {
   clickedCategory:string;
   categoryArrIndex: number;
   switchCase: string;
+  openOrCloseCategory = [false, false, false, false, false, false];
+  isOpen: boolean;
   
   subCategoriesArr: string[][];
 
@@ -54,6 +56,8 @@ export class NavbarHeaderComponent implements OnInit {
   }
 
   onBrowseCategories(clickedArrIndex:number){
+    this.isOpen = this.openOrCloseCategory[clickedArrIndex];
+    this.openOrCloseCategory.splice(clickedArrIndex, 1, !this.openOrCloseCategory[clickedArrIndex]);
     this.categoryArrIndex=clickedArrIndex; //need this value to access subcategories
     this.clickedCategory = this.categories[clickedArrIndex];
     this.selectedSubcategoryArr = this.subCategoriesArr[clickedArrIndex];
