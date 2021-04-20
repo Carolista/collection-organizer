@@ -45,6 +45,11 @@ export class ItemDetailComponent implements OnInit {
     this.router.navigate(['/member-page/add-item']);
     this.viewItemsService.editMode = true;
     console.log ('edit mode', this.viewItemsService.editMode);
+
+    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.viewSelectedItems.emit(myCollection);
+    }); 
+
   }
 
   onDelete(){
@@ -54,18 +59,32 @@ export class ItemDetailComponent implements OnInit {
       'This item will be permanently deleted. Are you sure you want to delete this itme?');
     if (confirm === true) {
 
-      this.viewItemsService.fetchedItems.splice(this.id, 1);
+    // this.viewItemsService.fetchedItems.splice(this.id, 1); -not working as intended
 
     this.viewItemsService.deleteItem(this.id, this.itemData.id);
 
-      this.viewItemsService.fetchItems().subscribe(
-        fetchedItems =>{
-          this.viewItemsService.fetchedItems = fetchedItems;
-        }
-      );
+      // this.viewItemsService.fetchItems().subscribe(
+      //   fetchedItems =>{
+      //     this.viewItemsService.fetchedItems = fetchedItems;
+      //   }
+      // ); -not working as intended
     
     this.router.navigate(['/member-page']);
+    
+    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.viewSelectedItems.emit(myCollection);
+    });  
+
     } 
   }
 
 }
+
+
+
+// onFetchMyCollectionData(){
+//   this.viewItemsService.fetchItems().subscribe (myCollection =>{
+//     this.viewItemsService.viewSelectedItems.emit(myCollection);
+//   });  
+  
+// }

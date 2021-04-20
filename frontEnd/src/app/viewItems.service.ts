@@ -124,11 +124,11 @@ export class ViewItemsService {
     this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
       console.log(data)
     });
-    this.fetchItems().subscribe(
-      updatedItems =>{
-        this.fetchedItems = updatedItems;
-      }
-    )
+    // this.fetchItems().subscribe(
+    //   updatedItems =>{
+    //     this.fetchedItems = updatedItems;
+    //   }
+    // )
   }
 
   //didn't need to use this method yet

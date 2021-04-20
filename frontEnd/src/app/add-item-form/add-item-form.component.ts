@@ -118,9 +118,14 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
 
     this.viewItemsService.editMode = false;
 
-    // this.addItemForm.reset();
-    // this.formSubmitted = true;
     this.router.navigate(['/member-page']);
+
+    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.viewSelectedItems.emit(myCollection);
+    });
+    
   }
+
+
 
 }
