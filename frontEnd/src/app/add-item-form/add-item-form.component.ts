@@ -96,13 +96,11 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
       this.viewItemsService.editItem(this.viewItemsService.fetchedItemsIndex, this.formPresetValue.id);
       console.log('edited item value', this.viewItemsService.editedItemValue);
 
-      this.viewItemsService.fetchedItems.splice(this.viewItemsService.fetchedItemsIndex,1,this.viewItemsService.editedItemValue);
-
-      this.viewItemsService.fetchItems().subscribe(
-        fetchedItems =>{
-          this.viewItemsService.fetchedItems = fetchedItems;
-        }
-      );
+      // this.viewItemsService.fetchedItems.splice(this.viewItemsService.fetchedItemsIndex,1,this.viewItemsService.editedItemValue);
+      
+      this.viewItemsService.fetchItems().subscribe (myCollection =>{
+      this.viewItemsService.viewSelectedItems.emit(myCollection);
+        });
 
     }else{
       this.http.post('http://localhost:8080/api/item', 

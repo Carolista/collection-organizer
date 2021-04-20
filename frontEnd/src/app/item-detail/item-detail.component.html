@@ -8,10 +8,19 @@
     <button (click)="onDelete()">Delete this item</button>
 </div>
 <hr>
-<h3>{{itemData.category}}</h3>
-<div class="text-center">
+<div class="text-left">
+    <h3>{{itemData.category}}</h3>
+    <h4>{{itemData.subCategory}}</h4>
     <img [src]=itemData.imagePath height="600">
-    <h3>{{itemData.title}}</h3>
-    <p>{{itemData.description}}</p>
-    <p>{{itemData.cond}}</p>
+    <div class="col-12">
+        <h4>{{itemData.title}}</h4>
+        <p *ngIf="itemData.description">{{itemData.description}}</p>
+        <p *ngIf="itemData.creator">Creator: {{itemData.creator}}</p>
+        <p *ngIf="itemData.yearCreated">Year Created: {{itemData.yearCreated}}</p>
+        <p *ngIf="itemData.placeOfOrigin">Place of Origin: {{itemData.placeOfOrigin}}</p>
+        <p *ngIf="itemData.mediaType">Media: {{itemData.mediaType}}</p>
+        <p *ngIf="itemData.cond">Condition: {{itemData.cond}}</p>
+        <p *ngIf="itemData.refs">References: {{itemData.refs}}</p>
+    </div>
+    
 </div>
