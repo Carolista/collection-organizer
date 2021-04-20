@@ -55,10 +55,6 @@ public class Item extends AbstractEntity {
     public Item() {
     }
 
-
-
-
-
     public String getImagePath() {
         return imagePath;
     }
@@ -152,16 +148,6 @@ public class Item extends AbstractEntity {
         this.refs = refs;
     }
 
-
-
-
-//
-//    @Autowired
-//    private ItemRepository itemRepository;
-//
-//    private ArrayList<Item> search(String searchResult) {
-//        return itemRepository.search(searchResult);
-//    }
 
 
 }
