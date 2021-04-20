@@ -22,9 +22,9 @@ public class SearchController {
     public ItemRepository itemRepository;
 
 
-    public SearchController() {
-
-    }
+//    public SearchController() {
+//
+//    }
 
 
 
@@ -50,7 +50,7 @@ public class SearchController {
     // contains that item.
 
     @GetMapping
-    public ArrayList<Item> searchResult(@Param("searchTerm") String searchTerm) {   //, String title, String description) {
+    public ArrayList<Item> searchResult(@Param("search") String search) {   //, String title, String description) {
         ArrayList<Item> searchResult = new ArrayList<Item>();
 
         for(Item item : itemRepository.findAll()) {
@@ -61,18 +61,22 @@ public class SearchController {
 //            if(item != null && item.getMediaType().contains(search.toLowerCase())){
 //                searchResult.add(item);
 //            }
-            if(item != null && item.getSubCategory().toLowerCase().contains(searchTerm.toLowerCase())){
+            if(item != null && item.getSubCategory().toLowerCase().contains(search.toLowerCase())){
                 searchResult.add(item);
-            }
-            if(item != null && item.getCategory().toLowerCase().contains(searchTerm.toLowerCase())){
+                break;
+            } else if(item != null && item.getCategory().toLowerCase().contains(search.toLowerCase())){
                 searchResult.add(item);
-            }
-//            if(item != null && item.getDescription().toLowerCase().contains(search.toLowerCase())) {
+                break;
+            } else if(item != null && item.getDescription().toLowerCase().contains(search.toLowerCase())) {
+                searchResult.add(item);
+                break;
+            } else if(item != null && item.getTitle().toLowerCase().contains(search.toLowerCase())) {
+                searchResult.add(item);
+                break;
+          } //  else if(item != null && item.getPlaceOfOrigin().toLowerCase().contains(search.toLowerCase())){
 //                searchResult.add(item);
+//                break;
 //            }
-            if(item != null && item.getTitle().toLowerCase().contains(searchTerm.toLowerCase())) {
-                searchResult.add(item);
-            }
 
         }
         return searchResult;
@@ -138,4 +142,4 @@ public class SearchController {
 
 
 }
-
+///
