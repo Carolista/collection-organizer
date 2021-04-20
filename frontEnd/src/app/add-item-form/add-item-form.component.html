@@ -1,14 +1,20 @@
-<div class="container">
+<!-- <div class="container"> -->
   <div class="row">
-    <div class="col">
+    <div class="col-12">
       <h1>Add an item to your collection</h1>
       <h6 class="text-muted">Please fill out the form below and click the submit button to add an item to your collection. <br>
-          Please note: some fields are required.
+          Please note: some fields are required.<br>
       </h6>
       <a routerLink="/member-page">
         <h3>back to my viewing</h3>
       </a>
       <hr>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col">
+      
 
       <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()"> 
         <div class="col-6">
@@ -190,6 +196,21 @@
         </div>
       </div> -->
     </div>
+    <div class="col" *ngIf = "addItemForm.value.title">
+      <h6 class="text-muted">Preview of your item:</h6>
+      <img [src]="addItemForm.value.imagePath"  width="300">
+      <h6>Title: {{addItemForm.value.title}}</h6>
+      <h6>Category: {{addItemForm.value.category}}</h6>
+      <h6>Subcategory: {{addItemForm.value.subCategory}}</h6>
+      <h6>Description: {{addItemForm.value.description}}</h6>
+      <h6>Creator: {{addItemForm.value.creator}}</h6>
+      <h6>Year Created: {{addItemForm.value.yearCreated}}</h6>
+      <h6>Place Of Origin: {{addItemForm.value.placeOfOrigin}}</h6>
+      <h6>Year Aquired: {{addItemForm.value.yearAcquired}}</h6>
+      <h6>Condition: {{addItemForm.value.cond}}</h6>
+      <h6>Media: {{addItemForm.value.mediaType}}</h6>
+      <h6>References: {{addItemForm.value.refs}}</h6>
+    </div>
   </div>
-</div>
+<!-- </div> -->
 <br>
