@@ -60,7 +60,7 @@ export class NavbarHeaderComponent implements OnInit {
     this.switchCase = this.categories[clickedArrIndex];
     //this function needs to be tested, after moved to the service
     
-    const browseStringParams = { params: new HttpParams({fromString: this.clickedCategory}) };
+    const browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.clickedCategory}) };
 
     this.viewItemsService.userSelectedParams = browseStringParams;
 
@@ -73,7 +73,7 @@ export class NavbarHeaderComponent implements OnInit {
   onBrowseSubcategories(clickedSubcategoryArrIndex:number){
   //this function needs to be tested, after moved to the service
   const browseStringParams = 
-  { params: new HttpParams({fromString: this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
+  { params: new HttpParams({fromString: 'searchTerm=' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
   this.http.get("http://localhost:8080/api/search", browseStringParams).subscribe(response =>{
     console.log(response.valueOf());
   });
