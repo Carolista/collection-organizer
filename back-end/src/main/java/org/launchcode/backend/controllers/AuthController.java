@@ -1,6 +1,7 @@
 package org.launchcode.backend.controllers;
 
-
+//Field authenticationManager in org.launchcode.backend.controllers.AuthController required a bean of type
+// 'org.springframework.security.authentication.AuthenticationManager' that could not be found.
 import org.launchcode.backend.models.ERole;
 import org.launchcode.backend.models.Role;
 import org.launchcode.backend.models.User;
@@ -68,7 +69,7 @@ public class AuthController {
                 roles));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
