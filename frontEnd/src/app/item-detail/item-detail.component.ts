@@ -62,6 +62,7 @@ export class ItemDetailComponent implements OnInit {
     // this.viewItemsService.fetchedItems.splice(this.id, 1); -not working as intended
 
     this.viewItemsService.deleteItem(this.id, this.itemData.id);
+    
 
       // this.viewItemsService.fetchItems().subscribe(
       //   fetchedItems =>{
@@ -76,6 +77,7 @@ export class ItemDetailComponent implements OnInit {
     });  
 
     } 
+    // location.reload();doesn't work
   }
 
 }

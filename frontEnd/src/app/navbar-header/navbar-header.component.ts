@@ -118,6 +118,7 @@ export class NavbarHeaderComponent implements OnInit {
 
   const browseStringParams = 
   { params: new HttpParams({fromString: 'subCategory=' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
+<<<<<<< HEAD
   
   // this.http.get("http://localhost:8080/api/search/subCategorySearch", browseStringParams).subscribe(response =>{
   //   console.log(response.valueOf());
@@ -138,10 +139,15 @@ export class NavbarHeaderComponent implements OnInit {
     console.log(data);
     this.chosenCategory = data;
     this.viewItemsService.viewSelectedItems.emit(this.chosenCategory);
+=======
+  this.http.get("http://localhost:8080/api/search/subCategorySearch", browseStringParams).subscribe(response =>{
+    console.log(response.valueOf());
+>>>>>>> test-dev-fullstack
   });
 
   this.viewItemsService.userSelectedParams = browseStringParams;
   console.log(this.viewItemsService.userSelectedParams)
+  console.log(this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]);
   }
 
 
