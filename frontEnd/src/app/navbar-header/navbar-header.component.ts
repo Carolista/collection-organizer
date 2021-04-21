@@ -70,8 +70,8 @@ export class NavbarHeaderComponent implements OnInit {
 
       this.http.get("http://localhost:8080/api/search/categorySearch", browseStringParams).subscribe(response =>{
         console.log(response.valueOf());
+        // this.viewItemsService.viewSelectedItems.emit(response.valueOf());
       });
-      console.log(this.viewItemsService.userSelectedParams)
   }
 
   onBrowseSubcategories(clickedSubcategoryArrIndex:number){

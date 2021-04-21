@@ -100,10 +100,7 @@ export class ViewItemsService {
       );
     }
  
-  //   getItems(){
-  //   console.log("got items");
-  //   return this.listOfItems.slice();  
-  // }
+  
 
   getItemData(index: number){
     return this.fetchedItems[index];
