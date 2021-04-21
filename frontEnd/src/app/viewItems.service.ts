@@ -18,6 +18,7 @@ export class ViewItemsService {
   itemsToDisplay: Item[] = [];
   subcategorySelected: boolean;
   viewSelectedItems = new EventEmitter<Item[]>();
+  viewCollectiblesHeadline = new EventEmitter<string>();
   
 
 

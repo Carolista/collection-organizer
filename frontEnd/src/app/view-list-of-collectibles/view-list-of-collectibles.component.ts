@@ -13,6 +13,7 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   items: Item[] = [];
   categorySelected: boolean = false;
   displayedItems: Item[] = [];
+  headline: string;
 
   constructor(private viewItemsService: ViewItemsService) { 
   
@@ -21,12 +22,19 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
         this.items = selectedCategoryItems;
       }
     );
+
+    this.viewItemsService.viewCollectiblesHeadline.subscribe(
+      (headline: string) =>{
+        this.headline = headline;
+      }
+    );
   
   }
 
   ngOnInit(): void {
 
     this.isUserLoggedIn = this.viewItemsService.isUserLoggedIn;
+    // this.headline = this.viewItemsService.viewCollectiblesHeadline;
     // this.items = this.viewItemsService.getItems(); //used when we couldn't load from back end
     if (this.viewItemsService.isUserLoggedIn){
       this.viewItemsService.fetchItems().subscribe(

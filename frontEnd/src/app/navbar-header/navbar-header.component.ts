@@ -50,6 +50,8 @@ export class NavbarHeaderComponent implements OnInit {
     //onces this method is proven to be working, I will move it into the service
     //for testing purposes only, I leave it in this component.
 
+    this.viewItemsService.viewCollectiblesHeadline.emit('Results for '+ this.userSearch.get('userInput').value);
+
       const searchStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.userSearch.get('userInput').value}) };
     //let params = new HttpParams({fromString: 'page=' + PageNo + '&sort=' + SortOn});
 
@@ -81,6 +83,7 @@ export class NavbarHeaderComponent implements OnInit {
     this.clickedCategory = this.categories[clickedArrIndex];
     this.selectedSubcategoryArr = this.subCategoriesArr[clickedArrIndex];
     this.switchCase = this.categories[clickedArrIndex];
+    this.viewItemsService.viewCollectiblesHeadline.emit(this.clickedCategory);
 
     //this function needs to be tested, after moved to the service
     
@@ -115,6 +118,7 @@ export class NavbarHeaderComponent implements OnInit {
 
   onBrowseSubcategories(clickedSubcategoryArrIndex:number){
   //this function needs to be tested, after moved to the service
+  this.viewItemsService.viewCollectiblesHeadline.emit(this.clickedCategory + ', ' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]);
 
   const browseStringParams = 
   { params: new HttpParams({fromString: 'subCategory=' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
@@ -148,6 +152,7 @@ export class NavbarHeaderComponent implements OnInit {
 
   onFetchMyCollectionData(){
     this.viewItemsService.isUserLoggedIn = true;
+    this.viewItemsService.viewCollectiblesHeadline.emit('My Collection');
     this.viewItemsService.fetchItems().subscribe (myCollection =>{
       this.viewItemsService.viewSelectedItems.emit(myCollection);
     });  
