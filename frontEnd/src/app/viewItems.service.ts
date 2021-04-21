@@ -14,6 +14,7 @@ export class ViewItemsService {
   fetchedItemsIndex: number;
   userSelectedParams: Params;
   fetchedItems: Item[] = [];  
+  isUserLoggedIn: boolean;
   itemsToDisplay: Item[] = [];
   subcategorySelected: boolean;
   viewSelectedItems = new EventEmitter<Item[]>();

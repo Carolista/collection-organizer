@@ -27,7 +27,9 @@
                 type="search" 
                 class="form-control" placeholder="SEARCH">
                 <div class="input-group-append">
-                  <button type="submit" class="btn btn-primary">search</button>
+                  <button type="submit" class="btn btn-primary">
+                      search
+                  </button>
                 </div>
               </div>
             </form>
@@ -41,7 +43,10 @@
                 >my page</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-uppercase font-weight-bold px-3" href='#'>log out </a>
+                <a 
+                (click)="logOut()"
+                class="nav-link text-uppercase font-weight-bold px-3" 
+                href='#'>log out </a>
               </li>
             </ul>
         </div>
@@ -52,9 +57,9 @@
           <div class="col" *ngFor="let category of categories; let i = index">  
             <div class="col"> 
               <a 
-            href="#"
-            routerLink="member-page"
-            (click)="onBrowseCategories(i)">
+              routerLink="member-page"
+              href="#"
+              (click)="onBrowseCategories(i)">
               <h5 >{{category}}</h5>
             </a>  
             </div>      

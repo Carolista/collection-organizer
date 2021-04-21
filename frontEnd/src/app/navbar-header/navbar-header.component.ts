@@ -5,7 +5,7 @@ import { CategoriesService } from '../categories.service';
 import { ViewItemsService } from '../viewItems.service';
 import { Item } from '../ItemClass';
 import { map } from 'rxjs/operators';
-import { Subject, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -31,7 +31,8 @@ export class NavbarHeaderComponent implements OnInit {
 
   constructor(private viewItemsService: ViewItemsService,
               private http: HttpClient,
-              private categoriesService: CategoriesService
+              private categoriesService: CategoriesService,
+              private router: Router
               ) { }
 
   ngOnInit(): void {
@@ -53,11 +54,24 @@ export class NavbarHeaderComponent implements OnInit {
     //let params = new HttpParams({fromString: 'page=' + PageNo + '&sort=' + SortOn});
 
       this.viewItemsService.userSelectedParams = searchStringParams;
-      this.http.get("http://localhost:8080/api/search", searchStringParams).subscribe(response =>{
-        console.log(response.valueOf());
-        
+      this.http.get("http://localhost:8080/api/search", searchStringParams)
+      .pipe(
+        map( fetchedCategoryData =>{
+          const fetchedCategoryItems: Item[] = [];
+          for (const key in fetchedCategoryData){
+            if(fetchedCategoryData.hasOwnProperty(key)){
+              fetchedCategoryItems.push(fetchedCategoryData[key.valueOf()]);
+            }
+          }
+          return fetchedCategoryItems;
+        })
+      ).subscribe(data =>{
+        console.log(data);
+        this.chosenCategory = data;
+        console.log(this.chosenCategory);
+        this.viewItemsService.viewSelectedItems.emit(this.chosenCategory);
       });
-    console.log(searchStringParams);
+      this.router.navigate(['/member-page']);
   }
 
   onBrowseCategories(clickedArrIndex:number){
@@ -95,7 +109,7 @@ export class NavbarHeaderComponent implements OnInit {
         this.chosenCategory = data;
         this.viewItemsService.viewSelectedItems.emit(this.chosenCategory);
       });
-
+      this.router.navigate(['/member-page']);
   }
 
 
@@ -132,10 +146,15 @@ export class NavbarHeaderComponent implements OnInit {
 
 
   onFetchMyCollectionData(){
+    this.viewItemsService.isUserLoggedIn = true;
     this.viewItemsService.fetchItems().subscribe (myCollection =>{
       this.viewItemsService.viewSelectedItems.emit(myCollection);
     });  
     
+  }
+
+  logOut(){
+    this.viewItemsService.isUserLoggedIn = false;
   }
 
 }

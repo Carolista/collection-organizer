@@ -1,6 +1,19 @@
 <div class="container">
+  <div 
+  *ngIf = "!isUserLoggedIn"
+  class="row">
+  <div class="col">
+    <br>
+  <a>Login or Sign up</a> <br>
+  <a>About This Project</a> <br>
+  <a href="">About Us</a>
+  </div>
 
-  <div class="row">
+  </div>
+
+  <div 
+  *ngIf = "isUserLoggedIn"
+  class="row">
     <div class="col-12">
       <h3 class="text-center text-primary" style="padding-top: 12px;">Options</h3>
   <hr>
@@ -118,15 +131,7 @@
     <!-- <li routerLinkActive="selected"><a routerLink="../member-page/add-item">Add Item</a></li>
   </ul> -->
     </div>
-    
-    
   </div>
-
-
-  
-
-
-
 </div>
 
 
