@@ -4,8 +4,8 @@ import { Injectable } from "@angular/core";
 @Injectable({providedIn: 'root'})  
 export class CategoriesService {
 
-    browseMainCategories = ['Fine Arts', 'Culture', 'Decorative arts', 'Machines & Transport',
-    'Fashion and Textiles', 'Natural History'];
+    browseMainCategories = ['Fine Arts', 'Culture', 'Decorative Arts', 'Machines & Transport',
+    'Fashion & Textiles', 'Natural History'];
     subCategoriesArr=[
         [' Painting', ' Sculpture', ' Photographs, Prints & Digital Art', ' European',
         ' African, Native American, Aboriginal & Asian Art', ' Middle Eastern', 
