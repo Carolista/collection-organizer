@@ -9,7 +9,7 @@ import { Item } from '../ItemClass'
 })
 export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
 
-  viewMyCollection: boolean = true;
+  isUserLoggedIn: boolean;
   items: Item[] = [];
   categorySelected: boolean = false;
   displayedItems: Item[] = [];
@@ -25,6 +25,8 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
+    this.isUserLoggedIn = this.viewItemsService.isUserLoggedIn;
     // this.items = this.viewItemsService.getItems(); //used when we couldn't load from back end
     if (this.viewItemsService.isUserLoggedIn){
       this.viewItemsService.fetchItems().subscribe(
@@ -35,6 +37,8 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
         }
       );
     }
+
+    console.log(this.isUserLoggedIn);
     /*alternative way of getting items without using a function, which might be better for once we are fetching to an array in that service:*/
     // this.items = this.viewItemsService.listOfItems;
     

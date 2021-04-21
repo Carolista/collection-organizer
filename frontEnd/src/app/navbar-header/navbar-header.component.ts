@@ -150,11 +150,14 @@ export class NavbarHeaderComponent implements OnInit {
     this.viewItemsService.fetchItems().subscribe (myCollection =>{
       this.viewItemsService.viewSelectedItems.emit(myCollection);
     });  
+
+    console.log(this.viewItemsService.isUserLoggedIn);
     
   }
 
   logOut(){
     this.viewItemsService.isUserLoggedIn = false;
+    console.log(this.viewItemsService.isUserLoggedIn);
   }
 
 }
