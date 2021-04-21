@@ -1,15 +1,21 @@
-<div class="container">
-  <h1>My Collection</h1>
+<!-- <div class="container"> -->
+  <h1
+  style="cursor: pointer;"
+  (click)="onFetchMyCollectionData()"
+  >My Collection</h1>
   <hr>
-  <div class="row">
-    <div *ngIf='viewMyCollection'>
-      <button routerLinkActive="selected">
-        <a routerLink="/member-page/add-item">Add an item to my collection</a>
-      </button>        
-      <hr>
-    </div>
+  <div 
+  *ngIf='viewMyCollection'
+  class="d-flex justify-content-end">
+    <button 
+    class="rounded"
+    routerLinkActive="selected">
+      <a routerLink="/member-page/add-item">Add an item to my collection</a>
+    </button> 
   </div>
-  <div class="row">
+
+  <!--display all fetched items if no category is selected-->
+  <div class="row" *ngIf="!categorySelected">
     <div class="row align-items-end">
       <div 
         class="col text-center" 
@@ -23,5 +29,23 @@
         </a>
       </div>
     </div>
+
+    <!--display only items in category if a category is selected-->
+    <!-- <div class="row" *ngIf="categorySelected">
+      <div class="row align-items-end">
+        <div 
+          class="col text-center" 
+          *ngFor="let item of this.displayedItems; let i = index"
+          routerLinkActive="active"
+          style="cursor: pointer;">
+          <a [routerLink]="i">
+            <img [src]="item.imagePath">
+            <h5>{{item.title}}</h5>
+            <p>{{item.description}}</p>
+          </a>
+        </div>
+      </div>
+    </div> -->
+
   </div>
-</div>
+<!-- </div>s -->
