@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role extends AbstractEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
