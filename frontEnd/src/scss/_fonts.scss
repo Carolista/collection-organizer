@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'Bodoni Moda';
-  src: url('../assets/fonts/BodoniModa_Italic/BodoniModa-Italic.woff2') format('woff2'),
-      url('../assets/fonts/BodoniModa_Italic/BodoniModa-Italic.woff') format('woff');
+  src: 
+    url('../assets/fonts/BodoniModa_Italic/BodoniModa-Italic.woff2') format('woff2'),
+    url('../assets/fonts/BodoniModa_Italic/BodoniModa-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -9,10 +10,31 @@
 
 @font-face {
   font-family: 'Bodoni Moda';
-  src: url('../assets/fonts/BodoniModa_Regular/BodoniModa-Regular.woff2') format('woff2'),
-      url('../assets/fonts/BodoniModa_Regular/BodoniModa-Regular.woff') format('woff');
+  src: 
+    url('../assets/fonts/BodoniModa_Regular/BodoniModa-Regular.woff2') format('woff2'),
+    url('../assets/fonts/BodoniModa_Regular/BodoniModa-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
+@font-face{
+  font-family:"MrLackboughs Regular";
+  src:
+    url('../assets/fonts/MrLackboughs/MrLackboughs.woff2') format("woff2"),
+    url('../assets/fonts/MrLackboughs/MrLackboughs.woff') format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Italiana';
+  src: url('../assets/fonts/Italiana/Italiana-Regular.woff2') format('woff2'),
+      url('../assets/fonts/Italiana/Italiana-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
