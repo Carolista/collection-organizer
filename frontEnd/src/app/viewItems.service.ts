@@ -12,7 +12,7 @@ export class ViewItemsService {
   editedItemValue: Item; //these values are for the edited item data to be saved and posted to the back end
   valuesForEditingItem: Item; //these values are for the input field to be changed out in the add-item-form
   fetchedItemsIndex: number;
-  userSelectedParams: Params;
+  // userSelectedParams: Params;
   fetchedItems: Item[] = [];  
   isUserLoggedIn: boolean = false;
   itemsToDisplay: Item[] = [];
@@ -100,6 +100,21 @@ export class ViewItemsService {
           return fetchedItems;
         })
       );
+    }
+
+    browseOrSearchItems(url: string, params: Params){
+      return this.http.get(url, params)
+      .pipe(
+        map( fetchedCategoryData =>{
+          const fetchedCategoryItems: Item[] = [];
+          for (const key in fetchedCategoryData){
+            if(fetchedCategoryData.hasOwnProperty(key)){
+              fetchedCategoryItems.push(fetchedCategoryData[key.valueOf()]);
+            }
+          }
+          return fetchedCategoryItems;
+        })
+      )
     }
  
   

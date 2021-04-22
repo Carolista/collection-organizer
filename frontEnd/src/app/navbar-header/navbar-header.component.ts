@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CategoriesService } from '../categories.service';
 import { ViewItemsService } from '../viewItems.service';
-import { Item } from '../ItemClass';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
@@ -22,8 +20,6 @@ export class NavbarHeaderComponent implements OnInit {
   switchCase: string;
   openOrCloseCategory = [false, false, false, false, false, false];
   isOpen: boolean;
-
-  chosenCategory: any;
   
   subCategoriesArr: string[][];
 
@@ -45,34 +41,16 @@ export class NavbarHeaderComponent implements OnInit {
   }
 
   onSearch(){
-    // console.log(typeof this.userSearch.get('userInput').value);
-    
-    //onces this method is proven to be working, I will move it into the service
-    //for testing purposes only, I leave it in this component.
 
     this.viewItemsService.viewCollectiblesHeadline.emit('Results for '+ this.userSearch.get('userInput').value);
 
-      const searchStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.userSearch.get('userInput').value}) };
-    //let params = new HttpParams({fromString: 'page=' + PageNo + '&sort=' + SortOn});
+    const searchStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.userSearch.get('userInput').value}) };
 
-      this.viewItemsService.userSelectedParams = searchStringParams;
-      this.http.get("http://localhost:8080/api/search", searchStringParams)
-      .pipe(
-        map( fetchedCategoryData =>{
-          const fetchedCategoryItems: Item[] = [];
-          for (const key in fetchedCategoryData){
-            if(fetchedCategoryData.hasOwnProperty(key)){
-              fetchedCategoryItems.push(fetchedCategoryData[key.valueOf()]);
-            }
-          }
-          return fetchedCategoryItems;
-        })
-      ).subscribe(data =>{
-        console.log(data);
-        this.chosenCategory = data;
-        console.log(this.chosenCategory);
-        this.viewItemsService.viewSelectedItems.emit(this.chosenCategory);
+    this.viewItemsService.browseOrSearchItems("http://localhost:8080/api/search", searchStringParams)
+      .subscribe(data =>{
+      this.viewItemsService.viewSelectedItems.emit(data);
       });
+
       this.router.navigate(['/member-page']);
   }
 
@@ -84,68 +62,30 @@ export class NavbarHeaderComponent implements OnInit {
     this.selectedSubcategoryArr = this.subCategoriesArr[clickedArrIndex];
     this.switchCase = this.categories[clickedArrIndex];
     this.viewItemsService.viewCollectiblesHeadline.emit(this.clickedCategory);
-
-    //this function needs to be tested, after moved to the service
     
     const browseStringParams = { params: new HttpParams({fromString: 'category=' + this.clickedCategory}) };
 
-    this.viewItemsService.userSelectedParams = browseStringParams;
-
-    // this.http.get("http://localhost:8080/api/search/categorySearch", browseStringParams).subscribe(response =>{
-    //   console.log(response.valueOf());
-    //   // this.viewItemsService.viewSelectedItems.emit(response.valueOf());
-    // });
-
-      this.http.get("http://localhost:8080/api/search/categorySearch", browseStringParams)
-      .pipe(
-        map( fetchedCategoryData =>{
-          const fetchedCategoryItems: Item[] = [];
-          for (const key in fetchedCategoryData){
-            if(fetchedCategoryData.hasOwnProperty(key)){
-              fetchedCategoryItems.push(fetchedCategoryData[key.valueOf()]);
-            }
-          }
-          return fetchedCategoryItems;
-        })
-      ).subscribe(data =>{
-        console.log(data);
-        this.chosenCategory = data;
-        this.viewItemsService.viewSelectedItems.emit(this.chosenCategory);
+    this.viewItemsService.browseOrSearchItems("http://localhost:8080/api/search/categorySearch", browseStringParams)
+      .subscribe(data =>{
+        this.viewItemsService.viewSelectedItems.emit(data);
       });
+
       this.router.navigate(['/member-page']);
   }
 
 
   onBrowseSubcategories(clickedSubcategoryArrIndex:number){
-  //this function needs to be tested, after moved to the service
+  
   this.viewItemsService.viewCollectiblesHeadline.emit(this.clickedCategory + ', ' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]);
 
   const browseStringParams = 
   { params: new HttpParams({fromString: 'subCategory=' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
-  
-  // this.http.get("http://localhost:8080/api/search/subCategorySearch", browseStringParams).subscribe(response =>{
-  //   console.log(response.valueOf());
-  // });
-  
-  this.http.get("http://localhost:8080/api/search/subCategorySearch", browseStringParams)
-  .pipe(
-    map( fetchedCategoryData =>{
-      const fetchedCategoryItems: Item[] = [];
-      for (const key in fetchedCategoryData){
-        if(fetchedCategoryData.hasOwnProperty(key)){
-          fetchedCategoryItems.push(fetchedCategoryData[key.valueOf()]);
-        }
-      }
-      return fetchedCategoryItems;
-    })
-  ).subscribe(data =>{
-    console.log(data);
-    this.chosenCategory = data;
-    this.viewItemsService.viewSelectedItems.emit(this.chosenCategory);
-  });
 
-  this.viewItemsService.userSelectedParams = browseStringParams;
-  console.log(this.viewItemsService.userSelectedParams)
+  this.viewItemsService.browseOrSearchItems("http://localhost:8080/api/search/subCategorySearch", browseStringParams)
+    .subscribe(data =>{
+      this.viewItemsService.viewSelectedItems.emit(data);
+    });
+
   console.log(this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]);
   }
 
