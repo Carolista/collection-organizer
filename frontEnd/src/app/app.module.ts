@@ -9,11 +9,13 @@ import { MemberPageComponent } from './member-page/member-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AddItemFormComponent } from './add-item-form/add-item-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AboutTeamComponent } from './landing-page/about-team/about-team.component';
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
+import { authInterceptorProviders } from './authentication/auth.interceptor'
 
 @NgModule({
   declarations: [
@@ -33,9 +35,10 @@ import { AboutProjectComponent } from './landing-page/about-project/about-projec
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
