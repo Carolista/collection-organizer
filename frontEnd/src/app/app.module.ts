@@ -17,7 +17,8 @@ import { AboutTeamComponent } from './landing-page/about-team/about-team.compone
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
 import { authInterceptorProviders } from './authentication/auth.interceptor';
 import { SignUpFormComponent } from './authentication/sign-up-form/sign-up-form.component';
-import { LogInFormComponent } from './authentication/log-in-form/log-in-form.component'
+import { LogInFormComponent } from './authentication/log-in-form/log-in-form.component';
+import { MemberProfileComponent } from './member-profile/member-profile.component'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LogInFormComponent } from './authentication/log-in-form/log-in-form.com
     AboutProjectComponent,
     SignUpFormComponent,
     LogInFormComponent,
+    MemberProfileComponent,
   ],
   imports: [
     BrowserModule,
