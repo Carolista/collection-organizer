@@ -46,7 +46,7 @@ export class ItemDetailComponent implements OnInit {
     this.viewItemsService.editMode = true;
     console.log ('edit mode', this.viewItemsService.editMode);
 
-    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
     this.viewItemsService.viewSelectedItems.emit(myCollection);
     }); 
 
@@ -72,7 +72,7 @@ export class ItemDetailComponent implements OnInit {
     
     this.router.navigate(['/member-page']);
     
-    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
     this.viewItemsService.viewSelectedItems.emit(myCollection);
     });  
 

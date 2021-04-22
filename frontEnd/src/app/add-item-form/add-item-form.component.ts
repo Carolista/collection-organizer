@@ -98,7 +98,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
 
       // this.viewItemsService.fetchedItems.splice(this.viewItemsService.fetchedItemsIndex,1,this.viewItemsService.editedItemValue);
       
-      this.viewItemsService.fetchItems().subscribe (myCollection =>{
+      this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
       this.viewItemsService.viewSelectedItems.emit(myCollection);
         });
 
@@ -107,7 +107,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
               this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
 
       this.viewItemsService.fetchedItems.push(this.addItemForm.value);
-      this.viewItemsService.fetchItems().subscribe(
+      this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe(
         fetchedItems =>{
           this.viewItemsService.fetchedItems = fetchedItems;
         }
@@ -118,7 +118,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
 
     this.router.navigate(['/member-page']);
 
-    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
     this.viewItemsService.viewSelectedItems.emit(myCollection);
     });
     

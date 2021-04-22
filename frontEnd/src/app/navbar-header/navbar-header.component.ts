@@ -46,7 +46,7 @@ export class NavbarHeaderComponent implements OnInit {
 
     const searchStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.userSearch.get('userInput').value}) };
 
-    this.viewItemsService.browseOrSearchItems("http://localhost:8080/api/search", searchStringParams)
+    this.viewItemsService.fetchOrbrowseOrSearchItems("http://localhost:8080/api/search", searchStringParams)
       .subscribe(data =>{
       this.viewItemsService.viewSelectedItems.emit(data);
       });
@@ -65,7 +65,7 @@ export class NavbarHeaderComponent implements OnInit {
     
     const browseStringParams = { params: new HttpParams({fromString: 'category=' + this.clickedCategory}) };
 
-    this.viewItemsService.browseOrSearchItems("http://localhost:8080/api/search/categorySearch", browseStringParams)
+    this.viewItemsService.fetchOrbrowseOrSearchItems("http://localhost:8080/api/search/categorySearch", browseStringParams)
       .subscribe(data =>{
         this.viewItemsService.viewSelectedItems.emit(data);
       });
@@ -81,7 +81,7 @@ export class NavbarHeaderComponent implements OnInit {
   const browseStringParams = 
   { params: new HttpParams({fromString: 'subCategory=' + this.subCategoriesArr[this.categoryArrIndex][clickedSubcategoryArrIndex]}) };
 
-  this.viewItemsService.browseOrSearchItems("http://localhost:8080/api/search/subCategorySearch", browseStringParams)
+  this.viewItemsService.fetchOrbrowseOrSearchItems("http://localhost:8080/api/search/subCategorySearch", browseStringParams)
     .subscribe(data =>{
       this.viewItemsService.viewSelectedItems.emit(data);
     });
@@ -99,7 +99,7 @@ export class NavbarHeaderComponent implements OnInit {
 
 
     this.viewItemsService.viewCollectiblesHeadline.emit('My Collection');
-    this.viewItemsService.browseOrSearchItems()
+    this.viewItemsService.fetchOrbrowseOrSearchItems()
     .subscribe (myCollection =>{
       this.viewItemsService.viewSelectedItems.emit(myCollection);
     });  

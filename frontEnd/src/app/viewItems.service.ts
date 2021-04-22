@@ -82,27 +82,42 @@ export class ViewItemsService {
   // ];
 
   constructor(private http: HttpClient){};
+//combined this  with the function bellow, so I only use one method
+  // fetchItems(){    
 
-  fetchItems(){    
+  //    //when we're fetching data with query params, update this method
+  //    //to includ query param as a second argument
+  //    return this.http
+  //     .get('http://localhost:8080/api/item/')
+  //     .pipe(
+  //       map(fetchedData=>{
+  //         const fetchedItems: Item[] = [];
+  //         for (const key in fetchedData){
+  //           if(fetchedData.hasOwnProperty(key)){
+  //             fetchedItems.push(fetchedData[key.valueOf()]);
+  //           }
+  //         }
+  //         return fetchedItems;
+  //       })
+  //     );
+  //   }
 
-     //when we're fetching data with query params, update this method
-     //to includ query param as a second argument
-     return this.http
-      .get('http://localhost:8080/api/item/')
+    fetchOrbrowseOrSearchItems(url: string = 'http://localhost:8080/api/item/', params: Params = null){
+      if (params == null){
+        return this.http
+      .get(url)
       .pipe(
-        map(fetchedData=>{
-          const fetchedItems: Item[] = [];
-          for (const key in fetchedData){
-            if(fetchedData.hasOwnProperty(key)){
-              fetchedItems.push(fetchedData[key.valueOf()]);
+        map( fetchedCategoryData =>{
+          const fetchedCategoryItems: Item[] = [];
+          for (const key in fetchedCategoryData){
+            if(fetchedCategoryData.hasOwnProperty(key)){
+              fetchedCategoryItems.push(fetchedCategoryData[key.valueOf()]);
             }
           }
-          return fetchedItems;
+          return fetchedCategoryItems;
         })
-      );
-    }
-
-    browseOrSearchItems(url: string = 'http://localhost:8080/api/item/', params: Params = null){
+      )
+      }
       return this.http
       .get(url, params)
       .pipe(

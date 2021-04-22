@@ -39,7 +39,7 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
     // this.headline = this.viewItemsService.viewCollectiblesHeadline;
     // this.items = this.viewItemsService.getItems(); //used when we couldn't load from back end
     if (this.viewItemsService.isUserLoggedIn){
-      this.viewItemsService.fetchItems().subscribe(
+      this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe(
         fetchedItems =>{
           this.items = fetchedItems;
           this.viewItemsService.fetchedItems = fetchedItems;
@@ -59,7 +59,7 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   }
 
   onFetchMyCollectionData(){
-    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
       this.viewItemsService.viewSelectedItems.emit(myCollection);
     });     
   }
