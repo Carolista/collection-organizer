@@ -14,6 +14,7 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   categorySelected: boolean = false;
   displayedItems: Item[] = [];
   headline: string;
+  // shortenItemDescription: string;
 
   constructor(private viewItemsService: ViewItemsService) { 
   
