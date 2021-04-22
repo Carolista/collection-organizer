@@ -1,7 +1,8 @@
-
 $gold: #d3be46;
 $blue-gray: rgb(76, 87, 93);
 $primary:       #0A4157;
+$secondary: #A55E1C;
+$warning: #E4982F;
 
 nav {
     padding-bottom: 8px;
@@ -18,13 +19,13 @@ nav {
     padding-right: 40px;
     padding-bottom: 0px;
     padding-top: 9px;
-    text-align: center;
+    text-align: right;
 }
 
 h4 {
     margin-top: 3px;
     padding: 9px;
-    color: $gold;
+    color: $secondary;
     background-color: $primary;
     border: 1.5px solid rgb(181, 196, 204);
     border-radius: 5px;

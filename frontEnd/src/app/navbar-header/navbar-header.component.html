@@ -1,7 +1,7 @@
 <div class="col-12">
 
   <div class="float-left" style="z-index: 2000; position: absolute;">
-    <a href="#" routerLink=''><img src="../assets/Full logo color background.png" style="max-height: 150px; min-width: 120px"></a>
+    <a href="#" routerLink=''><img src="../assets/Full logo color background.png" style="max-height: 150px;"></a>
   </div>
 
   <nav class="navbar-expand-sm" style="height: auto">
@@ -25,7 +25,7 @@
             class="form-control text-uppercase" placeholder="search">
             <div class="input-group-append">
               <button type="submit" class="btn btn-primary">
-                <img class="text-light" src="../../assets/search.svg">
+                <img src="../../assets/search.png" style="max-height: 1rem;">
               </button>
             </div>
           </div>
@@ -51,11 +51,11 @@
         <div class="col" *ngFor="let category of categories; let i = index">  
           <div class="col"> 
             <a 
-          href="#"
-          routerLink="member-page"
-          (click)="onBrowseCategories(i)">
-            <h5 >{{category}}</h5>
-          </a>  
+            href="#"
+            routerLink="member-page"
+            (click)="onBrowseCategories(i)">
+              <h5 style="font-size: small;">{{category}}</h5>
+            </a>  
           </div>      
         </div>
       </div>

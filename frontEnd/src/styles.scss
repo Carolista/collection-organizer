@@ -15,6 +15,7 @@ $light:         #E9E9E9;
 $dark:          #2E2F2E;
 $muted:         #9C9C9D;
 $tertiary:      #575554;
+$light2:        #D5E7ED;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(
@@ -29,6 +30,7 @@ $theme-colors: map-merge(
     "dark":       $dark,
     "muted":      $muted,
     "tertiary":   $tertiary,
+    "light2":     $light2,
   ),
   $theme-colors
 );
