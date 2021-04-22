@@ -3,6 +3,7 @@
   style="cursor: pointer;"
   (click)="onFetchMyCollectionData()"
   >{{headline}}</h1>
+  <h4 *ngIf = "items.length ==0"> There is no result for your search</h4>
   <hr>
   <div 
   *ngIf='isUserLoggedIn'
