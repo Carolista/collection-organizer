@@ -91,9 +91,16 @@ export class NavbarHeaderComponent implements OnInit {
 
 
   onFetchMyCollectionData(){
+
+
+    //please change this, it may needs to be event emitter
     this.viewItemsService.isUserLoggedIn = true;
+
+
+
     this.viewItemsService.viewCollectiblesHeadline.emit('My Collection');
-    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.browseOrSearchItems()
+    .subscribe (myCollection =>{
       this.viewItemsService.viewSelectedItems.emit(myCollection);
     });  
 
@@ -102,6 +109,8 @@ export class NavbarHeaderComponent implements OnInit {
   }
 
   logOut(){
+
+    // just to change userLogin value.  needs to be changed after merge.
     this.viewItemsService.isUserLoggedIn = false;
     console.log(this.viewItemsService.isUserLoggedIn);
   }

@@ -14,7 +14,7 @@ export class ViewItemsService {
   fetchedItemsIndex: number;
   // userSelectedParams: Params;
   fetchedItems: Item[] = [];  
-  isUserLoggedIn: boolean = false;
+  isUserLoggedIn: boolean = false;//Casey, please replace this with your user logged in var.
   itemsToDisplay: Item[] = [];
   subcategorySelected: boolean;
   viewSelectedItems = new EventEmitter<Item[]>();
@@ -102,8 +102,9 @@ export class ViewItemsService {
       );
     }
 
-    browseOrSearchItems(url: string, params: Params){
-      return this.http.get(url, params)
+    browseOrSearchItems(url: string = 'http://localhost:8080/api/item/', params: Params = null){
+      return this.http
+      .get(url, params)
       .pipe(
         map( fetchedCategoryData =>{
           const fetchedCategoryItems: Item[] = [];
