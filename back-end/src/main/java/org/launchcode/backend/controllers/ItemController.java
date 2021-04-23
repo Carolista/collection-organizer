@@ -53,6 +53,7 @@ public class ItemController {
         item.setCond(item.getCond());
         item.setMediaType(item.getMediaType());
         item.setRefs(item.getRefs());
+        item.setAssociatedUser(item.getAssociatedUser());
 
         return itemRepository.save(item);
 

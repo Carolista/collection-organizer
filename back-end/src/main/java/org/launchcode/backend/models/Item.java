@@ -32,10 +32,11 @@ public class Item extends AbstractEntity {
     private String cond;
     private String mediaType;
     private String refs;
+    private Long associatedUser;
 
     public Item(String title, String imagePath, String category, String subCategory, String description,
                 String creator, int yearCreated, String placeOfOrigin, int yearAcquired, String cond,
-                String mediaType, String refs) {
+                String mediaType, String refs, Long associatedUser) {
         this.title = title;
         this.imagePath = imagePath;
         this.category = category;
@@ -48,6 +49,7 @@ public class Item extends AbstractEntity {
         this.cond = cond;
         this.mediaType = mediaType;
         this.refs = refs;
+        this.associatedUser = associatedUser;
     }
 
 
@@ -154,5 +156,13 @@ public class Item extends AbstractEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Long getAssociatedUser() {
+        return associatedUser;
+    }
+
+    public void setAssociatedUser(Long associatedUser) {
+        this.associatedUser = associatedUser;
     }
 }
