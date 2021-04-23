@@ -1,6 +1,8 @@
 package org.launchcode.backend.models;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,6 +34,8 @@ public class Item extends AbstractEntity {
     private String cond;
     private String mediaType;
     private String refs;
+
+//  @OneToMany(mappedBy = "") *do we need a relationship defined here?
     private Long associatedUser;
 
     public Item(String title, String imagePath, String category, String subCategory, String description,
