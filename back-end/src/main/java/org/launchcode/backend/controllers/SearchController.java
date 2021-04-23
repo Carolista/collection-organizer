@@ -16,20 +16,20 @@ import java.util.ArrayList;
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "api/search", method = RequestMethod.POST)
 
+
 public class SearchController {
 
     @Autowired
     public ItemRepository itemRepository;
 
 
-
-
-
     @GetMapping
+
     public ArrayList<Item> searchResult(@Param("searchTerm") String searchTerm) {   //, String title, String description) {
         ArrayList<Item> searchResult = new ArrayList<Item>();
 
         for(Item item : itemRepository.findAll()) {
+
 
 
             if(item != null && item.getSubCategory().toLowerCase().contains(searchTerm.toLowerCase())){
@@ -45,6 +45,7 @@ public class SearchController {
                 searchResult.add(item);
 
           }
+
 
         }
         return searchResult;
