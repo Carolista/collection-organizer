@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
+import { Params, Router } from '@angular/router';
 import { ViewItemsService } from '../viewItems.service';
 import { CategoriesService } from '../categories.service';
+import { Item } from '../ItemClass';
 
 
 @Component({
@@ -14,6 +15,10 @@ import { CategoriesService } from '../categories.service';
 export class AdvancedSearchComponent implements OnInit {editMode: boolean;
 
   advancedSearch: FormGroup;
+  url: string;
+  browseStringParams: Params;
+  searchResult = [];
+  localArrToBeSearched: Item[];
 
   browseMainCategories: string[];
 
@@ -40,8 +45,9 @@ export class AdvancedSearchComponent implements OnInit {editMode: boolean;
 
     this.advancedSearch = new FormGroup ({
       'title': new FormControl (null),
-      'category': new FormControl (null),
+      'category': new FormControl (null, Validators.required),
       'subCategory': new FormControl(null),
+      'keyWords': new FormControl(null),
       'creator': new FormControl (null),
       'yearCreated': new FormControl (null),
       'placeOfOrigin': new FormControl(null),
@@ -53,35 +59,50 @@ export class AdvancedSearchComponent implements OnInit {editMode: boolean;
     
   }
 
-  ngOnDestroy(){
-    
+  searchInLocalArr(searchField:string){
+    let localSearchResult = [];
+    if(searchField){
+      for (let i = 0; i < this.localArrToBeSearched.length; i++){
+        if(this.localArrToBeSearched[i][searchField] == this.advancedSearch.value[searchField]){
+          localSearchResult.push(this.localArrToBeSearched[i]);
+        }
+      }
+    }
+    return localSearchResult;
   }
 
-
   onSubmit(){
-
-      // this.viewItemsService.fetchedItems.splice(this.viewItemsService.fetchedItemsIndex,1,this.viewItemsService.editedItemValue);
+    if (this.advancedSearch.value.subCategory){
+      this.url = 'http://localhost:8080/api/search/subCategorySearch';
+      this.browseStringParams = { params: new HttpParams({fromString: 'subCategory=' + this.advancedSearch.value.subCategory}) };
+    }
+    if (this.advancedSearch.value.title || this.advancedSearch.value.keyWords){
+      this.url = 'http://localhost:8080/api/search';
+      if (this.advancedSearch.value.title){
+        this.browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.advancedSearch.value.title}) };
+      }
+      if (!this.advancedSearch.value.title){
+        this.browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.advancedSearch.value.keyWords}) };
+      }
       
-      this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
-      this.viewItemsService.viewSelectedItems.emit(myCollection);
-        });
+    }
+    //make category a required field, add form validations
+    if (this.advancedSearch.value.creator || this.advancedSearch.value.yearCreated 
+      || this.advancedSearch.value.placeOfOrigin || this.advancedSearch.value.condition || this.advancedSearch.value.mediaType){
+      this.url = 'http://localhost:8080/api/search/categorySearch';
+      this.browseStringParams = { params: new HttpParams ({fromString: 'category=' + this.advancedSearch.value.category}) };
+    }
 
-      this.http.post('http://localhost:8080/api/item', 
-              this.advancedSearch.value).subscribe( post => {console.log(post.valueOf())});
-
-      this.viewItemsService.fetchedItems.push(this.advancedSearch.value);
-      this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe(
-        fetchedItems =>{
-          this.viewItemsService.fetchedItems = fetchedItems;
-        }
-      );
-
-    //add logic to enter url link and params
-    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (mySearch =>{
-      //rework this function to save in the local array/ search through array for other fields
-    this.viewItemsService.viewSelectedItems.emit(mySearch);
-    });
+    this.viewItemsService.fetchOrbrowseOrSearchItems(this.url, this.browseStringParams)
+    .subscribe (mySearch =>{
+    this.localArrToBeSearched = mySearch;
     
+    this.searchResult = this.searchInLocalArr('creator');
+    
+    
+    this.viewItemsService.viewSelectedItems.emit(this.searchResult);
+    });
+
     this.router.navigate(['/member-page']);
     
   }
