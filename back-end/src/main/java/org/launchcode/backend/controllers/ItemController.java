@@ -27,7 +27,7 @@ public class ItemController {
         return itemRepository.findAll();
     }
 
-    @GetMapping
+    @GetMapping("/mycollection")
     public Iterable<Item> getUserCollection(@PathVariable("userId") long associatedUser) {
         return itemRepository.findByAssociatedUser(associatedUser);
     }
