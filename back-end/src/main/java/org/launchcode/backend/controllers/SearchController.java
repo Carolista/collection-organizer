@@ -34,26 +34,17 @@ public class SearchController {
 
             if(item != null && item.getSubCategory().toLowerCase().contains(searchTerm.toLowerCase())){
                 searchResult.add(item);
-              //  break;
+
             } else if(item != null && item.getCategory().toLowerCase().contains(searchTerm.toLowerCase())){
                 searchResult.add(item);
-              //  break;
+
             } else if(item != null && item.getDescription().toLowerCase().contains(searchTerm.toLowerCase())) {
                 searchResult.add(item);
-              //  break;
+
             } else if(item != null && item.getTitle().toLowerCase().contains(searchTerm.toLowerCase())) {
                 searchResult.add(item);
-              //  break;
-          } //  else if(item != null && item.getPlaceOfOrigin().toLowerCase().contains(search.toLowerCase())){
-//                searchResult.add(item);
-//                break;
-//            }
-//            if(item != null && item.getCond().toLowerCase().contains(search.toLowerCase())){
-//                searchResult.add(item);
-//            }
-//            if(item != null && item.getMediaType().contains(search.toLowerCase())){
-//                searchResult.add(item);
-//            }
+
+          }
 
         }
         return searchResult;
