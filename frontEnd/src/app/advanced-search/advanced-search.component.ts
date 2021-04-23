@@ -72,6 +72,11 @@ export class AdvancedSearchComponent implements OnInit {editMode: boolean;
   }
 
   onSubmit(){
+    if (this.advancedSearch.value.category){
+      this.url = 'http://localhost:8080/api/search/categorySearch';
+      this.browseStringParams = { params: new HttpParams ({fromString: 'category=' + this.advancedSearch.value.category}) };
+    }
+
     if (this.advancedSearch.value.subCategory){
       this.url = 'http://localhost:8080/api/search/subCategorySearch';
       this.browseStringParams = { params: new HttpParams({fromString: 'subCategory=' + this.advancedSearch.value.subCategory}) };
@@ -87,19 +92,22 @@ export class AdvancedSearchComponent implements OnInit {editMode: boolean;
       
     }
     //make category a required field, add form validations
-    if (this.advancedSearch.value.creator || this.advancedSearch.value.yearCreated 
-      || this.advancedSearch.value.placeOfOrigin || this.advancedSearch.value.condition || this.advancedSearch.value.mediaType){
-      this.url = 'http://localhost:8080/api/search/categorySearch';
-      this.browseStringParams = { params: new HttpParams ({fromString: 'category=' + this.advancedSearch.value.category}) };
-    }
+    // if (this.advancedSearch.value.creator || this.advancedSearch.value.yearCreated 
+    //   || this.advancedSearch.value.placeOfOrigin || this.advancedSearch.value.condition || this.advancedSearch.value.mediaType){
+    //   this.url = 'http://localhost:8080/api/search/categorySearch';
+    //   this.browseStringParams = { params: new HttpParams ({fromString: 'category=' + this.advancedSearch.value.category}) };
+    // }
 
     this.viewItemsService.fetchOrbrowseOrSearchItems(this.url, this.browseStringParams)
     .subscribe (mySearch =>{
     this.localArrToBeSearched = mySearch;
     
-    this.searchResult = this.searchInLocalArr('creator');
+    // if (this.advancedSearch.value.creator){
+    //   this.searchResult = this.searchInLocalArr('creator');
+    // }
+    this.searchResult = mySearch;
     
-    
+    console.log('emit'+this.searchResult);
     this.viewItemsService.viewSelectedItems.emit(this.searchResult);
     });
 

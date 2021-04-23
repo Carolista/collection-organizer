@@ -38,6 +38,8 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
     this.isUserLoggedIn = this.viewItemsService.isUserLoggedIn;
     // this.headline = this.viewItemsService.viewCollectiblesHeadline;
     // this.items = this.viewItemsService.getItems(); //used when we couldn't load from back end
+    
+    //advanced search doesn't work if this page pulls all the items onInit
     if (this.viewItemsService.isUserLoggedIn){
       this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe(
         fetchedItems =>{
