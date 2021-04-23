@@ -26,7 +26,7 @@
                       </label>
                 </div>
                 <div class="col">
-                    <label for="subCategory">Please select a Subcategory<br>
+                    <label for="subCategory">Search by Subcategory<br>
                         <div class="col" [ngSwitch]="advancedSearch.get('category').value">
                           <div class="radio" *ngFor="let subCategory of fineArts">
                             <label *ngSwitchCase="'Fine Arts'">
@@ -92,7 +92,7 @@
                             </div>
                           </div>
           
-                          <span *ngSwitchDefault>Please choose a category</span>
+                          <span *ngSwitchDefault>Please select a category</span>
                         </div>
                       </label><br>
                 </div>

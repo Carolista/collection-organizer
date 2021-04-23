@@ -3,7 +3,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewItemsService } from '../viewItems.service';
-import { Item } from '../ItemClass';
 import { CategoriesService } from '../categories.service';
 
 
@@ -13,10 +12,9 @@ import { CategoriesService } from '../categories.service';
   styleUrls: ['./advanced-search.component.scss']
 })
 export class AdvancedSearchComponent implements OnInit {editMode: boolean;
-  formPresetValue: Item;
 
   advancedSearch: FormGroup;
-  // formSubmitted = false;
+
   browseMainCategories: string[];
 
   fineArts = this.categoriesService.subCategoriesArr[0];
@@ -39,35 +37,24 @@ export class AdvancedSearchComponent implements OnInit {editMode: boolean;
   ngOnInit():void{
 
     this.browseMainCategories = this.categoriesService.browseMainCategories;
-    this.editMode = this.viewItemsService.editMode;
-    // console.log ('add item form edit mode', this.editMode)
-    if (this.editMode){
-      this.formPresetValue = this.viewItemsService.valuesForEditingItem;
-    }else{
-      this.formPresetValue = null;
-    }
-
 
     this.advancedSearch = new FormGroup ({
-      'title': new FormControl (this.editMode ? this.formPresetValue.title : null, 
-        Validators.required),
-      'category': new FormControl (this.editMode ? this.formPresetValue.category : null, 
-        Validators.required),
-      'subCategory': new FormControl(this.editMode ? this.formPresetValue.subCategory : null,
-        Validators.required),
-      'creator': new FormControl (this.editMode ? this.formPresetValue.creator : null),
-      'yearCreated': new FormControl (this.editMode ? this.formPresetValue.yearCreated : null),
-      'placeOfOrigin': new FormControl(this.editMode ? this.formPresetValue.placeOfOrigin : null),
-      'yearAcquired': new FormControl(this.editMode ? this.formPresetValue.yearAcquired : null),
-      'cond': new FormControl (this.editMode ? this.formPresetValue.cond : null),
-      'mediaType': new FormControl (this.editMode ? this.formPresetValue.mediaType : null),
-      'refs': new FormControl (this.editMode ? this.formPresetValue.refs : null)
+      'title': new FormControl (null),
+      'category': new FormControl (null),
+      'subCategory': new FormControl(null),
+      'creator': new FormControl (null),
+      'yearCreated': new FormControl (null),
+      'placeOfOrigin': new FormControl(null),
+      'yearAcquired': new FormControl(null),
+      'cond': new FormControl (null),
+      'mediaType': new FormControl (null),
+      'refs': new FormControl (null)
     });
     
   }
 
   ngOnDestroy(){
-    this.viewItemsService.editMode = false;
+    
   }
 
 
@@ -89,16 +76,13 @@ export class AdvancedSearchComponent implements OnInit {editMode: boolean;
         }
       );
 
-
-    this.viewItemsService.editMode = false;
-
-    this.router.navigate(['/member-page']);
-
+    //add logic to enter url link and params
     this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (mySearch =>{
-
       //rework this function to save in the local array/ search through array for other fields
     this.viewItemsService.viewSelectedItems.emit(mySearch);
     });
+    
+    this.router.navigate(['/member-page']);
     
   }
 
