@@ -27,6 +27,11 @@ public class ItemController {
         return itemRepository.findAll();
     }
 
+    @GetMapping
+    public Iterable<Item> getUserCollection(@PathVariable("userId") long associatedUser) {
+        return itemRepository.findByAssociatedUser(associatedUser);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Item item) {
@@ -64,6 +69,8 @@ public class ItemController {
        itemRepository.deleteById(id);
 
     }
+
+
 
 }
 
