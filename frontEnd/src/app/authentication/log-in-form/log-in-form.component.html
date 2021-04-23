@@ -7,7 +7,6 @@
     /> -->
 
     <form
-      *ngIf="!isLoggedIn"
       name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"

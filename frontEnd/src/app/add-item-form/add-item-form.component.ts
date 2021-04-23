@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewItemsService } from '../viewItems.service';
 import { Item } from '../ItemClass';
+import { AuthService } from '../authentication/auth.service';
 
 @Component({
   selector: 'app-add-item-form',
@@ -12,6 +13,7 @@ import { Item } from '../ItemClass';
 })
 export class AddItemFormComponent implements OnInit, OnDestroy {
 
+  associatedUser: number;
   editMode: boolean;
   formPresetValue: Item;
 
@@ -47,9 +49,11 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
 
   constructor(private http: HttpClient, 
               private router: Router,
-              private viewItemsService: ViewItemsService) { }
+              private viewItemsService: ViewItemsService,
+              private authService: AuthService) { }
 
   ngOnInit():void{
+    this.associatedUser = this.authService.userId;
 
     this.editMode = this.viewItemsService.editMode;
     // console.log ('add item form edit mode', this.editMode)
@@ -75,7 +79,8 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
       'yearAcquired': new FormControl(this.editMode ? this.formPresetValue.yearAcquired : null),
       'cond': new FormControl (this.editMode ? this.formPresetValue.cond : null),
       'mediaType': new FormControl (this.editMode ? this.formPresetValue.mediaType : null),
-      'refs': new FormControl (this.editMode ? this.formPresetValue.refs : null)
+      'refs': new FormControl (this.editMode ? this.formPresetValue.refs : null),
+      'associatedUser': new FormControl (this.editMode ? this.formPresetValue.associatedUser: null),
     });
     
   }
@@ -86,7 +91,7 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
 
 
   onSubmit(){
-  
+    console.log('submitting item for user ' + this.associatedUser);
     if (this.editMode){
       this.viewItemsService.editedItemValue = new Item(
         this.formPresetValue.id, 
@@ -101,12 +106,13 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
         this.addItemForm.value.yearAcquired,
         this.addItemForm.value.cond,
         this.addItemForm.value.mediaType,
-        this.addItemForm.value.refs);
+        this.addItemForm.value.refs,
+        this.associatedUser);
 
       this.viewItemsService.editItem(this.viewItemsService.fetchedItemsIndex, this.formPresetValue.id);
       console.log('edited item value', this.viewItemsService.editedItemValue);
     }else{
-      this.http.post('http://localhost:8080/api/item', 
+      this.http.post('http://localhost:8080/api/item/mycollection', 
               this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
     }
 

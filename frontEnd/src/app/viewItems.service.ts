@@ -2,7 +2,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from 'rxjs/operators';
-import { Item } from "./ItemClass"
+import { Item } from "./ItemClass";
+import { AuthService } from './authentication/auth.service';
+import { TokenStorageService } from "./authentication/token-storage.service";
 
 @Injectable({providedIn:'root'})
 export class ViewItemsService {
@@ -12,68 +14,18 @@ export class ViewItemsService {
   valuesForEditingItem: Item; //these values are for the input field to be changed out in the add-item-form
   fetchedItemsIndex: number;
 
+  isLoggedIn: boolean = false;
+  userId: number;
+
   //soon list of items will be fetching an array of objects from the back end.
-  listOfItems: any = [
-    {
-      imagePath: 'https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://media.istockphoto.com/photos/great-sneaker-picture-id1079117394',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://media.istockphoto.com/photos/balls-picture-id488816326',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://media.istockphoto.com/photos/rocket-on-black-background-picture-id172288174',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://media.istockphoto.com/photos/antique-change-picture-id95520796',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://media.istockphoto.com/photos/great-sneaker-picture-id1079117394',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://media.istockphoto.com/photos/antique-change-picture-id95520796',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://media.istockphoto.com/photos/great-sneaker-picture-id1079117394',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://media.istockphoto.com/photos/great-sneaker-picture-id1079117394',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    },
-    {
-      imagePath: 'https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg',
-      title: 'Item Title goes here-very long title',
-      description: 'A few words of description will go here, sample of a few lines of words'
-    }
-  ];
+  listOfItems: any = [];
 
   fetchedItems: Item[] = [];  
 
-  constructor(private http: HttpClient){};
+  constructor(
+    private http: HttpClient, 
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService){};
   //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
 
   fetchItems(){
@@ -90,8 +42,13 @@ export class ViewItemsService {
     //   });
 
      //new syntax will use observables, I hope it will fix the bug 
-     return this.http
-      .get('http://localhost:8080/api/item/')
+    if(this.authService.isLoggedIn) {
+      this.isLoggedIn = true;
+      this.userId = this.authService.userId;
+    }
+
+    return this.http
+      .get('http://localhost:8080/api/item/mycollection')
       .pipe(
         map(fetchedData=>{
           const fetchedItems: Item[] = [];
@@ -122,7 +79,7 @@ export class ViewItemsService {
     this.fetchedItems.splice(index, 1, this.editedItemValue);
 
     //this method needs to be tested with the back end
-    this.http.put('http://localhost:8080/api/item/'+ itemId, this.editedItemValue).subscribe( data=>{
+    this.http.put('http://localhost:8080/api/item/mycollection/'+ itemId, this.editedItemValue).subscribe( data=>{
       console.log(data)
     });
 

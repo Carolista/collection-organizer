@@ -12,17 +12,20 @@ export class MemberPageComponent implements OnInit {
   userId?: number;
   username?: string;
 
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(
+    private tokenStorage: TokenStorageService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = ! !this.tokenStorage.getToken();
+    this.userId = this.authService.userId;
 
-    if(this.isLoggedIn) {
-      const user = this.tokenStorage.getUser();
-      //this.roles = user.roles;
-      this.userId = user.userId
-      this.username = user.username
-    }
+    //possible alternative code for loading user id when logged in? from tutorial
+    // if(this.isLoggedIn) {
+    //   const user = this.tokenStorage.getUser();
+    //   this.userId = user.userId
+    //   this.username = user.username
+    // }
   }
 
 }

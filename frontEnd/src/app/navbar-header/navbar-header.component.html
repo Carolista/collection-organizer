@@ -22,15 +22,15 @@
 
       <ul class="navbar-nav">
         <li class="nav-item" routerLinkActive="selected">
-          <a class="nav-link text-uppercase px-3" 
+          <a *ngIf="!isLoggedIn" class="nav-link text-uppercase px-3" routerLink="sign-up">sign up</a>
+        </li>
+        <li class="nav-item" routerLinkActive="selected">
+          <a *ngIf="!isLoggedIn" class="nav-link text-uppercase px-3" routerLink="log-in">log in</a>
+        </li>
+        <li class="nav-item" routerLinkActive="selected">
+          <a *ngIf="isLoggedIn" class="nav-link text-uppercase px-3" 
           routerLink="member-page"
           >my page</a>
-        </li>
-        <li class="nav-item" routerLinkActive="selected">
-          <a class="nav-link text-uppercase px-3" routerLink="sign-up">sign up</a>
-        </li>
-        <li class="nav-item" routerLinkActive="selected">
-          <a class="nav-link text-uppercase px-3" routerLink="log-in">log in</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-uppercase px-3" href='#' (click)="onLogOut()">log out </a>
