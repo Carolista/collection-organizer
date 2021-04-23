@@ -131,7 +131,6 @@ public class Item extends AbstractEntity {
 
 
 
-
     public String getCond() {
         return cond;
     }
@@ -147,7 +146,5 @@ public class Item extends AbstractEntity {
     public void setRefs(String references) {
         this.refs = refs;
     }
-
-
 
 }

@@ -16,44 +16,36 @@ import java.util.ArrayList;
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "api/search", method = RequestMethod.POST)
 
+
 public class SearchController {
 
     @Autowired
     public ItemRepository itemRepository;
 
 
-
-
-
     @GetMapping
+
     public ArrayList<Item> searchResult(@Param("searchTerm") String searchTerm) {   //, String title, String description) {
         ArrayList<Item> searchResult = new ArrayList<Item>();
 
         for(Item item : itemRepository.findAll()) {
 
 
+
             if(item != null && item.getSubCategory().toLowerCase().contains(searchTerm.toLowerCase())){
                 searchResult.add(item);
-              //  break;
+
             } else if(item != null && item.getCategory().toLowerCase().contains(searchTerm.toLowerCase())){
                 searchResult.add(item);
-              //  break;
+
             } else if(item != null && item.getDescription().toLowerCase().contains(searchTerm.toLowerCase())) {
                 searchResult.add(item);
-              //  break;
+
             } else if(item != null && item.getTitle().toLowerCase().contains(searchTerm.toLowerCase())) {
                 searchResult.add(item);
-              //  break;
-          } //  else if(item != null && item.getPlaceOfOrigin().toLowerCase().contains(search.toLowerCase())){
-//                searchResult.add(item);
-//                break;
-//            }
-//            if(item != null && item.getCond().toLowerCase().contains(search.toLowerCase())){
-//                searchResult.add(item);
-//            }
-//            if(item != null && item.getMediaType().contains(search.toLowerCase())){
-//                searchResult.add(item);
-//            }
+
+          }
+
 
         }
         return searchResult;
