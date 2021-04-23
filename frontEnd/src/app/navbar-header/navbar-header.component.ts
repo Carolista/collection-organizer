@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewItemsService } from '../viewItems.service'
+import { ViewItemsService } from '../viewItems.service';
+import { TokenStorageService } from '../authentication/token-storage.service';
 
 @Component({
   selector: 'app-navbar-header',
@@ -8,7 +9,7 @@ import { ViewItemsService } from '../viewItems.service'
 })
 export class NavbarHeaderComponent implements OnInit {
 
-  constructor(private viewItemsService: ViewItemsService) { }
+  constructor(private viewItemsService: ViewItemsService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
   }
@@ -16,5 +17,9 @@ export class NavbarHeaderComponent implements OnInit {
   // // onFetchMyCollectionData(){
   // //   this.viewItemsService.fetchItems();
   // // }
+
+  onLogOut() {
+    this.tokenStorage.signOut();
+  }
 
 }
