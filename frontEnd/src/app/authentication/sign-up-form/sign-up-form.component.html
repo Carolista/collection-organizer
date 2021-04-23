@@ -3,7 +3,7 @@
     <!--image tag can go here if desired-->
 
     <form
-      *ngIf="!isSuccessful"
+      *ngIf="!signUpSuccessful"
       name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"
