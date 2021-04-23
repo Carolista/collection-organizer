@@ -12,4 +12,6 @@ import javax.transaction.Transactional;
 public interface ItemRepository extends CrudRepository <Item, Long>{
 
     void deleteItemById(Long id);
+
+    Iterable<Item> findByAssociatedUser(Long associatedUser);
 }
