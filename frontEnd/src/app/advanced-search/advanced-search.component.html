@@ -1,1 +1,132 @@
-<p>advanced-search works!</p>
+<!-- <div class="container"> -->
+    <div class="row">
+        <div class="col-12">
+          <h1>Advanced Search</h1>
+          <h6 class="text-muted">Please fill out any of the search fields below: <br>
+          </h6>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+     <div class="col">
+        <form [formGroup]="advancedSearch" (ngSubmit)="onSubmit()"> 
+            <div class="row">
+                <div class="col">
+                    <label for="category">Please Select a Category<br>
+                        <div class="col">
+                          <div class="radio" *ngFor="let category of browseMainCategories">
+                            <label>
+                              <input
+                                type="radio"
+                                formControlName="category"
+                                [value]="category">{{ category }}
+                            </label>
+                          </div>
+                        </div>
+                      </label>
+                </div>
+                <div class="col">
+                    <label for="subCategory">Please select a Subcategory<br>
+                        <div class="col" [ngSwitch]="advancedSearch.get('category').value">
+                          <div class="radio" *ngFor="let subCategory of fineArts">
+                            <label *ngSwitchCase="'Fine Arts'">
+                              <input
+                                type="radio"
+                                formControlName="subCategory"
+                                [value]="subCategory">{{ subCategory }}
+                            </label>
+                          </div>
+          
+                          <div class="col">
+                            <div class="radio" *ngFor="let subCategory of culture">
+                              <label *ngSwitchCase="'Culture'">
+                                <input
+                                  type="radio"
+                                  formControlName="subCategory"
+                                  [value]="subCategory">{{ subCategory }}
+                              </label>
+                            </div>
+                          </div>
+          
+                          <div class="col">
+                            <div class="radio" *ngFor="let subCategory of decorativeArts">
+                              <label *ngSwitchCase="'Decorative arts'">
+                                <input
+                                  type="radio"
+                                  formControlName="subCategory"
+                                  [value]="subCategory">{{ subCategory }}
+                              </label>
+                            </div>
+                          </div>
+          
+                          <div class="col">
+                            <div class="radio" *ngFor="let subCategory of machinesAndTransportation">
+                              <label *ngSwitchCase="'Machines & Transport'">
+                                <input
+                                  type="radio"
+                                  formControlName="subCategory"
+                                  [value]="subCategory">{{ subCategory }}
+                              </label>
+                            </div>
+                          </div>
+          
+                          <div class="col">
+                            <div class="radio" *ngFor="let subCategory of fashionAndTextiles">
+                              <label *ngSwitchCase="'Fashion and Textiles'">
+                                <input
+                                  type="radio"
+                                  formControlName="subCategory"
+                                  [value]="subCategory">{{ subCategory }}
+                              </label>
+                            </div>
+                          </div>
+          
+                          <div class="col">
+                            <div class="radio" *ngFor="let subCategory of naturalHistory">
+                              <label *ngSwitchCase="'Natural History'">
+                                <input
+                                  type="radio"
+                                  formControlName="subCategory"
+                                  [value]="subCategory">{{ subCategory }}
+                              </label>
+                            </div>
+                          </div>
+          
+                          <span *ngSwitchDefault>Please choose a category</span>
+                        </div>
+                      </label><br>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col">
+                <label for="title">Search By Title
+                    <input formControlName="title" id="title" type="text">
+                </label>
+               
+                <label for="creator">Search By Creator
+                    <input formControlName="creator" id="creator" type="text">
+                  </label>
+                  <label for="yearCreated"> Search By Year Created
+                    <input formControlName="yearCreated" id="yearCreated" type="number">
+                  </label>
+                  <label for="placeOfOrigin">Search By Place of Origin
+                    <input formControlName="placeOfOrigin" id="placeOfOrigin" type="text">
+                  </label>
+                  <label for="cond">Search By Condition
+                    <select formControlName="cond" id="cond">
+                      <option value="fair">fair</option>
+                      <option value = "good">good</option>
+                      <option value = "very-good">very good</option>
+                      <option value = "excellent">excellent</option>
+                    </select>
+                  </label>
+                  <label for="mediaType"> Search By Media
+                    <input formControlName="mediaType" id="mediaType" type="text">
+                  </label>
+            </div>
+            
+        </div>
+
+        <button class="btn btn-secondary" type="submit">Search</button>
+            
+     </form>
