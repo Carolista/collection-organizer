@@ -116,14 +116,14 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
     } else {
       this.http.post(
         'http://localhost:8080/api/item/', 
-        {
-          headers: new HttpHeaders({ 
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Credentials': 'true',
-            'Authorization': 'Barer ' + this.token.getToken() 
-          })  
-        },
+        // {
+        //   headers: new HttpHeaders({ 
+        //     'Content-Type': 'application/json',
+        //     'Access-Control-Allow-Origin': '*',
+        //     'Access-Control-Allow-Credentials': 'true',
+        //     'Authorization': 'Barer ' + this.token.getToken() 
+        //   })  
+        // },
         this.addItemForm.value)
         .subscribe( post => {console.log(post.valueOf())});
     }

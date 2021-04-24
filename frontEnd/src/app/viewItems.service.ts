@@ -25,7 +25,7 @@ export class ViewItemsService {
   constructor(
     private http: HttpClient, 
     private authService: AuthService,
-    private tokenStorage: TokenStorageService){};
+    private token: TokenStorageService){};
   //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
 
   fetchItems(){
@@ -38,7 +38,15 @@ export class ViewItemsService {
     // console.log(this.isLoggedIn);
 
     return this.http
-      .get('http://localhost:8080/api/item/mycollection')
+      .get('http://localhost:8080/api/item'
+      // ,{headers: {
+      //   'Content-Type': 'application/json',
+      //   'Access-Control-Allow-Origin': '*',
+      //   'Access-Control-Allow-Credentials': 'true',
+      //   'Authorization': 'Bearer ' + this.token.getToken()
+      //   }
+      // }
+      )
       .pipe(
         map(fetchedData=>{
           const fetchedItems: Item[] = [];
