@@ -38,6 +38,8 @@ export class NavbarHeaderComponent implements OnInit {
       'userInput': new FormControl(null)
     });
 
+    console.log(this.categories);
+
   }
 
   onSearch(){
@@ -59,6 +61,7 @@ export class NavbarHeaderComponent implements OnInit {
     this.openOrCloseCategory.splice(clickedArrIndex, 1, !this.openOrCloseCategory[clickedArrIndex]);
     this.categoryArrIndex=clickedArrIndex; //need this value to access subcategories
     this.clickedCategory = this.categories[clickedArrIndex];
+    console.log(this.clickedCategory);
     this.selectedSubcategoryArr = this.subCategoriesArr[clickedArrIndex];
     this.switchCase = this.categories[clickedArrIndex];
     this.viewItemsService.viewCollectiblesHeadline.emit(this.clickedCategory);
@@ -69,7 +72,7 @@ export class NavbarHeaderComponent implements OnInit {
       .subscribe(data =>{
         this.viewItemsService.viewSelectedItems.emit(data);
       });
-
+      console.log (browseStringParams);
       this.router.navigate(['/member-page']);
   }
 
