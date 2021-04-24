@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ViewItemsService } from '../viewItems.service';
 import { Item } from '../ItemClass'
 import { AuthService } from '../authentication/auth.service';
+import { TokenStorageService } from '../authentication/token-storage.service';
 
 @Component({
   selector: 'app-view-list-of-collectibles',
@@ -17,18 +18,19 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
 
   constructor(
     private viewItemsService: ViewItemsService,
-    private authService: AuthService) { 
+    private authService: AuthService,
+    private token: TokenStorageService) { 
   }
 
   ngOnInit(): void {
     // this.items = this.viewItemsService.getItems(); //used when we couldn't load from back end
 
-    if(this.authService.isLoggedIn) {
+    if (this.token.getToken()) {
       this.isLoggedIn = true;
-      this.associatedUser = this.authService.associatedUser;
+      this.associatedUser = this.token.getUser().id;
     }
 
-    console.log(this.isLoggedIn);
+    console.log(this.associatedUser + " is logged in to view-list? " + this.isLoggedIn)
 
     this.viewItemsService.fetchItems().subscribe(
       fetchedItems =>{

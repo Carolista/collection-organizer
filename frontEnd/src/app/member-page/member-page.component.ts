@@ -9,6 +9,7 @@ import { AuthService } from '../authentication/auth.service'
 })
 export class MemberPageComponent implements OnInit {
   associatedUser: any;
+  isLoggedIn: boolean = false;
 
   constructor(
     private token: TokenStorageService,
@@ -16,9 +17,12 @@ export class MemberPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.authService.isLoggedIn){
-      this.associatedUser = this.token.getUser();
-    } 
+    if (this.token.getToken()) {
+      this.isLoggedIn = true;
+      this.associatedUser = this.token.getUser().id;
+    }
+
+    console.log(this.associatedUser + " is logged in to Member-Page? " + this.isLoggedIn)
 
     //possible alternative code for loading user id when logged in? from tutorial
     // if(this.isLoggedIn) {

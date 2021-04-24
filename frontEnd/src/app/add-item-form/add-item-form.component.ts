@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ViewItemsService } from '../viewItems.service';
 import { Item } from '../ItemClass';
 import { AuthService } from '../authentication/auth.service';
+import { TokenStorageService } from '../authentication/token-storage.service';
 
 @Component({
   selector: 'app-add-item-form',
@@ -20,7 +21,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
   addItemForm: FormGroup;
   // formSubmitted = false;
   browseMainCategories = [' Fine Arts', ' Culture', ' Decorative arts', ' Machines and Transportation',
-    ' Fashion and Textiles', ' Natural History'];
+  ' Fashion and Textiles', ' Natural History'];
 
   fineArts = [' Painting', ' Sculpture', ' Prints/Photographs/Drawings/Digital', ' European',
   ' Africa/Oceania/Pre-Columbian Americas/Native American/Aboriginal Asian', ' Near and Middle Eastern', 
@@ -38,22 +39,23 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
   machinesAndTransportation = [' Cameras', ' Cars and Motorcycles', ' Aviation and Space',
   ' Nautical', ' Electronics', ' Models	(cars, trains, etc.)',
   ' Radios', ' Telephones', ' Office', ' Clocks'
-];
+  ];
 
-fashionAndTextiles = [' Clothing and shoes', ' Fine Jewelry', ' Costume Jewelry', 
-' Accessories (watches, handbags, pens, etc.)', ' Arms and Armor (incl. knives/swords/firearms/etc.)'];
+  fashionAndTextiles = [' Clothing and shoes', ' Fine Jewelry', ' Costume Jewelry', 
+  ' Accessories (watches, handbags, pens, etc.)', ' Arms and Armor (incl. knives/swords/firearms/etc.)'];
 
-naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
-' Fossils', ' Rocks, minerals, and gems', ' Precious metals',
-' Natural history collateral (books/guides/tools/etc.)', ' Medical/Scientific', ' Maps/Globes' ];
+  naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
+  ' Fossils', ' Rocks, minerals, and gems', ' Precious metals',
+  ' Natural history collateral (books/guides/tools/etc.)', ' Medical/Scientific', ' Maps/Globes' ];
 
   constructor(private http: HttpClient, 
               private router: Router,
               private viewItemsService: ViewItemsService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private token: TokenStorageService) { }
 
   ngOnInit():void{
-    this.associatedUser = this.authService.associatedUser;
+    this.associatedUser = this.token.getUser().id;
 
     this.editMode = this.viewItemsService.editMode;
     // console.log ('add item form edit mode', this.editMode)
@@ -80,7 +82,7 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
       'cond': new FormControl (this.editMode ? this.formPresetValue.cond : null),
       'mediaType': new FormControl (this.editMode ? this.formPresetValue.mediaType : null),
       'refs': new FormControl (this.editMode ? this.formPresetValue.refs : null),
-      'associatedUser': new FormControl (this.editMode ? this.formPresetValue.associatedUser: null),
+      'associatedUser': new FormControl (this.editMode ? this.formPresetValue.associatedUser: this.associatedUser),
     });
     
   }
@@ -107,11 +109,11 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
         this.addItemForm.value.cond,
         this.addItemForm.value.mediaType,
         this.addItemForm.value.refs,
-        this.associatedUser);
+        this.addItemForm.value.associatedUser);
 
       this.viewItemsService.editItem(this.viewItemsService.fetchedItemsIndex, this.formPresetValue.id);
       console.log('edited item value', this.viewItemsService.editedItemValue);
-    }else{
+    } else {
       this.http.post('http://localhost:8080/api/item/mycollection', 
               this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
     }
