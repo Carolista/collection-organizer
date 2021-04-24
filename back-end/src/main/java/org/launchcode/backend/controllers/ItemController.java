@@ -4,6 +4,7 @@ import org.launchcode.backend.exception.ItemNotFoundException;
 import org.launchcode.backend.models.Item;
 import org.launchcode.backend.models.data.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -27,16 +28,42 @@ public class ItemController {
         return itemRepository.findAll();
     }
 
-    @GetMapping("/mycollection")
-    public Iterable<Item> getUserCollection(@PathVariable("userId") long associatedUser) {
-        return itemRepository.findByAssociatedUser(associatedUser);
-    }
+//    @GetMapping("/mycollection")
+//    public Iterable<Item> getUserCollection(@PathVariable("userId") long associatedUser) {
+//        return itemRepository.findByAssociatedUser(associatedUser);
+//    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Item item) {
+        //added based on Carrie's code below:
+
+//        String headerAuth = headers.getFirst("Authorization");
         itemRepository.save(item);
     }
+
+    //sample code from QuickEst (Carrie Jone's project w/similar user auth setup)
+//    @PostMapping
+//    @PreAuthorize("hasRole('USER')")
+//    public ResponseEntity<?> postProject(@RequestBody Project project, @RequestHeader HttpHeaders headers) {
+
+//        String headerAuth = headers.getFirst("Authorization");
+//        String userName = userAuthService.getUserName(headerAuth);
+//        Optional<User> userOptional = userRepository.findByName(userName);
+//
+//        if (userName != null && userOptional.isPresent()) {
+//
+//            User user = userOptional.get();
+//            project.setUser(user);
+//            projectRepository.save(project);
+//
+//            int id = project.getId();
+//            Map<String, String> map = Collections.singletonMap("id", Integer.toString(id));
+//            return new ResponseEntity<>(map, HttpStatus.CREATED);
+//        }
+//        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//    }
+
 
     @GetMapping("{id}")
     public Optional<Item> get(@PathVariable("id") long id) {
