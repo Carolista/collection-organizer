@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -114,8 +114,18 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
       this.viewItemsService.editItem(this.viewItemsService.fetchedItemsIndex, this.formPresetValue.id);
       console.log('edited item value', this.viewItemsService.editedItemValue);
     } else {
-      this.http.post('http://localhost:8080/api/item/', 
-              this.addItemForm.value).subscribe( post => {console.log(post.valueOf())});
+      this.http.post(
+        'http://localhost:8080/api/item/', 
+        {
+          headers: new HttpHeaders({ 
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': 'true',
+            'Authorization': 'Barer ' + this.token.getToken() 
+          })  
+        },
+        this.addItemForm.value)
+        .subscribe( post => {console.log(post.valueOf())});
     }
 
     this.viewItemsService.editMode = false;
