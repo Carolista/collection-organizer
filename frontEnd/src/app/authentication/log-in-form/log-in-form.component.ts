@@ -16,7 +16,7 @@ export class LogInFormComponent implements OnInit {
   isLoggedIn = false;
   logInFailed = false;
   errorMessage = '';
-  // roles: string[] = [];
+  roles: string[] = [];
 
   constructor(
     private authService: AuthService, 
@@ -26,9 +26,9 @@ export class LogInFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.authService.userId = this.tokenStorage.getUser().id;
-      this.authService.username = this.tokenStorage.getUser().username;
-      // this.roles = this.tokenStorage.getUser().roles;
+      // this.authService.associatedUser = this.tokenStorage.getUser().id;
+      // this.authService.username = this.tokenStorage.getUser().username;
+      this.roles = this.tokenStorage.getUser().roles;
     }
   }
 
@@ -42,10 +42,15 @@ export class LogInFormComponent implements OnInit {
 
         this.logInFailed = false;
         this.isLoggedIn = true;
-        // this.roles = this.tokenStorage.getUser().roles;
-        this.authService.userId = this.tokenStorage.getUser().id;
+        this.roles = this.tokenStorage.getUser().roles;
+
+        //stores associatedUser id and username in authService
+        this.authService.associatedUser = this.tokenStorage.getUser().id;
         this.authService.username = this.tokenStorage.getUser().username;
-        console.log('user id is ' + this.authService.userId);
+        //verifies storage of correct associatedUser id in console
+        console.log('user id is ' + this.authService.associatedUser);
+
+        //navigates to member-page upon successful login
         this.router.navigate(['member-page']);
       },
       err => {
@@ -55,6 +60,7 @@ export class LogInFormComponent implements OnInit {
     );
   }
 
+  //reset form upon login; replaced with routing to member-page
   // reloadPage(): void {
   //   window.location.reload();
   // }

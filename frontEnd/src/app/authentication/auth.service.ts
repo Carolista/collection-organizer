@@ -12,7 +12,7 @@ const httpOptions = {
 export class AuthService {
  
   isLoggedIn: boolean = false;
-  userId?: number;
+  associatedUser?: number;
   username?: string;
 
   constructor(private http: HttpClient) {}

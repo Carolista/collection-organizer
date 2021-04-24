@@ -53,7 +53,7 @@ naturalHistory = [' Animals/Zoology', ' Botany', ' Shells',
               private authService: AuthService) { }
 
   ngOnInit():void{
-    this.associatedUser = this.authService.userId;
+    this.associatedUser = this.authService.associatedUser;
 
     this.editMode = this.viewItemsService.editMode;
     // console.log ('add item form edit mode', this.editMode)

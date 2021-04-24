@@ -29,23 +29,13 @@ export class ViewItemsService {
   //WHEN FETCH FUNCTION IS WORKING REPLACE THE ARRAY NAME TO FETCHEDITEMS
 
   fetchItems(){
-    //needs to be updated to accomidate edit items function from the item detail component
-    //currently doesn't work properly when edditing items or adding items.
-     
-    //original syntax  
-    // this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
-    //     for (let key in data){
-    //       if (data.hasOwnProperty(key)){
-    //         this.fetchedItems.push(data[key.valueOf()]);
-    //       }
-    //     }
-    //   });
+    
+    // if(this.authService.isLoggedIn) {
+    //   this.isLoggedIn = true;
+    //   this.userId = this.authService.userId;
+    // }
 
-     //new syntax will use observables, I hope it will fix the bug 
-    if(this.authService.isLoggedIn) {
-      this.isLoggedIn = true;
-      this.userId = this.authService.userId;
-    }
+    // console.log(this.isLoggedIn);
 
     return this.http
       .get('http://localhost:8080/api/item/mycollection')
@@ -60,6 +50,21 @@ export class ViewItemsService {
           return fetchedItems;
         })
       );
+
+    //old code:
+    //needs to be updated to accomidate edit items function from the item detail component
+    //currently doesn't work properly when edditing items or adding items.
+     
+    //original syntax  
+    // this.http.get('http://localhost:8080/api/item/').toPromise().then ( data => {
+    //     for (let key in data){
+    //       if (data.hasOwnProperty(key)){
+    //         this.fetchedItems.push(data[key.valueOf()]);
+    //       }
+    //     }
+    //   });
+
+     //new syntax will use observables, I hope it will fix the bug 
     }
  
  

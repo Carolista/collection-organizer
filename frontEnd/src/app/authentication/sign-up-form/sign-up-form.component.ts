@@ -11,7 +11,7 @@ export class SignUpFormComponent implements OnInit {
   form: any = {
     username: null,
     email: null,
-    password: null 
+    password: null,
   };
   signUpSuccessful: boolean = false;
   signUpFailed: boolean = false;
@@ -25,7 +25,7 @@ export class SignUpFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, email, password } = this.form;
+    const { username, email, password, role } = this.form;
     // console.log(this.form);
 
     this.authService.register(username, email, password).subscribe(
@@ -33,7 +33,7 @@ export class SignUpFormComponent implements OnInit {
         console.log(data);
         this.signUpSuccessful = true;
         this.signUpFailed = false;
-        this.router.navigate(['log-in']);
+        // this.router.navigate(['log-in']);
       },
       err => {
         this.errorMessage = err.error.message;
