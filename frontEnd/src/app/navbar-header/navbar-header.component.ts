@@ -47,6 +47,7 @@ export class NavbarHeaderComponent implements OnInit {
     this.viewItemsService.viewCollectiblesHeadline.emit('Results for '+ this.userSearch.get('userInput').value);
 
     const searchStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.userSearch.get('userInput').value}) };
+    console.log(searchStringParams);
 
     this.viewItemsService.fetchOrbrowseOrSearchItems("http://localhost:8080/api/search", searchStringParams)
       .subscribe(data =>{
