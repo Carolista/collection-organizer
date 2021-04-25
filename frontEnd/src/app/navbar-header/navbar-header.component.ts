@@ -61,7 +61,7 @@ export class NavbarHeaderComponent implements OnInit {
     this.openOrCloseCategory.splice(clickedArrIndex, 1, !this.openOrCloseCategory[clickedArrIndex]);
     this.categoryArrIndex=clickedArrIndex; //need this value to access subcategories
     this.clickedCategory = this.categories[clickedArrIndex];
-    console.log(this.clickedCategory);
+    console.log(this.isOpen);
     this.selectedSubcategoryArr = this.subCategoriesArr[clickedArrIndex];
     this.switchCase = this.categories[clickedArrIndex];
     this.viewItemsService.viewCollectiblesHeadline.emit(this.clickedCategory);
