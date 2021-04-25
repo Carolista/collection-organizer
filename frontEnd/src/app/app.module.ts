@@ -15,10 +15,9 @@ import { FooterComponent } from './footer/footer.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AboutTeamComponent } from './landing-page/about-team/about-team.component';
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
-import { authInterceptorProviders } from './authentication/auth.interceptor';
 import { SignUpFormComponent } from './authentication/sign-up-form/sign-up-form.component';
 import { LogInFormComponent } from './authentication/log-in-form/log-in-form.component';
-import { MemberProfileComponent } from './member-profile/member-profile.component'
+import { MemberProfileComponent } from './member-profile/member-profile.component';
 import { AuthService } from './authentication/auth.service';
 
 @NgModule({
@@ -47,7 +46,7 @@ import { AuthService } from './authentication/auth.service';
   ],
   providers: [
     AuthService,
-    authInterceptorProviders
+    
   ],
   bootstrap: [AppComponent]
 })
