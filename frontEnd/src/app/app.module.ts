@@ -18,7 +18,7 @@ import { AboutProjectComponent } from './landing-page/about-project/about-projec
 import { authInterceptorProviders } from './authentication/auth.interceptor';
 import { SignUpFormComponent } from './authentication/sign-up-form/sign-up-form.component';
 import { LogInFormComponent } from './authentication/log-in-form/log-in-form.component';
-import { MemberProfileComponent } from './member-profile/member-profile.component'
+import { MemberProfileComponent } from './member-profile/member-profile.component';
 import { AuthService } from './authentication/auth.service';
 
 @NgModule({
