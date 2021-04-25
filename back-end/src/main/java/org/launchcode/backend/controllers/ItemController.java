@@ -37,8 +37,8 @@ public class ItemController {
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Item item) {
         //added based on Carrie's code below:
-
 //        String headerAuth = headers.getFirst("Authorization");
+
         itemRepository.save(item);
     }
 
