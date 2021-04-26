@@ -5,17 +5,18 @@ node_modules/bootstrap/scss/_variables.scss*/
 
 // Color system
 
-$primary:       #0A4157;
-$secondary:     #A55E1C;
+$primary:       #16526A;
+$secondary:     #B2732B;
 $success:       #669966;
-$info:          #1B8697;
-$warning:       #E4982F;
-$danger:        #842D1C;
-$light:         #E9E9E9;
-$dark:          #2E2F2E;
-$muted:         #9C9C9D;
+$info:          #2696A7;
+$warning:       #E6AA43;
+$danger:        #974027;
+$light:         #E2E3E5;
+$dark:          #3C3E3C;
+$muted:         #ACACAD;
 $tertiary:      #575554;
 $light2:        #D5E7ED;
+$light3:        #9BCAD8;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(

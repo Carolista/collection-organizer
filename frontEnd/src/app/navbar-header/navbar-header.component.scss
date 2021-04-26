@@ -1,8 +1,10 @@
 $gold: #d3be46;
+$gold2: #CE9B58;
 $blue-gray: rgb(76, 87, 93);
-$primary:       #0A4157;
-$secondary: #A55E1C;
-$warning: #E4982F;
+$primary:       #16526A;
+$secondary: #B2732B;
+$tertiary: #575554;
+$warning: #E6AA43;
 
 nav {
     padding-bottom: 8px;
@@ -14,7 +16,8 @@ nav {
 .row {
     // background-color: rgb(204, 212, 221);
     background-color: whitesmoke;
-    border-bottom: 1.5px solid $gold;
+    border-bottom: 1.5px solid $gold2;
+    ;
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 0px;
