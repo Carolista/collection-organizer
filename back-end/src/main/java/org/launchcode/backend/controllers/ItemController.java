@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,18 +25,21 @@ public class ItemController {
     private ItemRepository itemRepository;
 
     @GetMapping
+    @PreAuthorize("hasRole('USER')")
     public Iterable<Item> list() {
         return itemRepository.findAll();
     }
 
 //    @GetMapping("/mycollection")
+//      @PreAuthorize("hasRole('USER')")
 //    public Iterable<Item> getUserCollection(@PathVariable("userId") long associatedUser) {
 //        return itemRepository.findByAssociatedUser(associatedUser);
 //    }
 
     @PostMapping
+    @PreAuthorize("hasRole('USER')")
     @ResponseStatus(HttpStatus.OK)
-    public void create(@RequestBody Item item) {
+    public void create(@RequestBody Item item, @RequestHeader HttpHeaders headers) {
         //added based on Carrie's code below:
 //        String headerAuth = headers.getFirst("Authorization");
 
