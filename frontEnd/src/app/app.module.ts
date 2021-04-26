@@ -16,6 +16,7 @@ import { AboutTeamComponent } from './landing-page/about-team/about-team.compone
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
 import { MemberMenuComponent } from './member-page/member-menu/member-menu.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AdvancedSearchComponent } from './advanced-search/advanced-search.compo
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
