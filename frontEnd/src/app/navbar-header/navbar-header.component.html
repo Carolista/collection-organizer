@@ -15,13 +15,14 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       
-      <div class="collapse navbar-collapse justify-content-center" id="nav">
+      <div class="collapse navbar-collapse justify-content-end" id="nav">
       
         <!--search field-->
         <form 
           [formGroup]="userSearch"
           (ngSubmit)="onSearch()"
-          class="form-inline ml-3">
+          class="form-inline"
+          style="padding-inline: 250px; padding-bottom: .5rem;">
           <div class="input-group">
             <input 
             formControlName="userInput"
