@@ -2,6 +2,7 @@ package org.launchcode.backend.models.data;
 
 
 import org.launchcode.backend.models.Item;
+import org.launchcode.backend.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +14,7 @@ public interface ItemRepository extends CrudRepository <Item, Long>{
 
     void deleteItemById(Long id);
 
-    Iterable<Item> findByAssociatedUser(Long associatedUser);
+    Iterable<Item> findByUser(User user);
+
+//    Iterable<Item> findByAssociatedUser(Long associatedUser);
 }

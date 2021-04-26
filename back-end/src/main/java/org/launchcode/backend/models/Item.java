@@ -1,8 +1,7 @@
 package org.launchcode.backend.models;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -35,12 +34,17 @@ public class Item extends AbstractEntity {
     private String mediaType;
     private String refs;
 
-//  @OneToMany(mappedBy = "") *do we need a relationship defined here?
-    private Long associatedUser;
+//    @ManyToOne (cascade = CascadeType.ALL)//*do we need a relationship defined here?
+////    @JoinColumn(name = "id")
+//    private Long associatedUser;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private User user;
 
     public Item(String title, String imagePath, String category, String subCategory, String description,
                 String creator, int yearCreated, String placeOfOrigin, int yearAcquired, String cond,
-                String mediaType, String refs, Long associatedUser) {
+                String mediaType, String refs, User user) { //Long associatedUser) {
         this.title = title;
         this.imagePath = imagePath;
         this.category = category;
@@ -53,7 +57,8 @@ public class Item extends AbstractEntity {
         this.cond = cond;
         this.mediaType = mediaType;
         this.refs = refs;
-        this.associatedUser = associatedUser;
+//        this.associatedUser = associatedUser;
+        this.user = user;
     }
 
 
@@ -162,11 +167,19 @@ public class Item extends AbstractEntity {
         this.title = title;
     }
 
-    public Long getAssociatedUser() {
-        return associatedUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setAssociatedUser(Long associatedUser) {
-        this.associatedUser = associatedUser;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+    //    public Long getAssociatedUser() {
+//        return associatedUser;
+//    }
+//
+//    public void setAssociatedUser(Long associatedUser) {
+//        this.associatedUser = associatedUser;
+//    }
 }
