@@ -20,7 +20,11 @@
         novalidate
       >
         <div class="form-group">
-          <label for="username">Username</label>
+          <label 
+            class="text-uppercase font-weight-bold text-muted" 
+            style="letter-spacing: .1rem; font-size: small"
+            for="username">Username
+          </label>
           <input
             type="text"
             class="form-control"
@@ -30,15 +34,18 @@
             #username="ngModel"
           />
           <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="username.errors && f.submitted"
-          >
+          class="alert alert-danger"
+          style="font-size: small"
+          role="alert"
+          *ngIf="username.errors && f.submitted">
             Please enter your user name
           </div>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label 
+            class=" text-uppercase font-weight-bold text-muted" 
+            style="letter-spacing: .1rem; font-size: small;"
+            for="password">Password</label>
           <input
             type="password"
             class="form-control"
@@ -50,23 +57,24 @@
           />
           <div
             class="alert alert-danger"
+            style="font-size: small;"
             role="alert"
             *ngIf="password.errors && f.submitted"
           >
             <div *ngIf="password.errors.required">Please enter your password</div>
-            <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
-            </div>
+            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
           </div>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-block">
+          <button class="btn btn-info btn-block text-uppercase" [disabled]="!f.valid">
             Login
           </button>
         </div>
+        
         <div class="form-group">
           <div
             class="alert alert-danger"
+            style="font-size: small"
             role="alert"
             *ngIf="f.submitted && logInFailed"
           >
@@ -74,7 +82,7 @@
           </div>
         </div>
       </form>
-      
+
     </div>
   </div>
 </div>
