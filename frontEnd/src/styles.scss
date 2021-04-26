@@ -5,16 +5,19 @@ node_modules/bootstrap/scss/_variables.scss*/
 
 // Color system
 
-$primary:       #0A4157;
-$secondary:     #A55E1C;
+$primary:       #16526A;
+$secondary:     #B2732B;
 $success:       #669966;
-$info:          #1B8697;
-$warning:       #E4982F;
-$danger:        #842D1C;
-$light:         #E9E9E9;
-$dark:          #2E2F2E;
-$muted:         #9C9C9D;
+$info:          #2696A7;
+$warning:       #E6AA43;
+$danger:        #974027;
+$light:         #E2E3E5;
+$dark:          #3C3E3C;
+$muted:         #878887;
+$muted2:        #C0C0C0;
 $tertiary:      #575554;
+$light2:        #D5E7ED;
+$light3:        #9BCAD8;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(
@@ -29,11 +32,12 @@ $theme-colors: map-merge(
     "dark":       $dark,
     "muted":      $muted,
     "tertiary":   $tertiary,
+    "light2":     $light2,
   ),
   $theme-colors
 );
 
-//FONTS: 
+//Typography: 
 
 /*body fonts add BodoniModa Regular and BodoniModa Italic to default bootstrap fonts from
 node_modules/bootstrap/scss/_variables.scss: Typography*/
@@ -43,6 +47,81 @@ $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberati
 $font-family-base:            $font-family-sans-serif !default;
 
 $text-muted:                  $muted;
+
+//Special display and heading fonts
+
+.heading-primary {
+  font-family: 'MrLackboughs Regular';
+  font-weight: lighter;
+}
+
+.heading-secondary {
+  font-family: 'Italiana';
+}
+
+// $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+// $font-size-lg:                $font-size-base * 1.25 !default;
+// $font-size-sm:                $font-size-base * .875 !default;
+
+// $font-weight-lighter:         lighter !default;
+// $font-weight-light:           300 !default;
+// $font-weight-normal:          400 !default;
+// $font-weight-bold:            700 !default;
+// $font-weight-bolder:          bolder !default;
+
+// $font-weight-base:            $font-weight-normal !default;
+// $line-height-base:            1.5 !default;
+
+// $h1-font-size:                $font-size-base * 2.5 !default;
+// $h2-font-size:                $font-size-base * 2 !default;
+// $h3-font-size:                $font-size-base * 1.75 !default;
+// $h4-font-size:                $font-size-base * 1.5 !default;
+// $h5-font-size:                $font-size-base * 1.25 !default;
+// $h6-font-size:                $font-size-base !default;
+
+// $headings-margin-bottom:      $spacer / 2 !default;
+// $headings-font-family:        null !default;
+// $headings-font-weight:        500 !default;
+// $headings-line-height:        1.2 !default;
+// $headings-color:              null !default;
+
+// $display1-size:               6rem !default;
+// $display2-size:               5.5rem !default;
+// $display3-size:               4.5rem !default;
+// $display4-size:               3.5rem !default;
+
+// $display1-weight:             300 !default;
+// $display2-weight:             300 !default;
+// $display3-weight:             300 !default;
+// $display4-weight:             300 !default;
+// $display-line-height:         $headings-line-height !default;
+
+// $lead-font-size:              $font-size-base * 1.25 !default;
+// $lead-font-weight:            300 !default;
+
+// $small-font-size:             80% !default;
+
+// $text-muted:                  $gray-600 !default;
+
+// $blockquote-small-color:      $gray-600 !default;
+// $blockquote-small-font-size:  $small-font-size !default;
+// $blockquote-font-size:        $font-size-base * 1.25 !default;
+
+// $hr-border-color:             rgba($black, .1) !default;
+// $hr-border-width:             $border-width !default;
+
+// $mark-padding:                .2em !default;
+
+// $dt-font-weight:              $font-weight-bold !default;
+
+// $kbd-box-shadow:              inset 0 -.1rem 0 rgba($black, .25) !default;
+// $nested-kbd-font-weight:      $font-weight-bold !default;
+
+// $list-inline-padding:         .5rem !default;
+
+// $mark-bg:                     #fcf8e3 !default;
+
+// $hr-margin-y:                 $spacer !default;
 
 // Links
 //
@@ -71,6 +150,10 @@ $text-muted:                  $muted;
 // COMPONENTS
 //
 // Custom changes to Bootstrap common padding and border radius sizes and more.
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
 
 // $border-radius:               50rem;
 // $border-radius-lg:            50rem;
@@ -104,3 +187,6 @@ $text-muted:                  $muted;
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
