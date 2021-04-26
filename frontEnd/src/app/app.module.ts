@@ -15,6 +15,8 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { AboutTeamComponent } from './landing-page/about-team/about-team.component';
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
 import { MemberMenuComponent } from './member-page/member-menu/member-menu.component';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import { MemberMenuComponent } from './member-page/member-menu/member-menu.compo
     ItemDetailComponent,
     AboutTeamComponent,
     AboutProjectComponent,
+    AdvancedSearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

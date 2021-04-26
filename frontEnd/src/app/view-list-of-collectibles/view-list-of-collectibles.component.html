@@ -2,10 +2,11 @@
   <h1
   style="cursor: pointer;"
   (click)="onFetchMyCollectionData()"
-  >My Collection</h1>
+  >{{headline}}</h1>
+  <h4 *ngIf = "items.length ==0"> There is no result for your search</h4>
   <hr>
   <div 
-  *ngIf='viewMyCollection'
+  *ngIf='isUserLoggedIn'
   class="d-flex justify-content-end">
     <button 
     class="rounded"
@@ -24,8 +25,8 @@
         style="cursor: pointer;">
         <a [routerLink]="i">
           <img [src]="item.imagePath">
-          <h5>{{item.title}}</h5>
-          <p>{{item.description}}</p>
+          <h5>{{ item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}}</h5>
+          <p *ngIf="item.description">{{ item.description.length > 25 ? item.description.slice(0, 25) + '...' : item.description }}</p>
         </a>
       </div>
     </div>

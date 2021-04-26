@@ -9,30 +9,48 @@ import { Item } from '../ItemClass'
 })
 export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
 
-  viewMyCollection: boolean = true;
+  isUserLoggedIn: boolean;
   items: Item[] = [];
   categorySelected: boolean = false;
   displayedItems: Item[] = [];
+  headline: string;
+  // shortenItemDescription: string;
 
   constructor(private viewItemsService: ViewItemsService) { 
   
     this.viewItemsService.viewSelectedItems.subscribe(
       (selectedCategoryItems: Item[]) => {
         this.items = selectedCategoryItems;
+        this.viewItemsService.fetchedItems = selectedCategoryItems;
+      }
+    );
+
+    this.viewItemsService.viewCollectiblesHeadline.subscribe(
+      (headline: string) =>{
+        this.headline = headline;
       }
     );
   
   }
 
   ngOnInit(): void {
+
+    this.isUserLoggedIn = this.viewItemsService.isUserLoggedIn;
+    // this.headline = this.viewItemsService.viewCollectiblesHeadline;
     // this.items = this.viewItemsService.getItems(); //used when we couldn't load from back end
-    // this.viewItemsService.fetchItems().subscribe(
-    //   fetchedItems =>{
-    //     this.items = fetchedItems;
-    //     this.viewItemsService.fetchedItems = fetchedItems;
-    //     console.log(fetchedItems);
-    //   }
-    // )
+    
+    //advanced search doesn't work if this page pulls all the items onInit
+    if (this.viewItemsService.isUserLoggedIn){
+      this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe(
+        fetchedItems =>{
+          this.items = fetchedItems;
+          this.viewItemsService.fetchedItems = fetchedItems;
+          console.log(fetchedItems);
+        }
+      );
+    }
+
+    console.log(this.isUserLoggedIn);
     /*alternative way of getting items without using a function, which might be better for once we are fetching to an array in that service:*/
     // this.items = this.viewItemsService.listOfItems;
     
@@ -43,7 +61,7 @@ export class ViewListOfCollectiblesComponent implements OnInit, OnDestroy {
   }
 
   onFetchMyCollectionData(){
-    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
       this.viewItemsService.viewSelectedItems.emit(myCollection);
     });     
   }

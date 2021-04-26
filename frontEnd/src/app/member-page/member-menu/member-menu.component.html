@@ -1,6 +1,34 @@
 <div class="container">
-
   <div class="row">
+    <div class="col">
+      <br>
+      <a
+      routerLink="../member-page/advanced-search"
+      ><h4>
+        Advanced Search
+      </h4></a>
+    </div>
+
+  </div>
+
+  <div
+  *ngIf="!isUserLoggedIn"
+  >
+    <a>Login or Sign up</a>
+  </div>
+
+
+  <div 
+
+
+
+
+  *ngIf = "isUserLoggedIn"
+
+
+
+  
+  class="row">
     <div class="col-12">
       <h3 class="text-center text-primary" style="padding-top: 12px;">Options</h3>
   <hr>
@@ -91,7 +119,9 @@
 
   <!-- <div style="cursor: pointer">My Profile</div> -->
 
-  <div routerLinkActive="selected"><a routerLink="../member-page/add-item">Add Item</a></div>
+  <div routerLinkActive="selected">
+    <a routerLink="../member-page/add-item">Add Item</a>
+  </div>
 
   <!--alternative formatting for above, using list instead of divs (also does not work with dropdown menus)-->
   <!-- <ul class="text-left text-muted list-unstyled"> -->
@@ -118,15 +148,12 @@
     <!-- <li routerLinkActive="selected"><a routerLink="../member-page/add-item">Add Item</a></li>
   </ul> -->
     </div>
-    
-    
   </div>
-
-
-  
-
-
-
+  <div>
+    <br>
+    <a>About This Project</a> <br>
+    <a href="">About Us</a>
+  </div>
 </div>
 
 

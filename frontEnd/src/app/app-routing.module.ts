@@ -8,14 +8,15 @@ import { ViewListOfCollectiblesComponent } from './view-list-of-collectibles/vie
 import { ItemDetailComponent } from './item-detail/item-detail.component'
 import { AboutTeamComponent } from './landing-page/about-team/about-team.component';
 import { AboutProjectComponent } from './landing-page/about-project/about-project.component';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 //n.b. these routes work until an add-item form is submitted; they stop working at that point because there is no way to update the temporary simulated item array to include the newly added "item" index number; to reset, stop serving the page and re-serve 
 const appRoutes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path: 'browse', component: ViewListOfCollectiblesComponent},
   {path: 'member-page', component: MemberPageComponent, children: [
     {path: 'my-collections', component: ViewListOfCollectiblesComponent},
     {path: 'add-item', component: AddItemFormComponent},
+    {path: 'advanced-search', component: AdvancedSearchComponent},
     {path: ':id', component: ItemDetailComponent},
     {path: '', component: ViewListOfCollectiblesComponent}
   ]},

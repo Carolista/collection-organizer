@@ -4,11 +4,47 @@
   <div class="container-fluid">
     <div class="row py-5">
       <!-- <div class="px-5 mx-5"> -->
-        <img 
-          src="../../assets/photos/Hero_collage_v3_shadows-outlines-tagline.png" 
+        
+        <ngb-carousel>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img 
+              src="../assets/photos/Hero-test-1.png" 
+              alt="Angular Carousel 1">
+            </div>
+            <!-- <div class="carousel-caption">
+              <h3>Title Goes Here</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div> -->
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img 
+              src="../assets/photos/Hero-2.png"  alt="Angular Carousel 1">
+            </div>
+            <!-- <div class="carousel-caption">
+              <h3>Title Goes Here</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div> -->
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img 
+              src="../assets/photos/Hero-3.png" alt="Angular Carousel 2">
+            </div>
+            <!-- <div class="carousel-caption">
+              <h3>Title Goes Here</h3>
+              <p>Consectetur tortor volutpat pretium.</p>
+            </div> -->
+          </ng-template>
+        </ngb-carousel>
+
+
+        <!-- <img 
+          src="../assets/photos/Hero_collage_v3.png" 
           alt="Collage of collection photographs with tagline" 
           style="max-height: 90vh; max-width: 100vw; padding-inline: 5; margin-inline: 5;"
-        >
+        > -->
       <!-- </div> -->
     </div>
   </div>

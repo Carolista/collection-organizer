@@ -1,8 +1,14 @@
 package org.launchcode.backend.models;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
+import org.hibernate.mapping.List;
+import org.launchcode.backend.models.data.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 
 @Entity
 public class Item extends AbstractEntity {
@@ -56,7 +62,6 @@ public class Item extends AbstractEntity {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-
 
     public String getCreator() {
         return creator;
@@ -126,7 +131,6 @@ public class Item extends AbstractEntity {
 
 
 
-
     public String getCond() {
         return cond;
     }
@@ -142,4 +146,5 @@ public class Item extends AbstractEntity {
     public void setRefs(String references) {
         this.refs = refs;
     }
+
 }

@@ -15,6 +15,7 @@ export class MemberMenuComponent implements OnInit {
   populatedSubCategories = [];
   allSubcategoriesItems = [];
   openCloseSubcategories = [];
+  isUserLoggedIn: boolean;
 
   myCategoriesOpen: boolean = false;
   categorySelected: boolean = false;
@@ -25,8 +26,10 @@ export class MemberMenuComponent implements OnInit {
   constructor(private viewItemsService: ViewItemsService) { }
 
   ngOnInit(): void {
+
+    this.isUserLoggedIn = this.viewItemsService.isUserLoggedIn;
     /*method used in ngOnInit in view-list-of-collectibles component*/
-    this.viewItemsService.fetchItems().subscribe(
+    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe(
       fetchedItems =>{
         this.viewItemsService.fetchedItems = fetchedItems;
         this.items = this.viewItemsService.fetchedItems;
@@ -89,7 +92,7 @@ export class MemberMenuComponent implements OnInit {
     }
 
     onFetchMyCollectionData(){
-      this.viewItemsService.fetchItems().subscribe (myCollection =>{
+      this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
         this.viewItemsService.viewSelectedItems.emit(myCollection);
       });  
       

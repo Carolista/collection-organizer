@@ -46,7 +46,7 @@ export class ItemDetailComponent implements OnInit {
     this.viewItemsService.editMode = true;
     console.log ('edit mode', this.viewItemsService.editMode);
 
-    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
     this.viewItemsService.viewSelectedItems.emit(myCollection);
     }); 
 
@@ -62,6 +62,7 @@ export class ItemDetailComponent implements OnInit {
     // this.viewItemsService.fetchedItems.splice(this.id, 1); -not working as intended
 
     this.viewItemsService.deleteItem(this.id, this.itemData.id);
+    
 
       // this.viewItemsService.fetchItems().subscribe(
       //   fetchedItems =>{
@@ -71,11 +72,12 @@ export class ItemDetailComponent implements OnInit {
     
     this.router.navigate(['/member-page']);
     
-    this.viewItemsService.fetchItems().subscribe (myCollection =>{
+    this.viewItemsService.fetchOrbrowseOrSearchItems().subscribe (myCollection =>{
     this.viewItemsService.viewSelectedItems.emit(myCollection);
     });  
 
     } 
+    // location.reload();doesn't work
   }
 
 }
