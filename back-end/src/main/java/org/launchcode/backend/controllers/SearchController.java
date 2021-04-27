@@ -22,7 +22,7 @@ public class SearchController {
     @Autowired
     public ItemRepository itemRepository;
 
-
+//search/nav bar search method//
     @GetMapping
 
     public ArrayList<Item> searchResult(@Param("searchTerm") String searchTerm) {   //, String title, String description) {
@@ -50,6 +50,9 @@ public class SearchController {
         }
         return searchResult;
     }
+
+
+    //advance search method
 
     @GetMapping("/titleSearch")
     public ArrayList<Item> searchByTitle(@Param("title") String title){

@@ -13,13 +13,16 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 @Repository
-//@Transactional
+
 public interface ItemRepository extends CrudRepository <Item, Long> {
 
     void deleteItemById(Long id);
 
 
+    //arrays for searchController
     public ArrayList<Item> findByTitle(String title);
 
     public ArrayList<Item> findByCategory(String category);
