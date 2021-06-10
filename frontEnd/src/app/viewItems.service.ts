@@ -21,86 +21,8 @@ export class ViewItemsService {
   viewCollectiblesHeadline = new EventEmitter<string>();
   
 
-
-  //soon list of items will be fetching an array of objects from the back end.
-  // listOfItems: any = [
-  //   {
-  //     imagePath: 'https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://media.istockphoto.com/photos/great-sneaker-picture-id1079117394',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://media.istockphoto.com/photos/balls-picture-id488816326',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://media.istockphoto.com/photos/rocket-on-black-background-picture-id172288174',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://media.istockphoto.com/photos/antique-change-picture-id95520796',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://media.istockphoto.com/photos/great-sneaker-picture-id1079117394',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://media.istockphoto.com/photos/antique-change-picture-id95520796',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://media.istockphoto.com/photos/great-sneaker-picture-id1079117394',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://media.istockphoto.com/photos/great-sneaker-picture-id1079117394',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   },
-  //   {
-  //     imagePath: 'https://secure.img1-ag.wfcdn.com/im/18951009/resize-h800%5Ecompr-r85/4007/4007560/Sovereign+of+The+Seas+Monumental+Model+Ship.jpg',
-  //     title: 'Item Title goes here-very long title',
-  //     description: 'A few words of description will go here, sample of a few lines of words'
-  //   }
-  // ];
-
   constructor(private http: HttpClient){};
-//combined this  with the function bellow, so I only use one method
-  // fetchItems(){    
 
-  //    //when we're fetching data with query params, update this method
-  //    //to includ query param as a second argument
-  //    return this.http
-  //     .get('http://localhost:8080/api/item/')
-  //     .pipe(
-  //       map(fetchedData=>{
-  //         const fetchedItems: Item[] = [];
-  //         for (const key in fetchedData){
-  //           if(fetchedData.hasOwnProperty(key)){
-  //             fetchedItems.push(fetchedData[key.valueOf()]);
-  //           }
-  //         }
-  //         return fetchedItems;
-  //       })
-  //     );
-  //   }
 
     fetchOrbrowseOrSearchItems(url: string = 'http://localhost:8080/api/item/', params: Params = null){
       if (params == null){
@@ -154,11 +76,7 @@ export class ViewItemsService {
     this.http.delete('http://localhost:8080/api/item/'+ itemId).subscribe(data=>{
       console.log(data)
     });
-    // this.fetchItems().subscribe(
-    //   updatedItems =>{
-    //     this.fetchedItems = updatedItems;
-    //   }
-    // )
+
   }
 
   //didn't need to use this method yet

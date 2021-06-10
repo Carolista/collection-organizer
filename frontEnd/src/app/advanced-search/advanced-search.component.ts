@@ -81,15 +81,15 @@ export class AdvancedSearchComponent implements OnInit {editMode: boolean;
       this.url = 'http://localhost:8080/api/search/subCategorySearch';
       this.browseStringParams = { params: new HttpParams({fromString: 'subCategory=' + this.advancedSearch.value.subCategory}) };
     }
-    if (this.advancedSearch.value.title || this.advancedSearch.value.keyWords){
-      this.url = 'http://localhost:8080/api/search';
-      if (this.advancedSearch.value.title){
-        this.browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.advancedSearch.value.title}) };
-      }
-      if (!this.advancedSearch.value.title){
-        this.browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.advancedSearch.value.keyWords}) };
-      }
-      
+    if (this.advancedSearch.value.title){
+      this.url = 'http://localhost:8080/api/search/titleSearch';
+      this.browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.advancedSearch.value.title}) };
+      // if (this.advancedSearch.value.title){
+      //   this.browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.advancedSearch.value.title}) };
+      // }
+      // if (!this.advancedSearch.value.title){
+      //   this.browseStringParams = { params: new HttpParams({fromString: 'searchTerm=' + this.advancedSearch.value.keyWords}) };
+      // }
     }
     //make category a required field, add form validations
     // if (this.advancedSearch.value.creator || this.advancedSearch.value.yearCreated 

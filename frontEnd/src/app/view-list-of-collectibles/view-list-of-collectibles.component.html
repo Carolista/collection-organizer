@@ -25,8 +25,8 @@
         style="cursor: pointer;">
         <a [routerLink]="i">
           <img [src]="item.imagePath">
-          <h5>{{ item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}}</h5>
-          <p *ngIf="item.description">{{ item.description.length > 25 ? item.description.slice(0, 25) + '...' : item.description }}</p>
+          <h5>{{ item.title.length > 15 ? item.title.slice(0, 15) + '...' : item.title}}</h5>
+          <p *ngIf="item.description">{{ item.description.length > 20 ? item.description.slice(0, 20) + '...' : item.description }}</p>
         </a>
       </div>
     </div>
