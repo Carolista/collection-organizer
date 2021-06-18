@@ -12,11 +12,11 @@ export class Item {
   public cond: string;
   public mediaType: string;
   public refs: string;
-  public associatedUser: number;
+  public user: number;
 
   constructor(id: number, title:string, imagePath: string, category: string, subCategory: string,
       description: string, creator: string, yearCreated: number, placeOfOrigin: string,
-      yearAcquired: number, cond: string, mediaType: string, refs: string, associatedUser: number)
+      yearAcquired: number, cond: string, mediaType: string, refs: string, user: number)
       
   {
     this.id = id;
@@ -32,6 +32,6 @@ export class Item {
     this.cond = cond;
     this.mediaType = mediaType;
     this.refs = refs;
-    this.associatedUser = associatedUser;
+    this.user = user;
   }
 }

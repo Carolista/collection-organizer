@@ -14,7 +14,7 @@ import { TokenStorageService } from '../authentication/token-storage.service';
 })
 export class AddItemFormComponent implements OnInit, OnDestroy {
 
-  associatedUser: number;
+  user: number;
   editMode: boolean;
   formPresetValue: Item;
 
@@ -55,7 +55,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
               private token: TokenStorageService) { }
 
   ngOnInit():void{
-    this.associatedUser = this.token.getUser().id;
+    this.user = this.token.getUser().id;
 
     this.editMode = this.viewItemsService.editMode;
     // console.log ('add item form edit mode', this.editMode)
@@ -82,7 +82,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
       'cond': new FormControl (this.editMode ? this.formPresetValue.cond : null),
       'mediaType': new FormControl (this.editMode ? this.formPresetValue.mediaType : null),
       'refs': new FormControl (this.editMode ? this.formPresetValue.refs : null),
-      'associatedUser': new FormControl (this.editMode ? this.formPresetValue.associatedUser: this.associatedUser),
+      'user': new FormControl (this.editMode ? this.formPresetValue.user: this.user),
     });
     
   }
@@ -93,7 +93,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
 
 
   onSubmit(){
-    console.log('submitting item for user ' + this.associatedUser);
+    console.log('submitting item for user ' + this.user);
     if (this.editMode){
       this.viewItemsService.editedItemValue = new Item(
         this.formPresetValue.id, 
@@ -109,7 +109,7 @@ export class AddItemFormComponent implements OnInit, OnDestroy {
         this.addItemForm.value.cond,
         this.addItemForm.value.mediaType,
         this.addItemForm.value.refs,
-        this.addItemForm.value.associatedUser);
+        this.addItemForm.value.user);
 
       this.viewItemsService.editItem(this.viewItemsService.fetchedItemsIndex, this.formPresetValue.id);
       console.log('edited item value', this.viewItemsService.editedItemValue);
